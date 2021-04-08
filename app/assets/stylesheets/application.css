@@ -16,7 +16,6 @@
 
  html {
    
-   link-color: pink;
    font-family: "Capsule Sans Display",system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif;
  }
 
@@ -24,19 +23,8 @@
      width: 12px;
  }
 
- ::-webkit-scrollbar-track {
-     -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
-     border-radius: 10px;
- }
-
- ::-webkit-scrollbar-thumb {
-     border-radius: 10px;
-     -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.5);
- }
-
   body {
     background-color:rgb(195,245,60);
-    /* background-color: #78a175; */
     margin: 0;
   }
 
@@ -117,10 +105,6 @@
    justify-content: space-between;
    align-items: center;
    box-shadow: 0px 1px 4px 0px rgb(0 0 0 / 20%);
-   /* padding: 24px; */
-      /* -moz-box-shadow: 10px 10px 5px #ccc;
-      -webkit-box-shadow: 10px 10px 5px #ccc;
-      -khtml-box-shadow: 10px 10px 5px #ccc; */
       
  }
 
@@ -143,7 +127,6 @@
   text-decoration: none;
   display: inline-flex;
   font-weight: bold;
-  /* margin: 6px; */
   font-size: 19px;
  }
  
@@ -156,7 +139,6 @@
    padding: 0px 16px;
    height: 48px;
    border-radius: 24px;
-   /* background-color: rgb(111, 0, 5); */
   }
   
   .login-button a:visited {
@@ -186,12 +168,6 @@
     background-color: rgb(0, 185, 5);
   }
 
- /* .single-bench-show {
-   display: flex;
-   justify-content: center;
-   margin-top: 20px;
- } */
-
  .single-bench-map {
    display: flex;
    flex-direction: column;
@@ -208,21 +184,13 @@
    max-width: 100px;
  }
 
- .review-button, .review-form {
-   width: 100px;
-   margin-top: 20px;
- }
 
- .review-button {
-   /* padding-top: 1px; */
- }
 
  .header-name {
    margin: 7px 0 0 0;
 
  }
 
- 
 
  .header-favorites {
    margin: 4px 0 4px 0;
@@ -244,37 +212,10 @@
    padding: 5px 30px 10px 30px;
  }
 
- .new-bench-title {
-   text-align: center;
- }
-
- .new-bench-button {
-   margin: 5px;
- }
-
- input.bench-field {
-   margin: 10px;
-   padding: 2px;
- }
-
- label.bench-field {
-   width: 125px;
-   display: inline-block;
- }
-
  .button-holder {
    display: flex;
    align-items: center;
    flex-direction: column;
- }
-
- input.new-bench-button {
-   width: 160px;
-   margin-top: 10px;
- }
-
- button.new-bench-button {
-   width: 160px;
  }
 
  .login-form-container {
