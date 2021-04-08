@@ -6,9 +6,11 @@ import { Link } from 'react-router-dom';
 const Greeting = ({ currentUser, logout }) => {
   const sessionLinks = () => (
     <nav className="login-signup">
-      <Link to="/login">Login</Link>
-      &nbsp;or&nbsp;
-      <Link to="/signup">Sign up</Link>
+      <ul>
+      <li className="login-button"><Link to="/login">Log In</Link></li>
+       <Link to="/signup"><li className="signup-button">Sign Up</li></Link>
+      </ul>
+      
     </nav>
   );
   const personalGreeting = () => (
@@ -17,7 +19,8 @@ const Greeting = ({ currentUser, logout }) => {
       <button className="header-button" onClick={logout}>Log Out</button>
     </hgroup>
   );
-
+  
+  console.log(currentUser)
   return currentUser ? personalGreeting() : sessionLinks();
 };
 

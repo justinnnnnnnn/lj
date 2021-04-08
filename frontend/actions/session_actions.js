@@ -31,4 +31,4 @@ export const login = (user) => (dispatch) =>
   );
 
 export const logout = () => (dispatch) =>
-  sessionUtil.logout().then((user) => dispatch(logoutCurrentUser()));
+  sessionUtil.logout().then(() => dispatch(logoutCurrentUser()));

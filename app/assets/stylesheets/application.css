@@ -14,6 +14,11 @@
  *= require_self
  */
 
+ html {
+   
+   link-color: pink;
+   font-family: "Capsule Sans Display",system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif;
+ }
 
  ::-webkit-scrollbar {
      width: 12px;
@@ -30,12 +35,14 @@
  }
 
   body {
-    font-family: 'Abel', sans-serif;
-    background-color: #78a175;
+    background-color:rgb(195,245,60);
+    /* background-color: #78a175; */
+    margin: 0;
   }
 
  .content {
    height: 100%;
+   
  }
 
  .map {
@@ -103,18 +110,87 @@
  }
 
  header {
-   margin-left: 5%;
+   margin-left: 0%;
+   background-color: rgba(255, 255, 255, 1);
+   display: flex;
+   flex-direction: row;
+   justify-content: space-between;
+   align-items: center;
+   box-shadow: 0px 1px 4px 0px rgb(0 0 0 / 20%);
+   /* padding: 24px; */
+      /* -moz-box-shadow: 10px 10px 5px #ccc;
+      -webkit-box-shadow: 10px 10px 5px #ccc;
+      -khtml-box-shadow: 10px 10px 5px #ccc; */
+      
  }
 
- h1, h5 {
-   margin-bottom: 0px;
+ h1, h2, h3, h4, h5 {
+   margin-bottom: 0%;
+   margin-top: 0%;
+   margin-left: 10px;
  }
 
- .single-bench-show {
+ .login-signup > ul {
+   display: flex;
+   flex-direction: row;
+   justify-content: space-around;
+   width: 240px;
+   list-style: none;
+   margin-right: 24px;
+ }
+
+ .login-signup > ul a {
+  text-decoration: none;
+  display: inline-flex;
+  font-weight: bold;
+  /* margin: 6px; */
+  font-size: 19px;
+ }
+ 
+ 
+ .login-button {
+   color: black;
+   align-items: center;
+   box-sizing: border-box;
+   display: inline-flex;
+   padding: 0px 16px;
+   height: 48px;
+   border-radius: 24px;
+   /* background-color: rgb(111, 0, 5); */
+  }
+  
+  .login-button a:visited {
+   color: inherit;
+  }
+
+  .login-button a:hover {
+   color: rgb(0, 200, 5);
+  }
+
+ .signup-button {
+   color: black;
+   align-items: center;
+   box-sizing: border-box;
+   display: inline-flex;
+   padding: 0px 36px;
+   height: 48px;
+   min-width: 144px;
+   border-radius: 24px;
+   background-color: rgb(0, 200, 5);
+ }
+ .signup-button a:visited {
+   color: inherit;
+  }
+
+ .signup-button:hover {
+    background-color: rgb(0, 185, 5);
+  }
+
+ /* .single-bench-show {
    display: flex;
    justify-content: center;
    margin-top: 20px;
- }
+ } */
 
  .single-bench-map {
    display: flex;
@@ -145,6 +221,8 @@
    margin: 7px 0 0 0;
 
  }
+
+ 
 
  .header-favorites {
    margin: 4px 0 4px 0;
