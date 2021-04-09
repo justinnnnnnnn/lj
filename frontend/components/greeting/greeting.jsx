@@ -5,6 +5,11 @@ import { Link } from 'react-router-dom';
 
 const Greeting = ({ currentUser, logout }) => {
   const sessionLinks = () => (
+    <div className="header">
+      
+      <Link to="/" className="header-link">
+        <h3>🦍 Robinherd 🦍</h3>
+      </Link>
     <nav className="login-signup">
       <ul>
       <li className="login-button"><Link to="/login">Log In</Link></li>
@@ -12,6 +17,7 @@ const Greeting = ({ currentUser, logout }) => {
       </ul>
       
     </nav>
+    </div>
   );
   const personalGreeting = () => (
     <hgroup className="header-group">

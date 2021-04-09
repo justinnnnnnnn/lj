@@ -97,15 +97,14 @@
    margin-left: 15px;
  }
 
- header {
+ .header {
    margin-left: 0%;
    background-color: rgba(255, 255, 255, 1);
    display: flex;
    flex-direction: row;
    justify-content: space-between;
    align-items: center;
-   box-shadow: 0px 1px 4px 0px rgba(0, 0, 0, .2);
-      
+   box-shadow: 0px 1px 4px 0px rgb(0, 0, 0, .2);   
  }
 
  h1, h2, h3, h4, h5 {
@@ -220,8 +219,9 @@
 
  .login-form-container {
    display: flex;
+   align-items: center;
+   flex-direction: row;
    justify-content: center;
-   margin-top: 100px;
  }
 
  .login-form {
@@ -255,3 +255,6 @@
  .session-submit {
    text-transform: capitalize;
  }
+
+
+ /* <img aria-hidden="true" data-test-id="default-image" sizes="(min-width: 768px) 1440px, 720px" src="https://cdn.robinhood.com/assets/generated_assets/1e23d6b90f0d905b425ea289de345ab1.jpg" srcset="https://cdn.robinhood.com/assets/generated_assets/1e23d6b90f0d905b425ea289de345ab1.jpg 720w, https://cdn.robinhood.com/assets/generated_assets/632fcb3e7ed928b2a960f3e003d10b44.jpg 1440w" class="css-1ox8jnp"> */

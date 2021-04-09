@@ -13,3 +13,9 @@ const usersReducer = (state = {}, action) => {
 };
 
 export default usersReducer;
+
+
+//session_actions > 
+// users_reducer > ****HERE***
+// entities_reducer > 
+// root_reducer
