@@ -10,27 +10,82 @@
 }
 
 .errbody {
-  align-items: center;
   display: flex;
   flex-direction: row;
-  flex-grow: 1;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
   height: inherit;
-  width: inherit;
+  width: 100%;
 }
 
 .superbowl {
+
+  flex-wrap: wrap;
   align-items: center;
-  display: flex;
-  flex-direction: row;
-  flex-grow: 1;
   height: inherit;
-  width: inherit;
+  width: 50%;
+  overflow: hidden;
+  display:block;
+  height: 600px;
 
   video {
-    flex: 1 1 50%;
+    width: 100%;
     object-fit: cover;
-    width: 50%;
-    height: 100%;
-    object-fit:cover;
+    // margin-left: -220px;
   }   
 }
+
+.superbowl-right {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  height: inherit;
+  height: 200px;
+  width: 50%;
+}
+
+.not-cats {
+  font-size: 56px;
+  align-items: left;
+}
+
+.not-cat-link {
+  // display: inline-block;
+  // align-items: center;
+  // justify-content: space-evenly;
+}
+  .not-cat-link a {
+  cursor: pointer;
+  color: black;
+  text-decoration: none;
+  font-weight: bold;
+  }
+
+  .not-cat-link :hover {
+    color: rgb(0, 200, 5);
+  }
+
+  .apes-slogan {
+    display: block;
+    align-items: center;
+  }
+
+  // .ape-icon {
+  //   display: block;
+  //   align-items: center;
+  // }
+
+  .ape-icon :hover {
+    color: rgb(0, 200, 5);
+  }
+
+
+
+  .wendy {
+    height: 300px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
