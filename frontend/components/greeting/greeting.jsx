@@ -22,13 +22,16 @@ const Greeting = ({ currentUser, logout }) => {
 
         <div className="green-for-real">
           
-          <div className="green-left">
-            <div><h1>Investing for errbody!</h1></div>
-            <div><h2>Commission-free investing, plus the tools you need to put your money in motion. Sign up and get your first stock for free. Probably something wack like HECLA.</h2></div>
-            <div><Link to="/signup"><span className="signup-button-deux"><h3>Sign Up</h3></span></Link></div>
-            <div className="icon-info">
-              <span><svg fill="none" height="28" viewBox="0 0 24 24" width="28"><circle cx="12" cy="12" r="11" stroke="rgb(0, 0, 0)" strokeWidth="2"></circle><path d="M11.232 18H13.056V9.52H11.232V18ZM11.2 8.128H13.088V6.32H11.2V8.128Z" fill="rgb(0, 0, 0)"></path></svg></span>
-              <div className="icon-info-text">Commissions {'&'} Free Stonk Disclosures</div>
+          <div className="green-left-box">
+            <div className="green-left-col">
+              <div className="slogan"><span>Investing for <br/>
+              Errbody</span></div>
+              <div className="value-prop"><h2>Commission-free investing, plus the tools you   need to put your money in motion. Sign up and get your first stock for free.  Probably something wack like HECLA.</h2></div>
+              <div className="signup-button-deux"><Link to="/signup"><h3>Sign Up</h3></Link></  div>
+              <div className="icon-info">
+                <span><svg fill="none" height="28" viewBox="0 0 24 24" width="28"><circle   cx="12" cy="12" r="11" stroke="rgb(0, 0, 0)" strokeWidth="2"></circle><path   d="M11.232 18H13.056V9.52H11.232V18ZM11.2 8.128H13.088V6.32H11.2V8.128Z"  fill="rgb(0, 0, 0)"></path></svg></span>
+                <div className="icon-info-text">Commissions {'&'} Free Stonk Disclosures</div>
+              </div>
             </div>
           </div>
 
@@ -42,6 +45,7 @@ const Greeting = ({ currentUser, logout }) => {
               playsInline
               preload="auto" 
             >
+              
               <source src="https://cdn.robinhood.com/assets/robinhood/brand/_next/static/images/3x__327bf4cc768a323497d5aaa7416319c2.mp4" type="video/mp4"/>
             </video>
 
@@ -51,17 +55,24 @@ const Greeting = ({ currentUser, logout }) => {
         </div>
       </div>
 
-      <div>
-        <video 
-              autoPlay 
-              controlsList="nodownload nofullscreen noremoteplayback" 
-              loop
-              muted
-              playsInline
-              preload="auto" 
+      <div className="under-green">
+        <span>See our 💎 🙌 </span>
+      </div>
+
+      <div className="Errbody">
+        <div className="superbowl">
+          <video 
+            autoPlay 
+            controlsList="nodownload nofullscreen noremoteplayback" 
+            loop
+            muted
+            playsInline
+            preload="auto" 
             >
-              <source src="https://cdn.robinhood.com/assets/superbowl/superbowl.mp4" type="video/mp4"/>
-            </video>
+            <source src="https://v.redd.it/8w0e23a5jze61/DASH_480.mp4?source=fallback" type="video/mp4"/>
+            {/* <source src="https://cdn.robinhood.com/assets/superbowl/superbowl.mp4" type="video/mp4"/> */}
+          </video>
+        </div>
       </div>
 
     </div>

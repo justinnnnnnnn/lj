@@ -1,3 +1,113 @@
 // Place all the styles related to the api/sessions controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.login-page {
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+  flex-grow: 1;
+  height: inherit;
+  width: inherit;
+  
+}
+
+@media screen and (max-width:768) {  
+  .space-people img {
+    display: none;
+  }
+  .login-form {
+    justify-content: left;
+  }
+}
+
+.space-people {
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+  flex-grow: 1;
+  height: inherit;
+  width: inherit;
+
+  img {
+    flex: 1 1 50%;
+    object-fit: cover;
+    width: 50%;
+    height: 100%;
+    object-fit:cover;
+    overflow: hidden;
+    overflow-x: hidden;
+    overflow-y: hidden;
+  }
+}
+      
+.login-form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 412px;
+  width: 100%;
+}
+
+.login-form-box {
+  display: inline-flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 400px;
+  width: 460px;
+}
+
+.login-username {
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 20px;
+  justify-content: space-around;
+}
+
+.login-username input {
+  width: 100%;
+  border-style: solid;
+  border-radius: 3px; 
+}
+
+.login-password {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+  
+.login-password input {
+    width: 100%;
+    border-style: solid;
+    border-radius: 3px;   
+}
+
+.session-button {  
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 48px;
+  width: 139px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.session-submit {
+  text-decoration: none;
+  background-color: rgb(0,200,5);
+  color: white;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 48px;
+  width: 139px;
+  border-radius: 4px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.session-submit:hover {
+  background-color: rgb(0,180,5);
+}

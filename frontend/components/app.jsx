@@ -14,7 +14,7 @@ import LoginFormContainer from './session_form/login_container';
 import { AuthRoute, ProtectedRoute } from '../util/route_util';
 
 const App = () => (
-  <div>    
+  <div className="app-div">    
 
 
     <Switch>

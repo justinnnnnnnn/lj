@@ -47,21 +47,35 @@ class SessionForm extends React.Component {
     return (
       
       <div className="login-page">
-        <div className="login-space-people">
-          <img src="https://cdn.robinhood.com/assets/generated_assets/1e23d6b90f0d905b425ea289de345ab1.jpg" srcSet="https://cdn.robinhood.com/assets/generated_assets/1e23d6b90f0d905b425ea289de345ab1.jpg 720w, https://cdn.robinhood.com/assets/generated_assets/632fcb3e7ed928b2a960f3e003d10b44.jpg 1440w" height="100%"/> 
+        
+        <div className="space-people">
+          <img aria-hidden="true" src="https://cdn.robinhood.com/assets/generated_assets/1e23d6b90f0d905b425ea289de345ab1.jpg" srcSet="https://cdn.robinhood.com/assets/generated_assets/1e23d6b90f0d905b425ea289de345ab1.jpg 720w, https://cdn.robinhood.com/assets/generated_assets/632fcb3e7ed928b2a960f3e003d10b44.jpg 1440w" height="100%"/> 
         </div>
+        
         <div className="login-form">          
           <form onSubmit={this.handleSubmit} className="login-form-box">
-            <div><span>Welcome to Robinherd</span></div>
-            <div><span>Username</span></div>
-            <div><input type="text" value={this.state.username} onChange={this.update('username')} className="login-input"/></div>
-            <div><span>Password</span></div>
-            <div><input type="password" value={this.state.password} onChange={this.update('password')} className="login-input"/></div>
-            <div><input type="submit" value="Sign In" className="session-submit"/></div>
-            <div><span>Please {this.props.formType} or {this.props.navLink}</span></div>
+            
+            <div><header><h2 align-self="left">Welcome to Robinherd</h2></header></div>
+           
+            <div className="login-username">
+              <label><div className="user-label">Username</div></label>
+              <div className="user-field"><input type="text" value={this.state.username} onChange={this.update('username')} className="login-input"/></div>
+            </div>
+            
+            <div className="login-password">
+              <label><div className="pass-label">Password</div></label>
+              <div className="pass-field"><input type="password" value={this.state.password} onChange={this.update('password')} className="login-input"/></div>
+            </div>
+            
+            <div className="session-button">
+              <input type="submit" className="session-submit" value="Sign In"/>
+            </div>
+            {/* <div><footer>{this.props.navLink}</footer></div> */}
             {this.renderErrors()}
+          
           </form>
         </div>
+
       </div>
       
     
