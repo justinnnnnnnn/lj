@@ -1,12 +1,13 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import Chart from '../chart/chart'
 
 
 
 const Greeting = ({ currentUser, logout }) => {
-  const sessionLinks = () => (
-    <div>
+const sessionLinks = () => (
 
+    <div>
       <div className="green-part">
         <div className="header">
           <Link to="/" className="header-link">
@@ -44,7 +45,7 @@ const Greeting = ({ currentUser, logout }) => {
               muted
               playsInline
               preload="auto" 
-            >
+              >
               
               {/* <source src="https://cdn.robinhood.com/assets/robinhood/brand/_next/static/images/3x__327bf4cc768a323497d5aaa7416319c2.mp4" type="video/mp4"/> */}
               <source src="https://v.redd.it/99yeofbkzms61/DASH_1080.mp4?source=fallback" type="video/mp4"/>
@@ -90,12 +91,15 @@ const Greeting = ({ currentUser, logout }) => {
       </div>
 
     </div>
-  );
+  );   
+
   const personalGreeting = () => (
-    <hgroup className="header-group">
+    <div> <hgroup className="header-group">
       <h2 className="header-name">Hi, {currentUser.username}!</h2>
       <button className="header-button" onClick={logout}>Log Out</button>
     </hgroup>
+    <Chart />
+    </div>
   );
   
   console.log(currentUser)

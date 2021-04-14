@@ -1,0 +1,91 @@
+.chart {
+  width: 676px;
+  height: 349px;
+  margin-left: 30px;
+}
+
+.chartHeader {
+  display: flex;
+  flex-direction: column;
+  height: 95px;
+  margin-bottom: 12px;
+}
+
+.currentPrice {
+  h1 {
+    height: 40px;
+    display: inline-flex;
+    flex-direction: row;
+    line-height: 20px;
+    font-size: 32px;
+    font-weight: 500;
+    letter-spacing: -0.333px;
+  }
+}
+
+.priceChanges {
+  display: block;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: left;
+  width: inherit;
+  float: left;
+  clear: none; 
+  
+}
+
+
+.priceToday {
+  padding-top: 2px;
+  display: inline-flex;
+  flex-direction: row;
+  // justify-content: space-evenly;
+  align-items: left;
+}
+
+// .priceTodayNumbers {
+//   // font-weight: 700;
+// }
+
+.priceAfterHours {
+  padding-top: 2px;
+}
+
+// .priceAfterHoursNumbers {
+//   // font-weight: 700;
+// }
+
+.spanNumbers {
+  font-weight: 700
+}
+
+.grayTag {
+  color: rgb(111, 120, 126);
+}
+
+.testChart {
+  width: inherit;
+  height: 196px;
+}
+
+.chartPrice {
+  width: inherit;
+  height: 196px;
+}
+
+.line {
+  
+}
+// .openingPriceLine line {
+//   <line height="196" width="676" stroke-dasharray="1, 5.259259259259259" stroke-dashoffset="0" stroke-width="1" transform="translate(-0.5)" x1="0" x2="38.55555555555555" y1="57" y2="57"></line>
+// }
+
+// --rh__primary-base: rgb(255,80,0);
+//     --rh__primary-hover: rgba(230,72,0,1);
+//     --rh__primary-pressed: rgba(204,64,0,1);
+//     --rh__primary-light-base: rgba(255,80,0,0.3);
+//     --rh__primary-lightest-base: rgba(255,80,0,0.1);
+//     --rh__semantic-positive-base: rgb(0,200,5);
+//     --rh__semantic-positive-light: rgba(0,200,5,0.3);
+//     --rh__semantic-negative-base: rgb(255,80,0);
+//     --rh__semantic-negative-light: rgba(255,80,0,0.3);
