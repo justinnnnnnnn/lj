@@ -18,7 +18,8 @@ class User < ApplicationRecord
   # function to calculate portfolio balance
   after_initialize :ensure_session_token
   attr_reader :password
-  
+  has_many :stonks
+
   def self.find_by_credentials(user, password)
     user = User.find_by(username: user)
       if user && user.is_password?(password)

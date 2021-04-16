@@ -1,13 +1,31 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import Chart from '../chart/chart'
+// import Chart from '../chart/chart'
+import Stonk from '../chart/stonk'
 
+class Greeting extends React.Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      username: '',
+      password: ''
+    };
+    this.handleDemoSubmit = this.handleDemoSubmit.bind(this);
+  }
+  
+  
+  handleDemoSubmit(e) {
+      // const processForm = 
+      e.preventDefault();
+      this.props.processForm();
+  }
 
-
-const Greeting = ({ currentUser, logout }) => {
-const sessionLinks = () => (
+  render() {
+  const { currentUser, logout } = this.props
+    const sessionLinks = () => (
 
     <div>
+       {/* <img src="https://media0.giphy.com/media/PgXcWhrL0gjQlAhHUY/giphy.gif"/> */}
       <div className="green-part">
         <div className="header">
           <Link to="/" className="header-link">
@@ -15,8 +33,9 @@ const sessionLinks = () => (
           </Link>
           <nav className="login-signup">
             <ul>
-            <li className="login-button"><Link to="/login">Log In</Link></li>
-              <Link to="/signup"><li className="signup-button">Sign Up</li></Link>
+              <li className="login-signup-button"><Link to="/login">Log In</Link></li>
+              <li className="login-signup-button"><Link to="/signup">Sign Up</Link></li>
+              <li><input type="submit" className="demo-button" onClick={(e) => this.handleDemoSubmit(e)} value="DEMO LOGIN"/></li>
             </ul>
           </nav>
         </div>
@@ -27,8 +46,10 @@ const sessionLinks = () => (
             <div className="green-left-col">
               <div className="slogan"><span>Investing for <br/>
               Errbody</span></div>
-              <div className="value-prop"><h2>Commission-free investing, plus the tools you   need to put your money in motion. Sign up and get your first stock for free.  Probably something wack like HECLA.</h2></div>
-              <div className="signup-button-deux"><Link to="/signup"><h3>Sign Up</h3></Link></  div>
+              <div className="value-prop"><h2>Commission-free investing, plus the tools you need to put your money in motion. Sign up and get your first stonk for free.  Probably something wack like HECLA.</h2></div>
+              <div className="demo-button-deux">
+                <input type="submit" className="demo-button-deux" onClick={(e) => this.handleDemoSubmit(e)} value="DEMO LOGIN"/>
+              </div>
               <div className="icon-info">
                 <span><svg fill="none" height="28" viewBox="0 0 24 24" width="28"><circle   cx="12" cy="12" r="11" stroke="rgb(0, 0, 0)" strokeWidth="2"></circle><path   d="M11.232 18H13.056V9.52H11.232V18ZM11.2 8.128H13.088V6.32H11.2V8.128Z"  fill="rgb(0, 0, 0)"></path></svg></span>
                 <div className="icon-info-text">Commissions {'&'} Free Stonk Disclosures</div>
@@ -58,7 +79,7 @@ const sessionLinks = () => (
       </div>
 
       <div className="under-green">
-        <span>See our 💎 🙌 </span>
+        <h2>See our 💎 🙌 </h2>
       </div>
 
       <div className="errbody">
@@ -91,19 +112,23 @@ const sessionLinks = () => (
       </div>
 
     </div>
-  );   
+  );
 
   const personalGreeting = () => (
     <div> <hgroup className="header-group">
       <h2 className="header-name">Hi, {currentUser.username}!</h2>
       <button className="header-button" onClick={logout}>Log Out</button>
     </hgroup>
-    <Chart />
+    {/* <Chart /> */}
+    <Stonk/>
     </div>
   );
   
   console.log(currentUser)
   return currentUser ? personalGreeting() : sessionLinks();
+  }
+
+
 };
 
 

@@ -2,11 +2,19 @@ import { combineReducers } from "redux";
 import entities from "./entities_reducer";
 import session from "./session_reducer";
 import errors from "./errors_reducer";
+import { persistReducer } from 'redux-persist';
+import storage from 'redux-persist/lib/storage'
+
+const persistConfig = {
+  key: 'root',
+  storage,
+  whiteList: ['entities', 'session']
+}
 
 const rootReducer = combineReducers({
-  entities: entities,
-  session: session,
-  errors: errors
+  entities,
+  session,
+  errors
 })
 
-export default rootReducer;
+export default persistReducer(persistConfig, rootReducer);

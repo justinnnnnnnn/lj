@@ -21,13 +21,11 @@ class SessionForm extends React.Component {
     const user = Object.assign({}, this.state);
     this.props.processForm(user);
   }
-  // .then(() => this.props.history.push('/'));
 
-  // demoSubmit(e) {
-  //   e.preventDefault();
-  //   const user = Object.assign({}, this.state);
-  //   this.props.processForm({username: , password: });
-  // }
+  handleDemoSubmit(e) {
+    e.preventDefault();
+    this.props.processForm({username: 'stonkmaster420', password: '69'});
+  }
 
   renderErrors() {
     return(
@@ -71,9 +69,17 @@ class SessionForm extends React.Component {
               <input type="submit" className="session-submit" value="Sign In"/>
             </div>
             {/* <div><footer>{this.props.navLink}</footer></div> */}
+
             {this.renderErrors()}
           
           </form>
+          <div>
+            <form >
+              <div>
+                <input type="submit" className="demo-submit" onClick={(e) => this.handleDemoSubmit(e)} value="DEMO LOGIN"/>
+              </div>
+            </form>
+          </div>
         </div>
 
       </div>

@@ -3,7 +3,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { chart } from '../../actions/chart_actions';
 import { Chart } from './chart'
-
+// import { }
 const mapStateToProps = state => ({
   graph: state.graph //fix
 });

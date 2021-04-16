@@ -24,52 +24,58 @@
          display: flex;
          flex-direction: row;
          justify-content: space-around;
-         width: 240px;
+         width: 380px;
          list-style: none;
-         margin-right: 24px;
+         margin-right: 20px;
        }
      
        .login-signup > ul a {
         text-decoration: none;
         display: inline-flex;
         font-weight: bold;
-        font-size: 19px;
+        font-size: 16px;
        }
      
-       .login-button {
+       .login-signup-button {
          color: black;
          align-items: center;
          box-sizing: border-box;
          display: inline-flex;
          padding: 0px 16px;
+        //  width: 178px;
          height: 48px;
          border-radius: 24px;
         }
 
-        .login-button a:visited {
+        .login-signup-button a:visited {
          color: inherit;
         }
       
-        .login-button a:hover {
+        .login-signup-button a:hover {
          color: rgb(0, 200, 5);
         }
       
-        .signup-button {
+        .demo-button {
           color: black;
           display: inline-flex;
+          border: none;
           align-items: center;
           box-sizing: border-box;
           padding: 0px 36px;
+          margin-left: 12px;
           height: 48px;
           min-width: 144px;
           border-radius: 24px;
+          font-weight: bold;
+          font-size: 19px;
+          cursor: pointer;
           background-color: rgb(0, 200, 5);
         }
-        .signup-button a:visited {
+        .demo-button a:visited {
           color: inherit;
         }
       
-        .signup-button:hover {
+        .demo-button:hover {
           background-color: rgb(0, 185, 5);
         }
 
@@ -110,29 +116,33 @@
         width: 480px;
       }
 
-      .signup-button-deux {
+      .demo-button-deux {
         color: white;
         text-decoration: none;
-        // box-sizing: border-box;
+        box-sizing: border-box;
+        border: none;
         display: flex;
+        justify-content: center;
         align-items: center;
-        padding: 0px 36px;
+        padding: 0px 0px;
         height: 48px;
-        width: 86px;
+        width: 144px;
         border-radius: 24px;
         background-color: black;
+        font-weight: bold;
+        font-size: 16px;
+        cursor: pointer;
+      }
+      .demo-button-deux:hover {
+        background-color: rgb(0, 127, 238);
       }
       
-      .signup-button-deux a {
+      .demo-button-deux a {
         text-decoration: none;
       }
 
-      .signup-button-deux a:visited {
+      .demo-button-deux a:visited {
          color: inherit;
-      }
-
-      .signup-button-deux:hover {
-         background-color: rgb(24, 24, 24);
       }
 
       .icon-info {
