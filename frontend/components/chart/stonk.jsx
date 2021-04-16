@@ -7,8 +7,10 @@ class Stonk extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      loading: true, 
-      intradayData: {}
+      loading: true,
+      premarketData: {}, 
+      intradayData: {},
+      postmarketData: {}
     }
     this.preMarket = new Date().setHours(6, 0, 0, 0) / 1000
     this.marketOpen = new Date().setHours(6, 30, 0, 0) / 1000;
@@ -21,6 +23,13 @@ class Stonk extends React.Component {
     StonkAPI.fetchStonkIntraday('GME', this.marketOpen, this.marketClose, window.finnhubAPIKey)
       .then((response) => this.setState({intradayData: response}))
       .then(() => this.setState({loading: false}))
+    // StonkAPI.fetchStonkIntraday('GME', this.preMarket, this.marketOpen, window.finnhubAPIKey)
+    //   .then((response) => this.setState({intradayData: response}))
+    //   .then(() => this.setState({loading: false}))
+    // StonkAPI.fetchStonkIntraday('GME', this.marketClose, this.afterHours, window.finnhubAPIKey)
+    //   .then((response) => this.setState({intradayData: response}))
+    //   .then(() => this.setState({loading: false}))
+      
   }
 
   componentWillUnmount() {

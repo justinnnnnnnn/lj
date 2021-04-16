@@ -36,12 +36,21 @@ class Chart extends React.Component {
           bigPrice: price,
         });
       }
+    } else {
+      console.log(this.state.currentPrice)
+    this.setState({
+          bigPrice: this.state.currentPrice,
+        });
     }
   }
   
   
   handleMouseLeave() {
-    this.state.bigPrice = this.state.currentPrice
+    console.log(this.state.currentPrice)
+    this.setState({
+          bigPrice: this.state.currentPrice,
+        });
+
   }
   
   odometerValue(price) {
@@ -68,7 +77,8 @@ class Chart extends React.Component {
       time: this.props.intradayData.t[i],
       price: this.props.intradayData.o[i],
     })
-    const dottedLine = realData[0].o;
+    // const dottedLine = realData[0].o;
+    const dottedLine = this.state.previousClose;
     
     console.log('this!!!!!!!!!!')
     console.log(realData)
@@ -100,6 +110,41 @@ class Chart extends React.Component {
     
 
       <div className="testChart">                 
+        {/* <ResponsiveContainer className="chartPrice">
+          <LineChart 
+            data={realData} 
+            onMouseMove={this.handleMouseOver} 
+            onMouseLeave={this.handleMouseLeave}>
+            <XAxis
+              type="number" 
+              domain={['dataMin', 'dataMax']} 
+              dataKey="time"
+              hide={true} 
+              />
+            <YAxis 
+              domain={['dataMin', 'dataMax']} 
+              dataKey="price"
+              axisLine={false}
+              tickLine={false}
+              hide={true} 
+            />
+            <Tooltip 
+              formatter={number => `$${number.toFixed(2)}`} 
+              />
+            <Line 
+              classname="linear" 
+              dataKey="price" 
+              stroke="rgb(5, 200, 0)" 
+              dot={false} 
+              strokeWidth="2" />
+            <ReferenceLine 
+              y={dottedLine} 
+              strokeWidth="2" 
+              stroke="rgb(111, 120, 126)" 
+              strokeDasharray="1, 5.25925925925926" 
+              strokeDashoffset="6.259259259259248" />
+          </LineChart>
+        </ResponsiveContainer> */}
         <ResponsiveContainer className="chartPrice">
           <LineChart 
             data={realData} 
