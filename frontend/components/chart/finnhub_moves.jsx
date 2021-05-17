@@ -1,7 +1,6 @@
 import { ApiClient, MyFirstApi } from 'finnhub';
  
 const api_key = ApiClient.instance.authentications['api_key'];
-api_key.apiKey = "c1raom2ad3iatqdnkia0" // Replace this
 const finnhubClient = new MyFirstApi()
  
 // Stock candles
