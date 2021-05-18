@@ -1,14 +1,5 @@
 import React from 'react';
-// import {
-//   ResponsiveContainer,
-//   LineChart,
-//   XAxis,
-//   YAxis,
-//   ReferenceLine,
-//   Line,
-//   Tooltip,
-//   CartesianGrid,
-// } from 'recharts';
+
 
 export const ChartHeader = () => ( //map the price to generate divs
   <div className="chartHeader"> 

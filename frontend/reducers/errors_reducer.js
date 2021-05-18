@@ -6,7 +6,3 @@ const errorsReducer = combineReducers({
 });
 
 export default errorsReducer;
-
-// export default combineReducers({
-//   session
-// });

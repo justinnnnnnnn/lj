@@ -3,11 +3,6 @@ import { connect } from 'react-redux';
 import { login, logout } from '../../actions/session_actions';
 import Greeting from './greeting';
 
-// const mapStateToProps = ({ session, entities: { users } }) => {
-//   return {
-//     currentUser: users[session.id]
-//   };
-// };
 const mapStateToProps = (state) => {
   console.log(state)
   return {
@@ -19,6 +14,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => ({
   processForm: () =>
     dispatch(login({ username: "stonkmaster420", password: "69" })),
+  
   logout: () => dispatch(logout()),
 });
 

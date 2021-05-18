@@ -3,7 +3,6 @@ import { Provider } from 'react-redux';
 import { HashRouter } from 'react-router-dom';
 import Loading from '../components/loading/loading'
 
-// import { configureStore, persistor } from '../store/store';
 import { PersistGate } from 'redux-persist/integration/react'
 
 import App from './app';
