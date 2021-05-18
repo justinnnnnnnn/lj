@@ -110,18 +110,68 @@ class Greeting extends React.Component {
     </div>
   );
 
-  const personalGreeting = () => (
-    <div> <hgroup className="header-group">
-      <h2 className="header-name">Hi, {currentUser.username}!</h2>
-      <button className="header-button" onClick={logout}>Log Out</button>
-    </hgroup>
-    <Stonk/>
-    </div>
+  const loggedInHeader = () => (
+    <> 
+      <div className="header-logged-in">
+        <div className="account-header">
+          <div className="robinherd-logo">
+            <h2 className="header-name">{currentUser.username}</h2> {/* temporary */}
+          </div>
+          <div className="search-bar">
+            {/* search bar */}
+          </div> 
+          <div className="account-links">
+            <div><span>Free Stonks</span></div>
+            <div><span>Portfolio</span></div>
+            <div><span>Cash</span></div>
+            <div><span>Messages</span></div>
+            <div><span>Account</span></div>{/* The messages dot goes on the left side of this div */}
+            <button className="header-button" onClick={logout}>Log Out</button> {/* temporary */}
+          </div>
+        </div>
+      </div>
+
+      <div className="main-div-logged-in">
+        <div className="main-div-left">
+          {/* <Stonk/> */}
+          STONK
+        </div>
+        <div className="main-div-right">
+          <div className="main-div-right-inner">
+            <div>Stocks (Header) ...</div>
+            <div>Stockname/shares, graph, price/change</div>
+            <div className="lists">
+              <div>Lists + (creatable)</div>
+              <div>
+                <div>
+                  <div>
+                    <div>Emoji</div> 
+                    <div>My First List</div> 
+                    <div>arrow</div>
+                  </div>
+                  <div>
+                    Stock list and divs
+                  </div>
+                </div>
+                <div>
+                  <div>
+                    <div>Emoji</div> 
+                    <div>Cryptos to watch</div> 
+                    <div>arrow</div>
+                  </div>
+                  <div>Crypto list</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div> {/* main div right */}
+    </>
   );
   
   console.log("currentUser")
   console.log(currentUser)
-  return currentUser ? personalGreeting() : sessionLinks();
+  return currentUser ? loggedInHeader() : sessionLinks();
   }
 
 
@@ -129,3 +179,6 @@ class Greeting extends React.Component {
 
 
 export default Greeting;
+
+
+// #ff5000 for robinhood red
