@@ -1,4 +1,14 @@
+.whole-page-logged-in {
+  display: flexbox;
+  flex-direction: block;
+}
+
+.header-logged-in {
+  
+}
+
 .account-header {
+  position: fixed;
   font-weight: bold;
   display: flex;
   flex-direction: row;
@@ -7,6 +17,9 @@
   overflow: hidden;
   width: 100%;
   height: 64px;
+  top: 0;
+  background-color: rgba(255, 255, 255, 1);
+  z-index: 1;
 }
 
 .account-links {
@@ -20,29 +33,89 @@
   display: flex;
   flex-direction: row;
   justify-content: center;
-  padding: 24px; //wrong but for now
+  padding: 64px;
+  // padding: 24px; //wrong but for now
 }
 
 .main-div-left {
   display: flex;
   flex-direction: column;
-  width: 676px;
+  // width: 676px; //this goes elsewhere
+  width: 80vh;
 }
+
+.buying-power {
+  display: flex;
+  justify-content: space-between;
+  font-weight: 600;
+  font-size: 15px;
+  padding-top: 24px;
+  padding-bottom: 24px;
+  border-bottom: 1px solid rgb(227,233,237);
+}
+
+.trending-lists {
+  font-size: 21px;
+  font-weight: 400;
+}
+
+.news > div {
+}
+.news-header {
+  display: flex;
+  justify-content: space-between;
+  font-weight: 600;
+  font-size: 15px;
+  padding-top: 24px;
+  padding-bottom: 24px;
+  border-bottom: 1px solid rgb(227,233,237);
+  font-size: 24px;
+  font-weight: 400;
+}
+
+.top-news {
+  border-bottom: 1px solid rgb(227,233,237);
+  display: flex;
+  justify-content: space-between;
+  font-weight: 600;
+  font-size: 15px;
+  padding-top: 24px;
+  padding-bottom: 24px;
+}
+
+.daily-movers {
+  border-bottom: 1px solid rgb(227,233,237);
+}
+
+.more-news {
+  border-bottom: 1px solid rgb(227,233,237);
+}
+
+
+
+
+
+
+
+
+
+
 
 .main-div-right {
   
   width: 276px; // probably dynamic
-  position: fixed;
   padding: 24px;
   height: 100vh;
 }
 
 .main-div-right-inner {
+  padding: 24px; //pick one, hay tres
+  position: fixed;
   display: flex;
   flex-direction: column;
   border: rgba(0, 0, 0, 0);
   box-sizing: border-box;
   box-shadow: 0px 12px 24px rgba(0,0,0,0.06), 0px -12px 24px rgba(0,0,0,0.06);
   box-shadow: 24px rgba(0, 0, 0, 0);
-  height: 100%;
+  height: 85%;
 }

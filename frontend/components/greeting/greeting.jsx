@@ -18,6 +18,13 @@ class Greeting extends React.Component {
       this.props.processForm();
   }
 
+  printTendies() {
+    let i = 0;
+    for (i = 0; i < 200; i++) {
+      <span> "stonk" i </span>;
+    }
+  }
+
   render() {
     const { currentUser, logout } = this.props
     console.log("this.props")
@@ -111,7 +118,11 @@ class Greeting extends React.Component {
   );
 
   const loggedInHeader = () => (
-    <> 
+    <>
+    <div className="whole-page-logged-in">
+
+
+
       <div className="header-logged-in">
         <div className="account-header">
           <div className="robinherd-logo">
@@ -131,11 +142,335 @@ class Greeting extends React.Component {
         </div>
       </div>
 
+      
+
       <div className="main-div-logged-in">
+        
+        {/* main left */}
         <div className="main-div-left">
-          {/* <Stonk/> */}
-          STONK
+          <Stonk/>
+          
+          <div className="buying-power">
+              <div>
+                Buying Power
+              </div>
+              <div>
+                $Dynamic Money Amount
+              </div>
+          </div>
+          <div className="trending-lists">
+            <div>
+              <div>Trending Lists</div>
+              <div>Show More</div>
+            </div>
+            <ul><li>herpderp</li></ul>
+          </div>
+          
+          <div className="news">
+            <div className="news-header">
+              News
+            </div>
+            <div className="top-news">
+              Herp a derpa derp
+            </div>
+            <div className="daily-movers">
+              [][][][]
+            </div>
+            <div className="more-news">
+              [][][][]
+            </div>
+
+          </div>
+
+          
+
+
+
+          <div className="make it scroll for days">
+          STONK <br/>
+          STONK <br/>
+          STONK <br/>
+          STONK <br/>
+          STONK <br/>
+          STONK <br/>
+          STONK <br/>
+          STONK <br/>
+          STONK <br/>
+          STONK <br/>
+          STONK <br/>
+          STONK <br/>
+          STONK <br/>
+          STONK <br/>
+          STONK <br/>
+          STONK <br/>
+          STONK <br/>
+          STONK <br/>
+          STONK <br/>
+          STONK <br/>
+          STONK <br/>
+          STONK <br/>
+          STONK <br/>
+          STONK <br/>
+          STONK <br/>
+          STONK <br/>
+          STONK <br/>
+          STONK <br/>
+          STONK <br/>
+          STONK <br/>
+          STONK <br/>
+          STONK <br/>
+          STONK <br/>
+          STONK <br/>
+          STONK <br/>
+          STONK <br/>
+          STONK <br/>
+          STONK <br/>
+          STONK <br/>
+          STONK <br/>
+          STONK <br/>
+          STONK <br/>
+          STONK <br/>
+          STONK <br/>
+          STONK <br/>
+          STONK <br/>
+          STONK <br/>
+          STONK <br/>
+          STONK <br/>
+          STONK <br/>
+          STONK <br/>
+          STONK <br/>
+          STONK <br/>
+          STONK <br/>
+          STONK <br/>
+          STONK <br/>
+          STONK <br/>
+          STONK <br/>
+          STONK <br/>
+          STONK <br/>
+          STONK <br/>
+          STONK <br/>
+          STONK <br/>
+          STONK <br/>
+          STONK <br/>
+          STONK <br/>
+          STONK <br/>
+          STONK <br/>
+          STONK <br/>
+          STONK <br/>
+          STONK <br/>
+          STONK <br/>
+          STONK <br/>
+          STONK <br/>
+          STONK <br/>
+          STONK <br/>
+          STONK <br/>
+          STONK <br/>
+          STONK <br/>
+          STONK <br/>
+          STONK <br/>
+          STONK <br/>
+          STONK <br/>
+          STONK <br/>
+          STONK <br/>
+          STONK <br/>
+          STONK <br/>
+          STONK <br/>
+          STONK <br/>
+          STONK <br/>
+          STONK <br/>
+          STONK <br/>
+          STONK <br/>
+          STONK <br/>
+          STONK <br/>
+          STONK <br/>
+          STONK <br/>
+          STONK <br/>
+          STONK <br/>
+          STONK <br/>
+          STONK <br/>
+          STONK <br/>
+          STONK <br/>
+          STONK <br/>
+          STONK <br/>
+          STONK <br/>
+          STONK <br/>
+          STONK <br/>
+          STONK <br/>
+          STONK <br/>
+          STONK <br/>
+          STONK <br/>
+          STONK <br/>
+          STONK <br/>
+          STONK <br/>
+          STONK <br/>
+          STONK <br/>
+          STONK <br/>
+          STONK <br/>
+          STONK <br/>
+          STONK <br/>
+          STONK <br/>
+          STONK <br/>
+          STONK <br/>
+          STONK <br/>
+          STONK <br/>
+          STONK <br/>
+          STONK <br/>
+          STONK <br/>
+          STONK <br/>
+          STONK <br/>
+          STONK <br/>
+          STONK <br/>
+          STONK <br/>
+          STONK <br/>
+          STONK <br/>
+          STONK <br/>
+          STONK <br/>
+          STONK <br/>
+          STONK <br/>
+          STONK <br/>
+          STONK <br/>
+          STONK <br/>
+          STONK <br/>
+          STONK <br/>
+          STONK <br/>
+          STONK <br/>
+          STONK <br/>
+          STONK <br/>
+          STONK <br/>
+          STONK <br/>
+          STONK <br/>
+          STONK <br/>
+          STONK <br/>
+          STONK <br/>
+          STONK <br/>
+          STONK <br/>
+          STONK <br/>
+          STONK <br/>
+          STONK <br/>
+          STONK <br/>
+          STONK <br/>
+          STONK <br/>
+          STONK <br/>
+          STONK <br/>
+          STONK <br/>
+          STONK <br/>
+          STONK <br/>
+          STONK <br/>
+          STONK <br/>
+          STONK <br/>
+          STONK <br/>
+          STONK <br/>
+          STONK <br/>
+          STONK <br/>
+          STONK <br/>
+          STONK <br/>
+          STONK <br/>
+          STONK <br/>
+          STONK <br/>
+          STONK <br/>
+          STONK <br/>
+          STONK <br/>
+          STONK <br/>
+          STONK <br/>
+          STONK <br/>
+          STONK <br/>
+          STONK <br/>
+          STONK <br/>
+          STONK <br/>
+          STONK <br/>
+          STONK <br/>
+          STONK <br/>
+          STONK <br/>
+          STONK <br/>
+          STONK <br/>
+          STONK <br/>
+          STONK <br/>
+          STONK <br/>
+          STONK <br/>
+          STONK <br/>
+          STONK <br/>
+          STONK <br/>
+          STONK <br/>
+          STONK <br/>
+          STONK <br/>
+          STONK <br/>
+          STONK <br/>
+          STONK <br/>
+          STONK <br/>
+          STONK <br/>
+          STONK <br/>
+          STONK <br/>
+          STONK <br/>
+          STONK <br/>
+          STONK <br/>
+          STONK <br/>
+          STONK <br/>
+          STONK <br/>
+          STONK <br/>
+          STONK <br/>
+          STONK <br/>
+          STONK <br/>
+          STONK <br/>
+          STONK <br/>
+          STONK <br/>
+          STONK <br/>
+          STONK <br/>
+          STONK <br/>
+          STONK <br/>
+          STONK <br/>
+          STONK <br/>
+          STONK <br/>
+          STONK <br/>
+          STONK <br/>
+          STONK <br/>
+          STONK <br/>
+          STONK <br/>
+          STONK <br/>
+          STONK <br/>
+          STONK <br/>
+          STONK <br/>
+          STONK <br/>
+          STONK <br/>
+          STONK <br/>
+          STONK <br/>
+          STONK <br/>
+          STONK <br/>
+          STONK <br/>
+          STONK <br/>
+          STONK <br/>
+          STONK <br/>
+          STONK <br/>
+          STONK <br/>
+          STONK <br/>
+          STONK <br/>
+          STONK <br/>
+          STONK <br/>
+          STONK <br/>
+          STONK <br/>
+          STONK <br/>
+          STONK <br/>
+          STONK <br/>
+          STONK <br/>
+          STONK <br/>
+          STONK <br/>
+          STONK <br/>
+          STONK <br/>
+          STONK <br/>
+          STONK <br/>
+          STONK <br/>
+          STONK <br/>
+          STONK <br/>
+          STONK <br/>
+          STONK <br/>
+          STONK <br/>
+          STONK <br/>
+          STONK <br/>
+          </div>
+          <div>For more infortation, see our <a>Privacy Policy</a></div>
         </div>
+        
+        
+        {/* main right */}
         <div className="main-div-right">
           <div className="main-div-right-inner">
             <div>Stocks (Header) ...</div>
@@ -165,7 +500,10 @@ class Greeting extends React.Component {
             </div>
           </div>
         </div>
-      </div> {/* main div right */}
+        </div>
+
+
+    </div>
     </>
   );
   
