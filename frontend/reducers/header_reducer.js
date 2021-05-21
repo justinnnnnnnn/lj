@@ -1,4 +1,4 @@
-import Header from "../actions/session_actions";
+// import Header from "../actions/session_actions";
 
 const sessionErrors = (state = [], action) => {
   Object.freeze(state);

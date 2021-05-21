@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import Stonk from '../chart/stonk'
+import Graph from '../chart/graph'
 
 class Greeting extends React.Component {
   constructor(props) {
@@ -148,7 +148,7 @@ class Greeting extends React.Component {
         
         {/* main left */}
         <div className="main-div-left">
-          <Stonk/>
+          <Graph/>
           
           <div className="buying-power">
               <div>
@@ -516,7 +516,4 @@ class Greeting extends React.Component {
 };
 
 
-export default Greeting;
-
-
-// #ff5000 for robinhood red
+export default Greeting; // to greeting container

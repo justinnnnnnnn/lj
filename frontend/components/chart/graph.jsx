@@ -3,7 +3,7 @@ import * as StonkAPI from '../../util/stonk_api_util'
 import Chart from './chart'
 import Loading from '../loading/loading'
 
-class Stonk extends React.Component {
+class Graph extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -50,4 +50,4 @@ class Stonk extends React.Component {
   }  
 }
 
-export default Stonk;
+export default Graph;

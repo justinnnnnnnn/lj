@@ -41,7 +41,6 @@ class SessionForm extends React.Component {
 
   
   render() {
-    // console.log(this.props)
     return (
       
       <div className="login-page">
@@ -68,7 +67,6 @@ class SessionForm extends React.Component {
             <div className="session-button">
               <input type="submit" className="session-submit" value="Sign In"/>
             </div>
-            {/* <div><footer>{this.props.navLink}</footer></div> */}
 
             {this.renderErrors()}
           

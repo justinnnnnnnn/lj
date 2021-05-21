@@ -9,11 +9,13 @@ import {
 } from 'react-router-dom';
 
 
+
 import GreetingContainer from './greeting/greeting_container';
 import SignupFormContainer from './session_form/signup_container';
 import LoginFormContainer from './session_form/login_container';
+import StonkContainer from './stonk_page/stonk_page_container';
 import { AuthRoute, ProtectedRoute } from '../util/route_util';
-import Stonks from './chart/stonk'
+import Graph from './chart/graph';
 
 const App = () => (
   <div className="app-div">    
@@ -22,8 +24,9 @@ const App = () => (
     <Switch>
       <AuthRoute exact path="/login" component={LoginFormContainer} />
       <AuthRoute exact path="/signup" component={SignupFormContainer} />
-      <Route exact path="/potato" component={Stonks}/>
+      <Route exact path="/potato" component={Graph}/>
       <Route path="/" component={GreetingContainer}/>
+      <Route exact path="/stonks" component={StonkContainer}/>
     </Switch>
   </div>
 );
