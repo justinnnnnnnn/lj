@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import Graph from '../chart/graph'
+import SearchBar from '../stonk_page/search_bar'
 
 class Greeting extends React.Component {
   constructor(props) {
@@ -130,6 +131,7 @@ class Greeting extends React.Component {
           </div>
           <div className="search-bar">
             {/* search bar */}
+            <SearchBar/>
           </div> 
           <div className="account-links">
             <div><span>Free Stonks</span></div>

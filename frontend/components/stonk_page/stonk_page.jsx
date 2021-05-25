@@ -1,13 +1,14 @@
 import React from 'react';
 import Graph from '../chart/graph'
+import SearchBar from './search_bar'
 
 class Stonk extends React.Component {
   constructor(props) {
     super(props)
-    this.state = {
-      username: '',
-      password: ''
-    };
+    // this.state = {
+    //   username: '',
+    //   password: ''
+    // };
   }
   
   
@@ -20,35 +21,34 @@ class Stonk extends React.Component {
 
       <>
       <h2>THIS IS THE STONK PAGE FOR REAL</h2>
-      {/* <div className="whole-page-logged-in">
-  
-  
-  
-        <div className="header-logged-in">
-          <div className="account-header">
+      <div className="whole-stonk-page">
+
+        <div className="header-logged-in-stonk-page">
+          <div className="account-header-stonk-page">
             <div className="robinherd-logo">
-              <h2 className="header-name">{currentUser.username}</h2> */}{/* temporary */}
-            {/* </div>
-            <div className="search-bar"> */}
-              {/* search bar */}
-            {/* </div> 
+            </div>
+            <div><SearchBar/></div>
+            <div className="search-bar">
+              search bar
+            </div> 
             <div className="account-links">
               <div><span>Free Stonks</span></div>
               <div><span>Portfolio</span></div>
               <div><span>Cash</span></div>
               <div><span>Messages</span></div>
-              <div><span>Account</span></div>The messages dot goes on the left side of this div */}
-              {/* <button className="header-button" onClick={logout}>Log Out</button> temporary */}
-            {/* </div>
+              <div><span>Account</span></div>The messages dot goes on the left side of this div
+              <button className="header-button" onClick={logout}>Log Out</button> temporary
+            </div>
           </div>
-        </div> */}
+        </div>
   
         
   
-        {/* <div className="stonk-div-logged-in"> */}
+        <div className="stonk-div-logged-in">
           
-          {/* stonk left */}
-          {/* <div className="stonk-div-left">
+          stonk left
+          <div className="stonk-div-left">
+            <h1>STONK NAME (GME ONLY PLZ)</h1>
             <Graph/>
             
             <div className="buying-power">
@@ -366,11 +366,11 @@ class Stonk extends React.Component {
             STONK <br/>
             </div>
             <div>For more infortation, see our <a>Privacy Policy</a></div>
-          </div> */}
+          </div>
           
           
-          {/* stonk right */}
-          {/* <div className="stonk-div-right">
+          stonk right
+          <div className="stonk-div-right">
             <div className="stonk-div-right-inner">
               <div>Stocks (Header) ...</div>
               <div>Invest in GOLD FARTHINGS</div>
@@ -393,7 +393,7 @@ class Stonk extends React.Component {
                       <div>Cryptos to watch</div> 
                       <div>arrow</div>
                     </div>
-                    <div>Crypto list</div>
+                    <div>BY AND SAL</div>
                   </div>
                 </div>
               </div>
@@ -402,7 +402,7 @@ class Stonk extends React.Component {
         
         </div>
   
-      </div> */}
+      </div>
       </>
     );
   };
