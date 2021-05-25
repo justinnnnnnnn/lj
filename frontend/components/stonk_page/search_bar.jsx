@@ -6,7 +6,7 @@ const SearchBar = () => {
       <input
         type="text"
         value={"yo mama"}
-        onChange={}
+        // onChange={}
         className="search-field"
       />
       {/* thing that inserts all the backend stonks */}
