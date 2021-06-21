@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import Graph from '../chart/graph'
 import SearchBar from '../stonk_page/search_bar'
+import Dropdown from './dropdown'
 
 class Greeting extends React.Component {
   constructor(props) {
@@ -139,6 +140,7 @@ class Greeting extends React.Component {
             <div><span>Cash</span></div>
             <div><span>Messages</span></div>
             <div><span>Account</span></div>{/* The messages dot goes on the left side of this div */}
+            <div><span>dropdown <Dropdown/> </span></div>
             <button className="header-button" onClick={logout}>Log Out</button> {/* temporary */}
           </div>
         </div>
