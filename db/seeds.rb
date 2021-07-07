@@ -9,7 +9,7 @@
 User.delete_all
 Stonk.delete_all
 
-User.create([{ username: 'stonkmaster420', password: '69'}])
+User.create([{ username: 'stonkmaster420', password: '69', account_balance: 12,000.10}])
 
 get_stonks = RestClient.get "https://finnhub.io/api/v1/stock/symbol?exchange=US&securityType=Common%20Stock&token=#{Rails.application.credentials.finnhub[:api_key]}"
 

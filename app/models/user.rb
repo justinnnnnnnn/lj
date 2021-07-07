@@ -20,6 +20,10 @@ class User < ApplicationRecord
   attr_reader :password
   has_many :stonks
 
+  def set_balance=(balance)
+    balance = 0 if balance == nil
+  end
+
   def self.find_by_credentials(user, password)
     user = User.find_by(username: user)
       if user && user.is_password?(password)
