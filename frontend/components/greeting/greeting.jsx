@@ -99,7 +99,8 @@ class Greeting extends React.Component {
             playsInline
             preload="auto" 
             >
-            <source src="https://v.redd.it/lu8aekujd6e61/DASH_720.mp4?source=fallback" type="video/mp4"/>
+            {/* <source src="https://v.redd.it/lu8aekujd6e61/DASH_720.mp4?source=fallback" type="video/mp4"/> */}
+            <source src="https://v.redd.it/wanpkctqcyx61/DASH_1080.mp4" type="video/mp4"/>
 
           </video>
         </div>
