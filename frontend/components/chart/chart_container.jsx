@@ -13,5 +13,7 @@ const mapDispatchToProps = dispatch => ({
 })
 
 export default connect(
-  mapStateToProps
+  mapStateToProps, mapDispatchToProps
 )(Chart)
+
+//I dont think i use this page (???)

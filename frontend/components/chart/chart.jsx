@@ -37,7 +37,7 @@ class Chart extends React.Component {
         });
       }
     } else {
-      console.log(this.state.currentPrice)
+      // console.log(this.state.currentPrice)
     this.setState({
           bigPrice: this.state.currentPrice,
         });
@@ -46,7 +46,7 @@ class Chart extends React.Component {
   
   
   handleMouseLeave() {
-    console.log(this.state.currentPrice)
+    // console.log(this.state.currentPrice)
     this.setState({
           bigPrice: this.state.currentPrice,
         });
@@ -69,7 +69,7 @@ class Chart extends React.Component {
   }
 
   render() {
-    console.log(this.props.intradayData)
+    // console.log(this.props.intradayData)
     
     const realData = [];
     for (let i = 0; i < this.props.intradayData.t.length; i++)
@@ -79,9 +79,9 @@ class Chart extends React.Component {
     })
     const dottedLine = this.state.previousClose;
     
-    console.log('this!!!!!!!!!!')
-    console.log(realData)
-    console.log('this!!!!!!!!!!')
+    // console.log('this!!!!!!!!!!')
+    // console.log(realData)
+    // console.log('this!!!!!!!!!!')
 
     return (
       <div className="chart">

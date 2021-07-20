@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import Graph from '../chart/graph'
-import SearchBar from '../stonk_page/search_bar'
+// import SearchBar from '../stonk_page/search_bar'
 import Dropdown from './dropdown'
 
 class Greeting extends React.Component {
@@ -29,8 +29,8 @@ class Greeting extends React.Component {
 
   render() {
     const { currentUser, logout } = this.props
-    console.log("this.props")
-    console.log(this.props)
+    // console.log("this.props")
+    // console.log(this.props)
     const sessionLinks = () => (
 
     <div>
@@ -133,7 +133,7 @@ class Greeting extends React.Component {
           </div>
           <div className="search-bar">
             {/* search bar */}
-            <SearchBar/>
+            {/* <SearchBar/> */}
           </div> 
           <div className="account-links">
             <div><span>Free Stonks</span></div>
@@ -179,10 +179,10 @@ class Greeting extends React.Component {
               Herp a derpa derp
             </div>
             <div className="daily-movers">
-              [][][][]
+              [][][][] aka Daily Movers Div
             </div>
             <div className="more-news">
-              [][][][]
+              [][][][] aka More News Div
             </div>
 
           </div>
@@ -512,8 +512,8 @@ class Greeting extends React.Component {
     </>
   );
   
-  console.log("currentUser")
-  console.log(currentUser)
+  // console.log("currentUser")
+  // console.log(currentUser)
   return currentUser ? loggedInHeader() : sessionLinks();
   }
 

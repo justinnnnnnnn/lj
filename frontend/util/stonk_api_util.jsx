@@ -32,11 +32,11 @@ export const fetchStonkCompanyProfile = (symbol, APIhash) =>
     url: `https://finnhub.io/api/v1/stock/profile2?symbol=${symbol}&token=${APIhash}`,
   });
 
-export const fetchStonkCompanyNews = (
+export const fetchStonkNews = (
   symbol,
-  APIhash,
   fromDate,
-  toDate
+  toDate,
+  APIhash
 ) =>
   $.ajax({
     url: `https://finnhub.io/api/v1/company-news?symbol=${symbol}&from=${fromDate}&to=${toDate}&token=${APIhash}`,
@@ -51,3 +51,10 @@ export const fetchStonkIntraday = (symbol, from, to, APIhash) =>
   $.ajax({
     url: `https://finnhub.io/api/v1/stock/candle?symbol=${symbol}&resolution=5&from=${from}&to=${to}&token=${APIhash}`,
   });
+
+// export const fetchMarketNews = () => {
+//   return $.ajax({
+//     method: 'GET',
+//     url: `https://finnhub.io/api/v1/news?category=general&token=${window.finnhubAPIKey}`
+//   })
+// }

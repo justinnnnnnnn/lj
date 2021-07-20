@@ -8,18 +8,18 @@ class Graph extends React.Component {
     super(props);
     this.state = {
       loading: true,
-      premarketData: {}, 
+      // premarketData: {}, 
       intradayData: {},
-      postmarketData: {}
+      // postmarketData: {}
     }
-    this.preMarket = new Date().setHours(6, 0, 0, 0) / 1000
+    // this.preMarket = new Date().setHours(6, 0, 0, 0) / 1000
     this.marketOpen = new Date().setHours(6, 30, 0, 0) / 1000;
     this.marketClose = new Date().setHours(13, 0, 0, 0) / 1000;
-    this.afterHours = new Date().setHours(15, 0, 0, 0) / 1000;
+    // this.afterHours = new Date().setHours(15, 0, 0, 0) / 1000;
   }
 
   componentDidMount() {
-    console.log('HEYYYYYYYYY!!!!!!!')
+    // console.log('HEYYYYYYYYY!!!!!!!')
     StonkAPI.fetchStonkIntraday('GME', this.marketOpen, this.marketClose, window.finnhubAPIKey)
       .then((response) => this.setState({intradayData: response}))
       .then(() => this.setState({loading: false}))
@@ -37,7 +37,7 @@ class Graph extends React.Component {
   }
 
   render() {
-    console.log(this.state.intradayData)
+    // console.log(this.state.intradayData)
     if (this.state.loading) {
       return <Loading/>
     } else {

@@ -8,7 +8,7 @@ const dropDownFunc = () => {
 const DropDown = () => {
   return (
     <div className="account-dropdown">
-      <button onclick={dropDownFunc} className="dropdown-button">banananana</button>
+      <button onClick={dropDownFunc} className="dropdown-button">banananana</button>
       <div>This is a banana</div>
     </div>
   );

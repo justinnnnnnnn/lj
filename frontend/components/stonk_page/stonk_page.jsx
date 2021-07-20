@@ -1,6 +1,7 @@
 import React from 'react';
 import Graph from '../chart/graph'
 import SearchBar from './search_bar'
+import StonkNewsContainer from './stonk_news_container'
 
 class Stonk extends React.Component {
   constructor(props) {
@@ -9,6 +10,19 @@ class Stonk extends React.Component {
     //   username: '',
     //   password: ''
     // };
+  }
+
+    componentDidMount() {
+    const today = new Date();
+    const yesterday = new Date(today);
+    yesterday.setDate(yesterday.getDate() - 5)
+    
+    if (Object.keys(this.props.currentStonk).length === 0 || Object.keys(this.props.currentStonk === "None")) {
+      this.props.fetchStonkInfo(this.props.match.params.symbol)
+      .then(() => this.props.fetchStonkData(this.props.match.params.symbol, this.state.fromDate, this.state.now))
+      .then(() => this.props.fetchStonkNews(this.props.match.params.symbol, yesterday.toISOString().split('T')[0], new Date().toISOString().split('T')[0]))
+      .then(() => this.props.fetchCurrentStonk(this.props.match.params.symbol))
+    }
   }
   
   
@@ -48,7 +62,7 @@ class Stonk extends React.Component {
           
           stonk left
           <div className="stonk-div-left">
-            <h1>STONK NAME (GME ONLY PLZ)</h1>
+            <div>STONK NAME (GME ONLY PLZ)</div>
             <Graph/>
             
             <div className="buying-power">
@@ -86,6 +100,8 @@ class Stonk extends React.Component {
             
   
             <div className="make it scroll for days">
+              <StonkNewsContainer symbol={this.props.match.params.symbol}/>
+            {/* STONK <br/>
             STONK <br/>
             STONK <br/>
             STONK <br/>
@@ -362,8 +378,7 @@ class Stonk extends React.Component {
             STONK <br/>
             STONK <br/>
             STONK <br/>
-            STONK <br/>
-            STONK <br/>
+            STONK <br/> */}
             </div>
             <div>For more infortation, see our <a>Privacy Policy</a></div>
           </div>
