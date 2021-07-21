@@ -16,7 +16,7 @@ import LoginFormContainer from './session_form/login_container';
 import StonkContainer from './stonk_page/stonk_page_container';
 import { AuthRoute, ProtectedRoute } from '../util/route_util';
 import Graph from './chart/graph';
-
+import StonkNews from './stonk_page/stonk_news'
 const App = () => (
   <div className="app-div">    
 
@@ -25,6 +25,7 @@ const App = () => (
       <AuthRoute exact path="/login" component={LoginFormContainer} />
       <AuthRoute exact path="/signup" component={SignupFormContainer} />
       <Route exact path="/potato" component={Graph}/>
+      <Route exact path="/news" component={StonkNews}/>
       <Route path="/stonks/:symbol" component={StonkContainer}/>
       <Route path="/" component={GreetingContainer}/>
     </Switch>

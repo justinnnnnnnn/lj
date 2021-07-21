@@ -1,7 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import Graph from '../chart/graph'
-// import SearchBar from '../stonk_page/search_bar'
 import Dropdown from './dropdown'
 
 class Greeting extends React.Component {
@@ -29,8 +28,6 @@ class Greeting extends React.Component {
 
   render() {
     const { currentUser, logout } = this.props
-    // console.log("this.props")
-    // console.log(this.props)
     const sessionLinks = () => (
 
     <div>
@@ -512,8 +509,6 @@ class Greeting extends React.Component {
     </>
   );
   
-  // console.log("currentUser")
-  // console.log(currentUser)
   return currentUser ? loggedInHeader() : sessionLinks();
   }
 

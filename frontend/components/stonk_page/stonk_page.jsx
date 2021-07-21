@@ -1,15 +1,13 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import Graph from '../chart/graph'
-import SearchBar from './search_bar'
-import StonkNewsContainer from './stonk_news_container'
+import StonkNews from './stonk_news'
 
 class Stonk extends React.Component {
   constructor(props) {
     super(props)
-    // this.state = {
-    //   username: '',
-    //   password: ''
-    // };
+    this.state = {
+    };
   }
 
     componentDidMount() {
@@ -17,12 +15,18 @@ class Stonk extends React.Component {
     const yesterday = new Date(today);
     yesterday.setDate(yesterday.getDate() - 5)
     
-    if (Object.keys(this.props.currentStonk).length === 0 || Object.keys(this.props.currentStonk === "None")) {
-      this.props.fetchStonkInfo(this.props.match.params.symbol)
-      .then(() => this.props.fetchStonkData(this.props.match.params.symbol, this.state.fromDate, this.state.now))
-      .then(() => this.props.fetchStonkNews(this.props.match.params.symbol, yesterday.toISOString().split('T')[0], new Date().toISOString().split('T')[0]))
-      .then(() => this.props.fetchCurrentStonk(this.props.match.params.symbol))
-    }
+    // if (Object.keys(this.props.currentStonk).length === 0 || Object.keys(this.props.currentStonk === "None")) {
+    //   this.props.fetchStonkInfo('GME')
+    //   .then(() => this.props.fetchStonkData(this.props.match.params.symbol, this.state.fromDate, this.state.now))
+    //   .then(() => this.props.fetchStonkNews('GME', '2021-05-01', '2021-06-01'))
+    //   .then(() => this.props.fetchCurrentStonk(this.props.match.params.symbol))
+    // }
+    // if (Object.keys(this.props.currentStonk).length === 0 || Object.keys(this.props.currentStonk === "None")) {
+    //   this.props.fetchStonkInfo(this.props.match.params.symbol)
+    //   .then(() => this.props.fetchStonkData(this.props.match.params.symbol, this.state.fromDate, this.state.now))
+    //   .then(() => this.props.fetchStonkNews(this.props.match.params.symbol, yesterday.toISOString().split('T')[0], new Date().toISOString().split('T')[0]))
+    //   .then(() => this.props.fetchCurrentStonk(this.props.match.params.symbol))
+    // }
   }
   
   
@@ -41,7 +45,7 @@ class Stonk extends React.Component {
           <div className="account-header-stonk-page">
             <div className="robinherd-logo">
             </div>
-            <div><SearchBar/></div>
+            {/* <div><SearchBar/></div> */}
             <div className="search-bar">
               search bar
             </div> 
@@ -100,7 +104,8 @@ class Stonk extends React.Component {
             
   
             <div className="make it scroll for days">
-              <StonkNewsContainer symbol={this.props.match.params.symbol}/>
+              {/* <StonkNews symbol={this.props.match.params.symbol}/> */}
+              <StonkNews/>
             {/* STONK <br/>
             STONK <br/>
             STONK <br/>

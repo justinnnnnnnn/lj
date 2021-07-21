@@ -7,19 +7,19 @@ export const RECEIVE_STONK_NEWS = "RECEIVE_STONK_NEWS";
 export const receiveStonk = (stonk, symbol) => ({
   type: RECEIVE_STONK,
   stonk,
-  symbol,
+  symbol
 });
 
 export const receiveStonkData = (data, symbol) => ({
   type: RECEIVE_STONK_DATA,
   data,
-  symbol,
+  symbol
 });
 
 export const receiveStonkNews = (news, symbol) => ({
   type: RECEIVE_STONK_NEWS,
   news,
-  symbol,
+  symbol
 });
 
 export const fetchStonk = (symbol) => (dispatch) =>
@@ -32,12 +32,17 @@ export const fetchStonkInfo = (symbol) => (dispatch) =>
     dispatch(receiveStonk(stonk, symbol))
   );
 
-export const fetchStonkData = (symbol, start, end) => (dispatch) =>
-  StonkAPI.fetchStonkData(symbol, start, end).then((stonk) =>
+export const fetchStonkData = (symbol, fromDate, toDate) => (dispatch) =>
+  StonkAPI.fetchStonkData(symbol, fromDate, toDate).then((stonk) => 
     dispatch(receiveStonkData(stonk, symbol))
   );
+// export const fetchStonkData = (symbol, fromDate, toDate) => (dispatch) =>
+//   StonkAPI.fetchStonkData(symbol, fromDate, toDate).then((stonk) => {
+//     dispatch(receiveStonkData(stonk, symbol))
+//     return stonk
+//   });
 
-export const fetchStonkNews = (symbol, start, end) => (dispatch) =>
-  StonkAPI.fetchStonkNews(symbol, start, end).then((stonk) =>
+export const fetchStonkNews = (symbol, fromDate, toDate) => (dispatch) =>
+  StonkAPI.fetchStonkNews(symbol, fromDate, toDate).then((stonk) =>
     dispatch(receiveStonkNews(stonk, symbol))
   );
