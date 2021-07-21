@@ -1,20 +1,20 @@
 import React from 'react';
 import * as StonkAPI from '../../util/stonk_api_util'
-import StonkNewsArticles from './stonk_news_articles';
+import StonkBioAbout from './stonk_bio_about';
 import Loading from '../loading/loading'
 
-class StonkNews extends React.Component {
+class StonkBio extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       loading: true,
-      stonkNews: {},
+      stonkBio: {},
     }
   }
 
   componentDidMount() {
-      StonkAPI.fetchStonkNews('GME', '2021-05-01', '2021-06-01', window.finnhubAPIKey)
-      .then((response) => this.setState({stonkNews: response}))
+      StonkAPI.fetchStonkBio('GME', window.finnhubAPIKey)
+      .then((response) => this.setState({stonkBio: response}))
       .then(() => this.setState({loading: false}))
     
     }
@@ -30,7 +30,7 @@ class StonkNews extends React.Component {
     } else {
       return (
         <div>
-          <StonkNewsArticles stonkNews={this.state.stonkNews}/>
+          <StonkBioAbout stonkBio={this.state.stonkBio}/>
         </div>
       )
     }
@@ -38,7 +38,4 @@ class StonkNews extends React.Component {
 
 };
 
-
-
-    
-export default StonkNews;
+export default StonkBio;

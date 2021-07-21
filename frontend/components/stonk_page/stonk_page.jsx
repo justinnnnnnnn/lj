@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import Graph from '../chart/graph'
 import StonkNews from './stonk_news'
+import StonkBio from './stonk_bio'
 
 class Stonk extends React.Component {
   constructor(props) {
@@ -67,6 +68,7 @@ class Stonk extends React.Component {
           stonk left
           <div className="stonk-div-left">
             <div>STONK NAME (GME ONLY PLZ)</div>
+            
             <Graph/>
             
             <div className="buying-power">
@@ -77,313 +79,18 @@ class Stonk extends React.Component {
                   $Dynamic Money Amount
                 </div>
             </div>
-            <div className="trending-lists">
-              <div>
-                <div>Trending Lists</div>
-                <div>Show More</div>
-              </div>
-              <ul><li>herpderp</li></ul>
+            <div>
+              <h1>About</h1>
             </div>
-            
+            <div>
+              <StonkBio/>
+            </div>
+
             <div className="news">
-              <div className="news-header">
-                News
-              </div>
-              <div className="top-news">
-                Herp a derpa derp
-              </div>
-              <div className="daily-movers">
-                [][][][]
-              </div>
-              <div className="more-news">
-                [][][][]
-              </div>
-  
+              <h1>News</h1>
             </div>
-  
-            
-  
-            <div className="make it scroll for days">
-              {/* <StonkNews symbol={this.props.match.params.symbol}/> */}
+            <div>
               <StonkNews/>
-            {/* STONK <br/>
-            STONK <br/>
-            STONK <br/>
-            STONK <br/>
-            STONK <br/>
-            STONK <br/>
-            STONK <br/>
-            STONK <br/>
-            STONK <br/>
-            STONK <br/>
-            STONK <br/>
-            STONK <br/>
-            STONK <br/>
-            STONK <br/>
-            STONK <br/>
-            STONK <br/>
-            STONK <br/>
-            STONK <br/>
-            STONK <br/>
-            STONK <br/>
-            STONK <br/>
-            STONK <br/>
-            STONK <br/>
-            STONK <br/>
-            STONK <br/>
-            STONK <br/>
-            STONK <br/>
-            STONK <br/>
-            STONK <br/>
-            STONK <br/>
-            STONK <br/>
-            STONK <br/>
-            STONK <br/>
-            STONK <br/>
-            STONK <br/>
-            STONK <br/>
-            STONK <br/>
-            STONK <br/>
-            STONK <br/>
-            STONK <br/>
-            STONK <br/>
-            STONK <br/>
-            STONK <br/>
-            STONK <br/>
-            STONK <br/>
-            STONK <br/>
-            STONK <br/>
-            STONK <br/>
-            STONK <br/>
-            STONK <br/>
-            STONK <br/>
-            STONK <br/>
-            STONK <br/>
-            STONK <br/>
-            STONK <br/>
-            STONK <br/>
-            STONK <br/>
-            STONK <br/>
-            STONK <br/>
-            STONK <br/>
-            STONK <br/>
-            STONK <br/>
-            STONK <br/>
-            STONK <br/>
-            STONK <br/>
-            STONK <br/>
-            STONK <br/>
-            STONK <br/>
-            STONK <br/>
-            STONK <br/>
-            STONK <br/>
-            STONK <br/>
-            STONK <br/>
-            STONK <br/>
-            STONK <br/>
-            STONK <br/>
-            STONK <br/>
-            STONK <br/>
-            STONK <br/>
-            STONK <br/>
-            STONK <br/>
-            STONK <br/>
-            STONK <br/>
-            STONK <br/>
-            STONK <br/>
-            STONK <br/>
-            STONK <br/>
-            STONK <br/>
-            STONK <br/>
-            STONK <br/>
-            STONK <br/>
-            STONK <br/>
-            STONK <br/>
-            STONK <br/>
-            STONK <br/>
-            STONK <br/>
-            STONK <br/>
-            STONK <br/>
-            STONK <br/>
-            STONK <br/>
-            STONK <br/>
-            STONK <br/>
-            STONK <br/>
-            STONK <br/>
-            STONK <br/>
-            STONK <br/>
-            STONK <br/>
-            STONK <br/>
-            STONK <br/>
-            STONK <br/>
-            STONK <br/>
-            STONK <br/>
-            STONK <br/>
-            STONK <br/>
-            STONK <br/>
-            STONK <br/>
-            STONK <br/>
-            STONK <br/>
-            STONK <br/>
-            STONK <br/>
-            STONK <br/>
-            STONK <br/>
-            STONK <br/>
-            STONK <br/>
-            STONK <br/>
-            STONK <br/>
-            STONK <br/>
-            STONK <br/>
-            STONK <br/>
-            STONK <br/>
-            STONK <br/>
-            STONK <br/>
-            STONK <br/>
-            STONK <br/>
-            STONK <br/>
-            STONK <br/>
-            STONK <br/>
-            STONK <br/>
-            STONK <br/>
-            STONK <br/>
-            STONK <br/>
-            STONK <br/>
-            STONK <br/>
-            STONK <br/>
-            STONK <br/>
-            STONK <br/>
-            STONK <br/>
-            STONK <br/>
-            STONK <br/>
-            STONK <br/>
-            STONK <br/>
-            STONK <br/>
-            STONK <br/>
-            STONK <br/>
-            STONK <br/>
-            STONK <br/>
-            STONK <br/>
-            STONK <br/>
-            STONK <br/>
-            STONK <br/>
-            STONK <br/>
-            STONK <br/>
-            STONK <br/>
-            STONK <br/>
-            STONK <br/>
-            STONK <br/>
-            STONK <br/>
-            STONK <br/>
-            STONK <br/>
-            STONK <br/>
-            STONK <br/>
-            STONK <br/>
-            STONK <br/>
-            STONK <br/>
-            STONK <br/>
-            STONK <br/>
-            STONK <br/>
-            STONK <br/>
-            STONK <br/>
-            STONK <br/>
-            STONK <br/>
-            STONK <br/>
-            STONK <br/>
-            STONK <br/>
-            STONK <br/>
-            STONK <br/>
-            STONK <br/>
-            STONK <br/>
-            STONK <br/>
-            STONK <br/>
-            STONK <br/>
-            STONK <br/>
-            STONK <br/>
-            STONK <br/>
-            STONK <br/>
-            STONK <br/>
-            STONK <br/>
-            STONK <br/>
-            STONK <br/>
-            STONK <br/>
-            STONK <br/>
-            STONK <br/>
-            STONK <br/>
-            STONK <br/>
-            STONK <br/>
-            STONK <br/>
-            STONK <br/>
-            STONK <br/>
-            STONK <br/>
-            STONK <br/>
-            STONK <br/>
-            STONK <br/>
-            STONK <br/>
-            STONK <br/>
-            STONK <br/>
-            STONK <br/>
-            STONK <br/>
-            STONK <br/>
-            STONK <br/>
-            STONK <br/>
-            STONK <br/>
-            STONK <br/>
-            STONK <br/>
-            STONK <br/>
-            STONK <br/>
-            STONK <br/>
-            STONK <br/>
-            STONK <br/>
-            STONK <br/>
-            STONK <br/>
-            STONK <br/>
-            STONK <br/>
-            STONK <br/>
-            STONK <br/>
-            STONK <br/>
-            STONK <br/>
-            STONK <br/>
-            STONK <br/>
-            STONK <br/>
-            STONK <br/>
-            STONK <br/>
-            STONK <br/>
-            STONK <br/>
-            STONK <br/>
-            STONK <br/>
-            STONK <br/>
-            STONK <br/>
-            STONK <br/>
-            STONK <br/>
-            STONK <br/>
-            STONK <br/>
-            STONK <br/>
-            STONK <br/>
-            STONK <br/>
-            STONK <br/>
-            STONK <br/>
-            STONK <br/>
-            STONK <br/>
-            STONK <br/>
-            STONK <br/>
-            STONK <br/>
-            STONK <br/>
-            STONK <br/>
-            STONK <br/>
-            STONK <br/>
-            STONK <br/>
-            STONK <br/>
-            STONK <br/>
-            STONK <br/>
-            STONK <br/>
-            STONK <br/>
-            STONK <br/>
-            STONK <br/>
-            STONK <br/>
-            STONK <br/>
-            STONK <br/>
-            STONK <br/>
-            STONK <br/> */}
             </div>
             <div>For more infortation, see our <a>Privacy Policy</a></div>
           </div>

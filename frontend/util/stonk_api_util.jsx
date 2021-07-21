@@ -27,7 +27,7 @@ export const fetchAllStocks = (APIhash) =>
     url: `https://finnhub.io/api/v1/stock/symbol?exchange=US&mic=XNAS&securityType=Common%20Stock&token=${APIhash}`,
   });
 
-export const fetchStonkCompanyProfile = (symbol, APIhash) =>
+export const fetchStonkBio = (symbol, APIhash) =>
   $.ajax({
     url: `https://finnhub.io/api/v1/stock/profile2?symbol=${symbol}&token=${APIhash}`,
   });

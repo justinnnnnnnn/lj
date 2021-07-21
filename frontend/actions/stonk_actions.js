@@ -3,6 +3,7 @@ import * as StonkAPI from "../util/stonk_api_util";
 export const RECEIVE_STONK = "RECEIVE_STONK";
 export const RECEIVE_STONK_DATA = "RECEIVE_STONK_DATA";
 export const RECEIVE_STONK_NEWS = "RECEIVE_STONK_NEWS";
+export const RECEIVE_STONK_BIO = "RECEIVE_STONK_BIO"
 
 export const receiveStonk = (stonk, symbol) => ({
   type: RECEIVE_STONK,
@@ -21,6 +22,12 @@ export const receiveStonkNews = (news, symbol) => ({
   news,
   symbol
 });
+
+export const receiveStonkBio = (bio, symbol) => ({
+  type: RECEIVE_STONK_BIO,
+  bio,
+  symbol
+})
 
 export const fetchStonk = (symbol) => (dispatch) =>
   StonkAPI.fetchStonk(symbol).then((stonk) =>
@@ -44,5 +51,10 @@ export const fetchStonkData = (symbol, fromDate, toDate) => (dispatch) =>
 
 export const fetchStonkNews = (symbol, fromDate, toDate) => (dispatch) =>
   StonkAPI.fetchStonkNews(symbol, fromDate, toDate).then((stonk) =>
+    dispatch(receiveStonkNews(stonk, symbol))
+  );
+
+  export const fetchStonkBio = (symbol) => (dispatch) =>
+  StonkAPI.fetchStonkNews(symbol).then((stonk) =>
     dispatch(receiveStonkNews(stonk, symbol))
   );

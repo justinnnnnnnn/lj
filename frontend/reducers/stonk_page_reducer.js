@@ -2,6 +2,7 @@ import {
   RECEIVE_STONK,
   RECEIVE_STONK_DATA,
   RECEIVE_STONK_NEWS,
+  RECEIVE_STONK_BIO
 } from "../actions/stonk_actions";
 
 const stonkPageReducer = (state = {}, action) => {
@@ -16,6 +17,9 @@ const stonkPageReducer = (state = {}, action) => {
       return nextState;
     case RECEIVE_STONK_NEWS:
       nextState[action.symbol].news = action.news;
+      return nextState;
+    case RECEIVE_STONK_BIO:
+      nextState[action.symbol].bio = action.bio;
       return nextState;
     default:
       return state;

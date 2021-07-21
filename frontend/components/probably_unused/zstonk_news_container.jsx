@@ -1,4 +1,4 @@
-import StonkNews from './stonk_news';
+import StonkNews from '../stonk_page/stonk_news';
 import { connect } from 'react-redux';
 import { fetchStonkNews } from '../../actions/stonk_actions';
 
