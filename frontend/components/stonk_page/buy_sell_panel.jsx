@@ -2,30 +2,28 @@ import React from 'react';
 import * as StonkAPI from '../../util/stonk_api_util'
 
 
-class StonkBioAbout extends React.Component {
+class BuySellPanel extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      name: ""
+      currentPrice: 0
     }
 
   }
 
   componentDidMount() {
-    StonkAPI.fetchStonkBio('GME', window.finnhubAPIKey).then(
-      (response) => this.setState({stonkBio: response})).then(
+    StonkAPI.fetchStonkCurrentPrice('GME', window.finnhubAPIKey).then(
+      (response) => this.setState({price: response})).then(
         () => this.setState({loading: false})).then(
           () => this.setState({
-      name: this.state.stonkBio.name
+      currentPrice: this.state.price.c
     }))
   }
   render() {
-    const companyProfile = { name: this.props.stonkBio.name }
-
-    let bio = () => {
+    let buy = () => {
       return (
         <div>
-          {`${companyProfile.name} is a stock to like.`}
+          {`Buy 69 shares for ${currentPrice * 69}`}
         </div>
       )
     }
@@ -33,11 +31,11 @@ class StonkBioAbout extends React.Component {
     return (
       <div>
         <div>
-          {bio()}
+          {buy()}
         </div>
       </div>
     )
   }
 }
 
-export default StonkBioAbout;
+export default BuySellPanel;

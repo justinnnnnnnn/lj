@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import Graph from '../chart/graph'
 import StonkNews from './stonk_news'
 import StonkBio from './stonk_bio'
+import SearchBar from './search_bar'
 
 class Stonk extends React.Component {
   constructor(props) {
@@ -16,18 +17,7 @@ class Stonk extends React.Component {
     const yesterday = new Date(today);
     yesterday.setDate(yesterday.getDate() - 5)
     
-    // if (Object.keys(this.props.currentStonk).length === 0 || Object.keys(this.props.currentStonk === "None")) {
-    //   this.props.fetchStonkInfo('GME')
-    //   .then(() => this.props.fetchStonkData(this.props.match.params.symbol, this.state.fromDate, this.state.now))
-    //   .then(() => this.props.fetchStonkNews('GME', '2021-05-01', '2021-06-01'))
-    //   .then(() => this.props.fetchCurrentStonk(this.props.match.params.symbol))
-    // }
-    // if (Object.keys(this.props.currentStonk).length === 0 || Object.keys(this.props.currentStonk === "None")) {
-    //   this.props.fetchStonkInfo(this.props.match.params.symbol)
-    //   .then(() => this.props.fetchStonkData(this.props.match.params.symbol, this.state.fromDate, this.state.now))
-    //   .then(() => this.props.fetchStonkNews(this.props.match.params.symbol, yesterday.toISOString().split('T')[0], new Date().toISOString().split('T')[0]))
-    //   .then(() => this.props.fetchCurrentStonk(this.props.match.params.symbol))
-    // }
+ 
   }
   
   
@@ -39,24 +29,21 @@ class Stonk extends React.Component {
     return(
 
       <>
-      <h2>THIS IS THE STONK PAGE FOR REAL</h2>
       <div className="whole-stonk-page">
 
         <div className="header-logged-in-stonk-page">
           <div className="account-header-stonk-page">
             <div className="robinherd-logo">
+              🦧
             </div>
-            {/* <div><SearchBar/></div> */}
+            
             <div className="search-bar">
-              search bar
+              <div><SearchBar/></div>
             </div> 
             <div className="account-links">
-              <div><span>Free Stonks</span></div>
               <div><span>Portfolio</span></div>
-              <div><span>Cash</span></div>
-              <div><span>Messages</span></div>
-              <div><span>Account</span></div>The messages dot goes on the left side of this div
-              <button className="header-button" onClick={logout}>Log Out</button> temporary
+              <div><span>... Account</span></div>
+              <button className="header-button" onClick={logout}>Log Out</button>
             </div>
           </div>
         </div>
@@ -65,18 +52,17 @@ class Stonk extends React.Component {
   
         <div className="stonk-div-logged-in">
           
-          stonk left
           <div className="stonk-div-left">
-            <div>STONK NAME (GME ONLY PLZ)</div>
+            <div><h1><s>Thievery</s> GameStop Corp</h1></div>
             
             <Graph/>
             
             <div className="buying-power">
                 <div>
-                  Buying Power
+                  Box of Your Market Value (of this stock)
                 </div>
                 <div>
-                  $Dynamic Money Amount
+                  Box of Your Average Cost (of this stock)
                 </div>
             </div>
             <div>
@@ -96,34 +82,10 @@ class Stonk extends React.Component {
           </div>
           
           
-          stonk right
           <div className="stonk-div-right">
             <div className="stonk-div-right-inner">
-              <div>Stocks (Header) ...</div>
-              <div>Invest in GOLD FARTHINGS</div>
-              <div className="lists">
-                <div>Lists + (creatable)</div>
-                <div>
-                  <div>
-                    <div>
-                      <div>Emoji</div> 
-                      <div>My First List</div> 
-                      <div>arrow</div>
-                    </div>
-                    <div>
-                      Stock list and divs
-                    </div>
-                  </div>
-                  <div>
-                    <div>
-                      <div>Emoji</div> 
-                      <div>Cryptos to watch</div> 
-                      <div>arrow</div>
-                    </div>
-                    <div>BY AND SAL</div>
-                  </div>
-                </div>
-              </div>
+              {/* <BuySell/> */}
+              BuySellComponent
             </div>
           </div>
         
@@ -139,3 +101,20 @@ class Stonk extends React.Component {
 
 
 export default Stonk;
+
+
+
+
+
+   // if (Object.keys(this.props.currentStonk).length === 0 || Object.keys(this.props.currentStonk === "None")) {
+    //   this.props.fetchStonkInfo('GME')
+    //   .then(() => this.props.fetchStonkData(this.props.match.params.symbol, this.state.fromDate, this.state.now))
+    //   .then(() => this.props.fetchStonkNews('GME', '2021-05-01', '2021-06-01'))
+    //   .then(() => this.props.fetchCurrentStonk(this.props.match.params.symbol))
+    // }
+    // if (Object.keys(this.props.currentStonk).length === 0 || Object.keys(this.props.currentStonk === "None")) {
+    //   this.props.fetchStonkInfo(this.props.match.params.symbol)
+    //   .then(() => this.props.fetchStonkData(this.props.match.params.symbol, this.state.fromDate, this.state.now))
+    //   .then(() => this.props.fetchStonkNews(this.props.match.params.symbol, yesterday.toISOString().split('T')[0], new Date().toISOString().split('T')[0]))
+    //   .then(() => this.props.fetchCurrentStonk(this.props.match.params.symbol))
+    // }
