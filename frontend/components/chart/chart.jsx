@@ -55,7 +55,7 @@ class Chart extends React.Component {
   }
   
   componentDidMount() {
-    StonkAPI.fetchStonkCurrentPrice('GME', window.finnhubAPIKey).then(
+    StonkAPI.fetchStonkCurrentPrice(this.props.stonk, window.finnhubAPIKey).then(
       (response) => this.setState({quoteData: response})).then(
         () => this.setState({loading: false})).then(
           () => this.setState({

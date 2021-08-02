@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import Graph from '../chart/graph'
+import * as StonkAPI from '../../util/stonk_api_util'
 import StonkNews from './stonk_news'
 import StonkBio from './stonk_bio'
 import SearchBar from './search_bar'
@@ -11,21 +12,19 @@ class Stonk extends React.Component {
     this.state = {
     };
   }
-
-    componentDidMount() {
-    const today = new Date();
-    const yesterday = new Date(today);
-    yesterday.setDate(yesterday.getDate() - 5)
-    
- 
+  
+  componentDidMount() {
+    // console.log('props')
+    StonkAPI.fetchStonk('GAME').then((response) => console.log(response, "mounted")) 
   }
   
-  
+
   
   render() {
+    const thisStonk = window.location.href.split("stonks/")[1]
     const { currentUser, logout } = this.props
-    console.log("this.props")
-    console.log(this.props)
+    // console.log("this.props")
+    // console.log(this.props)
     return(
 
       <>
@@ -53,9 +52,9 @@ class Stonk extends React.Component {
         <div className="stonk-div-logged-in">
           
           <div className="stonk-div-left">
-            <div><h1><s>Thievery</s> GameStop Corp</h1></div>
+            <div><h1>Currently static: GameStop Corp</h1></div>
             
-            <Graph/>
+            <Graph stonk={thisStonk}/>
             
             <div className="buying-power">
                 <div>

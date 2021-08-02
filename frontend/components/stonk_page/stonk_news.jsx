@@ -31,6 +31,7 @@ class StonkNews extends React.Component {
       return (
         <div>
           <StonkNewsArticles stonkNews={this.state.stonkNews}/>
+          {/* <StonkNewsArticles/> */}
         </div>
       )
     }

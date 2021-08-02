@@ -16,9 +16,11 @@ class Graph extends React.Component {
   }
 
   componentDidMount() {
-    StonkAPI.fetchStonkIntraday('GME', this.marketOpen, this.marketClose, window.finnhubAPIKey)
+    StonkAPI.fetchStonkIntraday(this.props.stonk, this.marketOpen, this.marketClose, window.finnhubAPIKey)
     .then((response) => this.setState({intradayData: response}))
     .then(() => this.setState({loading: false}))
+    
+    console.log(this.props, "THIS BITCHJ")
   }
 
   componentWillUnmount() {
@@ -26,12 +28,13 @@ class Graph extends React.Component {
   }
 
   render() {
+    const thisStonk = this.props.stonk
     if (this.state.loading) {
       return <Loading/>
     } else {
       return (
         <div>
-          <Chart intradayData={this.state.intradayData}/>
+          <Chart stonk={thisStonk} intradayData={this.state.intradayData}/>
         </div>
       )
     }

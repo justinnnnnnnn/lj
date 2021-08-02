@@ -26,7 +26,7 @@ class StonkNewsArticles extends React.Component {
     }))
   }
   render() {
-    console.log(this.props)
+    // console.log(this.props)
     const newsArticlesArray = [];
     // for (let i = 0; i < 4; i++)
     newsArticlesArray.push({
@@ -42,7 +42,7 @@ class StonkNewsArticles extends React.Component {
       )
     }
 
-    console.log("STONK NEWS OR NOT")
+    // console.log("STONK NEWS OR NOT")
     return (
       <div>
         <div className="top-news">

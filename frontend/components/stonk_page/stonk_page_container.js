@@ -9,8 +9,6 @@ import fetchStonkBio from '../../actions/stonk_actions';
 const mapStateToProps = (state, ownProps) => {
   const stonk = state.entities.stonks[ownProps.match.params.symbol]
   const data = stonk ? stonk.data : undefined
-  console.log(state)
-  console.log('map state to donk')
   const news = stonk ? stonk.news : undefined
   const bio = stonk ? stonk.bio : undefined
   return {
