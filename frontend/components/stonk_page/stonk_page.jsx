@@ -10,17 +10,27 @@ class Stonk extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
+      stonkName: {},
+      name: "STONK"
     };
   }
   
   componentDidMount() {
-    // console.log('props')
-    StonkAPI.fetchStonk('GAME').then((response) => console.log(response, "mounted")) 
+    console.log('props')
+    // StonkAPI.fetchStonk('GAME').then((response) => console.log(response, "mounted"))
+    StonkAPI.fetchStonkBio(window.location.href.split("stonks/")[1], window.finnhubAPIKey).then(
+      (response) => this.setState({stonkName: response})).then(
+        () => this.setState({loading: false})).then(
+          () => this.setState({
+      name: this.state.stonkName.name
+    }))
   }
   
 
   
   render() {
+    // const stonkNameTitle = window.location.href.split("stonks/")[1]
+    // const companyName = { name: this.props.stonkName.name }
     const thisStonk = window.location.href.split("stonks/")[1]
     const { currentUser, logout } = this.props
     // console.log("this.props")
@@ -52,7 +62,7 @@ class Stonk extends React.Component {
         <div className="stonk-div-logged-in">
           
           <div className="stonk-div-left">
-            <div><h1>Currently static: GameStop Corp</h1></div>
+            <div><h1>{this.state.name}</h1></div>
             
             <Graph stonk={thisStonk}/>
             
@@ -75,7 +85,7 @@ class Stonk extends React.Component {
               <h1>News</h1>
             </div>
             <div>
-              <StonkNews/>
+              <StonkNews stonk={thisStonk}/>
             </div>
             <div>For more infortation, see our <a>Privacy Policy</a></div>
           </div>

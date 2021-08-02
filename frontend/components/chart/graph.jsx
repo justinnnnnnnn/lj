@@ -20,7 +20,7 @@ class Graph extends React.Component {
     .then((response) => this.setState({intradayData: response}))
     .then(() => this.setState({loading: false}))
     
-    console.log(this.props, "THIS BITCHJ")
+    // console.log(this.props, "THIS BITCHJ")
   }
 
   componentWillUnmount() {
