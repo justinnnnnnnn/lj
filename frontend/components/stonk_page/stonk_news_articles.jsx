@@ -15,7 +15,7 @@ class StonkNewsArticles extends React.Component {
   }
 
   componentDidMount() {
-    StonkAPI.fetchStonkNews('GME', window.finnhubAPIKey).then(
+    StonkAPI.fetchStonkNews(this.props.stonk, window.finnhubAPIKey).then(
       (response) => this.setState({stonkNews: response})).then(
         () => this.setState({loading: false})).then(
           () => this.setState({

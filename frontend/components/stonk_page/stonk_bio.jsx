@@ -13,7 +13,7 @@ class StonkBio extends React.Component {
   }
 
   componentDidMount() {
-      StonkAPI.fetchStonkBio('GME', window.finnhubAPIKey)
+      StonkAPI.fetchStonkBio(this.props.stonk, window.finnhubAPIKey)
       .then((response) => this.setState({stonkBio: response}))
       .then(() => this.setState({loading: false}))
     
@@ -24,13 +24,13 @@ class StonkBio extends React.Component {
   }
   
   render() {
-
+    const thisStonk = this.props.stonk
     if (this.state.loading) {
       return <Loading/>
     } else {
       return (
         <div>
-          <StonkBioAbout stonkBio={this.state.stonkBio}/>
+          <StonkBioAbout stonk={thisStonk} stonkBio={this.state.stonkBio}/>
         </div>
       )
     }

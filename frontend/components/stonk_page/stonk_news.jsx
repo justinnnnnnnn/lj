@@ -13,7 +13,7 @@ class StonkNews extends React.Component {
   }
 
   componentDidMount() {
-      StonkAPI.fetchStonkNews('GME', '2021-05-01', '2021-06-01', window.finnhubAPIKey)
+      StonkAPI.fetchStonkNews(this.props.stonk, '2021-07-01', '2021-08-01', window.finnhubAPIKey)
       .then((response) => this.setState({stonkNews: response}))
       .then(() => this.setState({loading: false}))
     
@@ -24,13 +24,14 @@ class StonkNews extends React.Component {
   }
   
   render() {
+    const thisStonk = this.props.stonk
 
     if (this.state.loading) {
       return <Loading/>
     } else {
       return (
         <div>
-          <StonkNewsArticles stonkNews={this.state.stonkNews}/>
+          <StonkNewsArticles stonk={thisStonk} stonkNews={this.state.stonkNews}/>
           {/* <StonkNewsArticles/> */}
         </div>
       )

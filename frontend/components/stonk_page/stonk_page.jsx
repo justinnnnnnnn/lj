@@ -78,7 +78,7 @@ class Stonk extends React.Component {
               <h1>About</h1>
             </div>
             <div>
-              <StonkBio/>
+              <StonkBio stonk={thisStonk}/>
             </div>
 
             <div className="news">

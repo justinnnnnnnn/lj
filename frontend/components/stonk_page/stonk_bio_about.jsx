@@ -12,7 +12,7 @@ class StonkBioAbout extends React.Component {
   }
 
   componentDidMount() {
-    StonkAPI.fetchStonkBio('GME', window.finnhubAPIKey).then(
+    StonkAPI.fetchStonkBio(this.props.stonk, window.finnhubAPIKey).then(
       (response) => this.setState({stonkBio: response})).then(
         () => this.setState({loading: false})).then(
           () => this.setState({
