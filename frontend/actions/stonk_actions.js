@@ -54,7 +54,7 @@ export const fetchStonkNews = (symbol, fromDate, toDate) => (dispatch) =>
     dispatch(receiveStonkNews(stonk, symbol))
   );
 
-  export const fetchStonkBio = (symbol) => (dispatch) =>
+export const fetchStonkBio = (symbol) => (dispatch) =>
   StonkAPI.fetchStonkBio(symbol).then((stonk) =>
     dispatch(receiveStonkBio(stonk, symbol))
   );

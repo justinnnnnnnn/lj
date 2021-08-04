@@ -26,11 +26,6 @@ const mapStateToProps = (state, ownProps) => {
 };
 
 const mapDispatchToProps = (dispatch) => ({
-  // processForm: () =>
-  //   dispatch(login({ username: "stonkmaster420", password: "69" })),
-
-  // logout: () => dispatch(logout()),
-  // dispatch
   fetchStonk: (symbol) => dispatch(fetchStonk(symbol)),
   fetchStonkBio: (symbol) => dispatch(fetchStonkBio(symbol)),
   fetchStonkNews: (symbol, fromDate, toDate ) => dispatch(fetchStonkNews(symbol, fromDate, toDate))

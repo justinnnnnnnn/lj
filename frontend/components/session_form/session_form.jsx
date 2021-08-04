@@ -49,7 +49,7 @@ class SessionForm extends React.Component {
           <img aria-hidden="true" src="https://cdn.robinhood.com/assets/generated_assets/1e23d6b90f0d905b425ea289de345ab1.jpg" srcSet="https://cdn.robinhood.com/assets/generated_assets/1e23d6b90f0d905b425ea289de345ab1.jpg 720w, https://cdn.robinhood.com/assets/generated_assets/632fcb3e7ed928b2a960f3e003d10b44.jpg 1440w" height="100%"/> 
         </div>
         
-        <div className="login-form">          
+        <div className="login-form">
           <form onSubmit={this.handleSubmit} className="login-form-box">
             
             <div><header><h2 align-self="left">Welcome to Robinherd</h2></header></div>

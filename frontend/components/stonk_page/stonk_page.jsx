@@ -4,7 +4,7 @@ import Graph from '../chart/graph'
 import * as StonkAPI from '../../util/stonk_api_util'
 import StonkNews from './stonk_news'
 import StonkBio from './stonk_bio'
-import SearchBar from './search_bar'
+import SearchBar from '../search/search_bar'
 
 class Stonk extends React.Component {
   constructor(props) {
