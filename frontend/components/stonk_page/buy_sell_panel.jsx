@@ -13,18 +13,20 @@ class BuySellPanel extends React.Component {
   }
 
   componentDidMount() {
-    StonkAPI.fetchStonkCurrentPrice('GME', window.finnhubAPIKey).then(
+    StonkAPI.fetchStonkCurrentPrice(this.props.stonk, window.finnhubAPIKey).then(
       (response) => this.setState({price: response})).then(
         () => this.setState({loading: false})).then(
           () => this.setState({
       currentPrice: this.state.price.c
-    }))
+    }));
+    console.log('mountymount:', this.state.price, this.state.currentPrice)
   }
   render() {
+    console.log('quotes:', this.state.price, this.state.currentPrice)
     let buy = () => {
       return (
         <div>
-          {`Buy 69 shares for $${this.currentPrice}`}
+          {`Buy 69 shares for $${this.state.currentPrice}`}
         </div>
       )
     }
@@ -33,6 +35,8 @@ class BuySellPanel extends React.Component {
       <div>
         <div>
           {buy()}
+          
+           {/* ${this.state.currentPrice} */}
         </div>
       </div>
     )

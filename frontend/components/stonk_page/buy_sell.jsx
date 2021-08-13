@@ -1,6 +1,6 @@
 import React from 'react';
 import * as StonkAPI from '../../util/stonk_api_util'
-import BuySellPanel from '././buy_sell_panel';
+import BuySellPanel from './buy_sell_panel';
 import Loading from '../loading/loading'
 
 class BuySell extends React.Component {
@@ -9,13 +9,15 @@ class BuySell extends React.Component {
     this.state = {
       loading: true,
       buySell: {},
+      stonkQuote: {},
     }
   }
 
   componentDidMount() {
-      StonkAPI.fetchStonkCurrentPrice('GME', window.finnhubAPIKey)
-      .then((response) => this.setState({stonk: response}))
+      StonkAPI.fetchStonkCurrentPrice(this.props.stonk, window.finnhubAPIKey)
+      .then((response) => this.setState({stonkQuote: response}))
       .then(() => this.setState({loading: false}))
+      // this.setState({loading: false}))
     
     }
   
@@ -24,14 +26,14 @@ class BuySell extends React.Component {
   }
   
   render() {
-
+    const thisStonk = this.props.stonk
     if (this.state.loading) {
       return <Loading/>
     } else {
       return (
         <div>
           {/* <BuySellPanel stonk={this.state.stonk}/> */}
-          <BuySellPanel/>
+          <BuySellPanel stonk={thisStonk} intradayData={this.state.stonkQuote}/>
         </div>
       )
     }

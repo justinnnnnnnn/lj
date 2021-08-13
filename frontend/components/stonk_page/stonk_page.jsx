@@ -17,7 +17,7 @@ class Stonk extends React.Component {
   }
   
   componentDidMount() {
-    console.log('props')
+    // console.log('props')
     // StonkAPI.fetchStonk('GAME').then((response) => console.log(response, "mounted"))
     StonkAPI.fetchStonkBio(window.location.href.split("stonks/")[1], window.finnhubAPIKey).then(
       (response) => this.setState({stonkName: response})).then(
@@ -94,7 +94,7 @@ class Stonk extends React.Component {
           
           <div className="stonk-div-right">
             <div className="stonk-div-right-inner">
-              <BuySell/>
+              <BuySell stonk={thisStonk}/>
               BuySellComponent
             </div>
           </div>
