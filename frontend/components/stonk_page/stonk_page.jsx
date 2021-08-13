@@ -32,7 +32,7 @@ class Stonk extends React.Component {
   render() {
     // const stonkNameTitle = window.location.href.split("stonks/")[1]
     // const companyName = { name: this.props.stonkName.name }
-    const thisStonk = window.location.href.split("stonks/")[1]
+    const thisStonk = window.location.href.split("stonks/")[1].toUpperCase()
     const { currentUser, logout } = this.props
     // console.log("this.props")
     // console.log(this.props)

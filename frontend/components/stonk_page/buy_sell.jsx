@@ -8,7 +8,6 @@ class BuySell extends React.Component {
     super(props);
     this.state = {
       loading: true,
-      buySell: {},
       stonkQuote: {},
     }
   }
@@ -33,7 +32,7 @@ class BuySell extends React.Component {
       return (
         <div>
           {/* <BuySellPanel stonk={this.state.stonk}/> */}
-          <BuySellPanel stonk={thisStonk} intradayData={this.state.stonkQuote}/>
+          <BuySellPanel stonk={thisStonk} stonkQuote={this.state.stonkQuote}/>
         </div>
       )
     }
