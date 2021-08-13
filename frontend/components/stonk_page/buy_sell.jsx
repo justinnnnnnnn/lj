@@ -13,7 +13,7 @@ class BuySell extends React.Component {
   }
 
   componentDidMount() {
-      StonkAPI.fetchStonk('GME', window.finnhubAPIKey)
+      StonkAPI.fetchStonkCurrentPrice('GME', window.finnhubAPIKey)
       .then((response) => this.setState({stonk: response}))
       .then(() => this.setState({loading: false}))
     
@@ -30,7 +30,8 @@ class BuySell extends React.Component {
     } else {
       return (
         <div>
-          <BuySellPanel stonk={this.state.stonk}/>
+          {/* <BuySellPanel stonk={this.state.stonk}/> */}
+          <BuySellPanel/>
         </div>
       )
     }

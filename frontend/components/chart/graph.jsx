@@ -19,8 +19,6 @@ class Graph extends React.Component {
     StonkAPI.fetchStonkIntraday(this.props.stonk, this.marketOpen, this.marketClose, window.finnhubAPIKey)
     .then((response) => this.setState({intradayData: response}))
     .then(() => this.setState({loading: false}))
-    
-    // console.log(this.props, "THIS BITCHJ")
   }
 
   componentWillUnmount() {

@@ -793,8 +793,8 @@ const searchList =
     ZS: {"ticker": "ZS", "name": "Zscaler"},
     ZTO: {"ticker": "ZTO", "name": "ZTO Express"},
     ZTS: {"ticker": "ZTS", "name": "Zoetis"}
-}
-export default data;
+};
+export default searchList;
 
 
 

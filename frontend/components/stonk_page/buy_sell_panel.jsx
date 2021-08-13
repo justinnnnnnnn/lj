@@ -6,9 +6,10 @@ class BuySellPanel extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      price: {},
       currentPrice: 0
     }
-
+    // this.currentPrice = this.currentPrice.bind(this);
   }
 
   componentDidMount() {
@@ -23,7 +24,7 @@ class BuySellPanel extends React.Component {
     let buy = () => {
       return (
         <div>
-          {`Buy 69 shares for ${currentPrice * 69}`}
+          {`Buy 69 shares for $${this.currentPrice}`}
         </div>
       )
     }

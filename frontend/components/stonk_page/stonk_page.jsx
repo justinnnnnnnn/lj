@@ -5,6 +5,7 @@ import * as StonkAPI from '../../util/stonk_api_util'
 import StonkNews from './stonk_news'
 import StonkBio from './stonk_bio'
 import SearchBar from '../search/search_bar'
+import BuySell from './buy_sell'
 
 class Stonk extends React.Component {
   constructor(props) {
@@ -93,7 +94,7 @@ class Stonk extends React.Component {
           
           <div className="stonk-div-right">
             <div className="stonk-div-right-inner">
-              {/* <BuySell/> */}
+              <BuySell/>
               BuySellComponent
             </div>
           </div>
