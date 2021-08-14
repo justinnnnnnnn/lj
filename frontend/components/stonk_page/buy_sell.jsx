@@ -31,7 +31,6 @@ class BuySell extends React.Component {
     } else {
       return (
         <div>
-          {/* <BuySellPanel stonk={this.state.stonk}/> */}
           <BuySellPanel stonk={thisStonk} stonkQuote={this.state.stonkQuote}/>
         </div>
       )

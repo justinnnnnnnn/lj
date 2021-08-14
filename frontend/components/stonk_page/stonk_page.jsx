@@ -95,7 +95,6 @@ class Stonk extends React.Component {
           <div className="stonk-div-right">
             <div className="stonk-div-right-inner">
               <BuySell stonk={thisStonk}/>
-              BuySellComponent
             </div>
           </div>
         

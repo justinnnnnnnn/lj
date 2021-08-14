@@ -7,25 +7,29 @@ class BuySellPanel extends React.Component {
     super(props);
     this.state = {
       price: this.props.stonkQuote,
-      currentPrice: this.props.stonkQuote.c
+      currentPrice: this.props.stonkQuote.c,
+      input: 0
     }
   }
 
-  // componentDidMount() {
-  //   StonkAPI.fetchStonkCurrentPrice("f", window.finnhubAPIKey).then(
-  //     (response) => this.setState({price: response})).then(
-  //       () => this.setState({loading: false})).then(
-  //         () => this.setState({
-  //     currentPrice: this.state.price.c
-  //   }));
-  //   console.log('mountymount:', this.state.price, this.state.currentPrice)
-  // }
+  setInput = e => this.setState({input: Number(e.target.value)})
+  
   render() {
-    console.log('quotes:', this.state.price, this.state.currentPrice)
+    const stockPrice = this.state.currentPrice;
+    console.log(stockPrice)
+   
+
+
+    console.log('quotes:', this.state.price, this.state.currentPrice);
     let buy = () => {
       return (
         <div>
-          {`Buy 69 shares for $${this.state.currentPrice + 1 }`}
+          <form>
+            Buy {this.props.stonk} <br/>
+            Shares: <input type="number" name="input" value={this.state.input} onChange={this.setInput} placeholder={0} /> <br/>
+            Market Price {`$${stockPrice.toLocaleString('en-US',  {minimumFractionDigits: 2}) }`}<br/>
+            Estimated Cost {`$${(stockPrice * this.state.input).toLocaleString('en-US',  {minimumFractionDigits: 2}) }`}
+          </form>
         </div>
       )
     }
@@ -34,8 +38,6 @@ class BuySellPanel extends React.Component {
       <div>
         <div>
           {buy()}
-          
-           {/* ${this.state.currentPrice} */}
         </div>
       </div>
     )
