@@ -10,7 +10,8 @@ class BuySellPanel extends React.Component {
       currentPrice: this.props.stonkQuote.c,
       input: 0,
       sharesOwned: 0,
-      sharesValue: 0
+      sharesValue: 0,
+      buyingPower: 50000
     }
 
     // this.handleChange = this.handleChange.bind(this);
@@ -33,11 +34,15 @@ class BuySellPanel extends React.Component {
     console.log("wtf is e?:", e.target.value)
     this.setState(
       {sharesOwned: (Number(this.state.sharesOwned) + Number(this.state.input))}
+    );
+    this.setState(
+      {buyingPower: (Number(this.state.buyingPower) - Number(this.state.input * this.state.currentPrice))}
     )
     console.log("shares owned on submit:", this.state.sharesOwned)
   }
 
   render() {
+    console.log(this.props);
     const stockPrice = this.state.currentPrice;
     console.log(stockPrice)
 
@@ -57,7 +62,6 @@ class BuySellPanel extends React.Component {
           </div>
           <div>
             <br /><br />
-            Shares Owned: {this.state.sharesOwned}
           </div>
         </div>
       )
@@ -67,6 +71,8 @@ class BuySellPanel extends React.Component {
       <div>
         <div>
           {buy()}
+          Shares Owned: {this.state.sharesOwned} <br/><br />
+          Buying Power: ${this.state.buyingPower.toLocaleString('en-US',  {minimumFractionDigits: 2})}
         </div>
       </div>
     )
