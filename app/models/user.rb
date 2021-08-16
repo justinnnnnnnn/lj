@@ -20,8 +20,12 @@ class User < ApplicationRecord
   attr_reader :password
   has_many :stonks
 
-  def set_balance=(balance)
-    balance = 0 if balance == nil
+  # def set_balance=(balance)
+  #   balance = 0 if balance == nil
+  # end
+  def change_buying_power=(val)
+    self.account_balance ||= 10000
+    self.account_balance = self.account_balance - val
   end
 
   def self.find_by_credentials(user, password)

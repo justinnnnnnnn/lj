@@ -2,7 +2,22 @@
 // const apihash = window.finnhubAPIKey;
 const apihash = 'c1skd2iad3i9o8uantdg'
 console.log(window)
+// export const fetchStonk = (symbol) => {
+//   return $.ajax({
+//     method: 'GET',
+//     url: `https://finnhub.io/api/v1/quote?symbol=${symbol}&token=${APIhash}`
+//   })
+// }
 
+// export const fetchStonks = () =>
+//   $.ajax({
+//     url: `https://finnhub.io/api/v1/stock/symbol?exchange=US&mic=XNAS&securityType=Common%5Stock&token=${APIhash}`
+//   });
+
+// export const fetchStonk = (stockSymbol) =>
+//   $.ajax({
+//     url: `/api/stocks/${stockSymbol}`,
+//   });
 export const fetchStonk = (symbol) =>
   $.ajax({
     url: `https://finnhub.io/api/v1/search?q=${symbol}&token=${apihash}`,
