@@ -6,25 +6,26 @@ import StonkNews from './stonk_news'
 import StonkBio from './stonk_bio'
 import SearchBar from '../search/search_bar'
 import BuySell from './buy_sell'
+import * as UserAPI from '../../util/user_api_util'
 
 class Stonk extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
       stonkName: {},
-      name: "STONK"
+      name: "STONK",
+      buyingPower: this.props.currentUser.buyingPower
     };
   }
   
   componentDidMount() {
-    // console.log('props')
-    // StonkAPI.fetchStonk('GAME').then((response) => console.log(response, "mounted"))
     StonkAPI.fetchStonkBio(window.location.href.split("stonks/")[1], window.finnhubAPIKey).then(
       (response) => this.setState({stonkName: response})).then(
         () => this.setState({loading: false})).then(
           () => this.setState({
       name: this.state.stonkName.name
-    }))
+    }));
+    console.log("after mount", this.state)
   }
   
 
@@ -35,7 +36,7 @@ class Stonk extends React.Component {
     const thisStonk = window.location.href.split("stonks/")[1].toUpperCase()
     const { currentUser, logout } = this.props
     // console.log("this.props")
-    // console.log(this.props)
+    console.log("this.state", this.state)
     return(
 
       <>
@@ -95,6 +96,11 @@ class Stonk extends React.Component {
           <div className="stonk-div-right">
             <div className="stonk-div-right-inner">
               <BuySell stonk={thisStonk}/>
+
+              <br/>
+              <br/>
+              <br/>
+              Real Backend Buying Power: {this.state.buyingPower}
             </div>
           </div>
         

@@ -9,16 +9,16 @@
 User.delete_all
 Stonk.delete_all
 
-User.create([{ username: 'stonkmaster420', password: '69', account_balance: 12,000.10}])
+User.create([{ username: 'stonkmaster420', password: '69', buying_power: 12000.10}])
 
-get_stonks = RestClient.get "https://finnhub.io/api/v1/stock/symbol?exchange=US&securityType=Common%20Stock&token=#{Rails.application.credentials.finnhub[:api_key]}"
+# get_stonks = RestClient.get "https://finnhub.io/api/v1/stock/symbol?exchange=US&securityType=Common%20Stock&token=#{Rails.application.credentials.finnhub[:api_key]}"
 
-all_stonks = JSON.parse(get_stonks) 
+# all_stonks = JSON.parse(get_stonks) 
 
 
-all_stonks.each do |stocks|
-  Stonk.create(
-    symbol: stocks["symbol"],
-    name: stocks["description"]
-  )
-end
+# all_stonks.each do |stocks|
+#   Stonk.create(
+#     symbol: stocks["symbol"],
+#     name: stocks["description"]
+#   )
+# end
