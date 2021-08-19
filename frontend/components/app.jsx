@@ -27,7 +27,7 @@ const App = () => (
       <AuthRoute exact path="/signup" component={SignupFormContainer} />
       <Route exact path="/potato" component={Graph}/>
       <Route exact path="/news" component={StonkNews}/>
-      <Route path="/stonks/:symbol" component={StonkContainer}/>
+      <Route exact path="/stonks/:symbol" component={StonkContainer}/>
       <Route path="/" component={GreetingContainer}/>
     </Switch>
   </div>

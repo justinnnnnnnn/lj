@@ -18,25 +18,37 @@ class Stonk extends React.Component {
     };
   }
   
+  // componentDidMount() {
+  //   StonkAPI.fetchStonkBio(window.location.href.split("stonks/")[1], window.finnhubAPIKey)
+  //   .then((response) => {
+  //     console.log("hello", response)
+  //     this.setState({stonkName: response})
+  //   }).then(
+  //       () => this.setState({loading: false})).then(
+  //         () => this.setState({
+  //     name: this.state.stonkName.name
+  //   }));
+  //   console.log("after mount", this.state)
+  // }
+
   componentDidMount() {
-    StonkAPI.fetchStonkBio(window.location.href.split("stonks/")[1], window.finnhubAPIKey).then(
-      (response) => this.setState({stonkName: response})).then(
-        () => this.setState({loading: false})).then(
-          () => this.setState({
-      name: this.state.stonkName.name
-    }));
-    console.log("after mount", this.state)
+    
   }
   
-
-  
   render() {
+    // const test;
     // const stonkNameTitle = window.location.href.split("stonks/")[1]
     // const companyName = { name: this.props.stonkName.name }
     const thisStonk = window.location.href.split("stonks/")[1].toUpperCase()
+    // const renderThis = StonkAPI.fetchStonkBio(window.location.href.split("stonks/")[1], window.finnhubAPIKey)
+
+    // console.log("THE THING WE NEED", renderThis.then((response) => {
+    //   console.log(response.responseJSON)  
+    // }))
+
     const { currentUser, logout } = this.props
     // console.log("this.props")
-    console.log("this.state", this.state)
+    // console.log("this.state", this.state)
     return(
 
       <>
@@ -45,7 +57,9 @@ class Stonk extends React.Component {
         <div className="header-logged-in-stonk-page">
           <div className="account-header-stonk-page">
             <div className="robinherd-logo">
-              🦧
+              
+              🦧<br/>
+            
             </div>
             
             <div className="search-bar">

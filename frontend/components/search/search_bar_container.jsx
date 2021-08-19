@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
 import { login } from '../../actions/session_actions';
 import SearchBar from './search_bar';
 
@@ -18,4 +18,4 @@ const mapDispatchToProps = dispatch => {
   };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(SearchInput);
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(SearchInput));
