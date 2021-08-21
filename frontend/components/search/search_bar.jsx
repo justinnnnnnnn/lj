@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from 'react-router-dom'
+import { Link, withRouter } from 'react-router-dom'
 
 class SearchBar extends React.Component {
   state = {
@@ -10,7 +10,7 @@ class SearchBar extends React.Component {
     this.state = {
       input: ''
     };
-
+    this.buttonPress = this.buttonPress.bind(this)
     // this.goStonk = this.goStonk.bind(this)
     // this.handleSubmit = this.handleSubmit.bind(this);
   }
@@ -20,7 +20,9 @@ class SearchBar extends React.Component {
   //   const user = Object.assign({}, this.state);
   //   this.props.processInput(user);
   // }
-  
+  buttonPress = (e) => {
+    this.props.history.push(`/stonks/${this.state.input}`)
+  }
   // save code in state on change
   setInput = e => this.setState({input: e.target.value})
   
@@ -44,6 +46,7 @@ class SearchBar extends React.Component {
           {/* <div>duped input: {this.state.input}</div> */}
           <input type="text" name="input" value={this.state.input} onChange={this.setInput} placeholder="ticker name here" />
           <Link to={`/stonks/${this.state.input}`}>The Link: {`${this.state.input}`}</Link>
+          <button onClick={this.buttonPress}>button</button>
           {/* <Link to={`/stonks/${this.state.input}`} /> */}
           {/* <input type="button" onClick={this.go} /> */}
         </form>
@@ -74,4 +77,4 @@ class SearchBar extends React.Component {
 //   );
 // };
 
-export default SearchBar;
+export default withRouter(SearchBar);
