@@ -12,12 +12,25 @@ class StonkBio extends React.Component {
     }
   }
 
+  // componentDidUpdate() {
+  //   if (this.props.stonk.symbol !== this.props.thisStonk) {
+  //     StonkAPI.fetchStonkBio(this.props.stonk, window.finnhubAPIKey)
+  //     .then((response) => this.setState({stonkBio: response}))
+  //     .then(() => this.setState({loading: false})) }
+  // }
   componentDidMount() {
-      StonkAPI.fetchStonkBio(this.props.stonk, window.finnhubAPIKey)
+    StonkAPI.fetchStonkBio(this.props.stonk, window.finnhubAPIKey)
       .then((response) => this.setState({stonkBio: response}))
       .then(() => this.setState({loading: false}))
-    
-    }
+  }
+
+  componentDidUpdate(prevProps) {
+    // debugger;
+  if (prevProps.stonk !== this.props.stonk) {
+    StonkAPI.fetchStonkBio(this.props.stonk, window.finnhubAPIKey)
+    .then((response) => this.setState({stonkBio: response}))
+    .then(() => this.setState({loading: false})) }
+  }
   
   componentWillUnmount() {
     this.setState({loading: true})

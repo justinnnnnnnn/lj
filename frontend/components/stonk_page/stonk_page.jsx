@@ -31,21 +31,36 @@ class Stonk extends React.Component {
 
   componentDidMount() {
     // console.log('props')
-    this.props.fetchStonkBio('GME')
+    this.props.fetchStonkBio(window.location.href.split("stonks/")[1], window.finnhubAPIKey);
+    // debugger
     // StonkAPI.fetchStonk('GME').then((response) => console.log(response, "mounted"))
     // StonkAPI.fetchStonkBio(window.location.href.split("stonks/")[1], window.finnhubAPIKey).then(
-    //   (response) => this.setState({stonkName: response})).then(
-    //     () => this.setState({loading: false})).then(
-    //       () => this.setState({
-    //   name: this.state.stonkName.name
-    // }))
-  }
+      //   (response) => this.setState({stonkName: response})).then(
+        //     () => this.setState({loading: false})).then(
+          //       () => this.setState({
+            //   name: this.state.stonkName.name
+            // }))
+          }
+          
+  componentDidUpdate(prevProps) {
+    if (this.props.symbol !== prevProps.symbol) {
+      this.props.fetchStonkBio(window.location.href.split("stonks/")[1], window.finnhubAPIKey);
+      console.log("this.props in the update", this.props)
+    }
+  };
+
   
   render() {
+    const { stonks } = this.props
+    const stonksArr = Object.keys(stonks)
+    console.log("stonks", stonksArr )
+    console.log("this.props", this.props)
     // const test;
     // const stonkNameTitle = window.location.href.split("stonks/")[1]
     // const companyName = { name: this.props.stonkName.name }
     const thisStonk = window.location.href.split("stonks/")[1].toUpperCase()
+    // debugger;
+    console.log("thisStonk var", thisStonk)
     // const renderThis = StonkAPI.fetchStonkBio(window.location.href.split("stonks/")[1], window.finnhubAPIKey)
 
     // console.log("THE THING WE NEED", renderThis.then((response) => {

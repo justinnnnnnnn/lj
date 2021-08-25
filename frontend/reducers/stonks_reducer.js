@@ -12,13 +12,17 @@ const stonksReducer = (state = {}, action) => {
   switch (action.type) {
     case RECEIVE_STONK:
       return Object.assign({}, state, { [action.symbol]: action.stonk });
+    // nextState[action.symbol] = action.symbol;
     case RECEIVE_STONK_DATA:
+      nextState[action.symbol] ||= {}
       nextState[action.symbol].data = action.data;
       return nextState;
     case RECEIVE_STONK_NEWS:
+      nextState[action.symbol] ||= {}
       nextState[action.symbol].news = action.news;
       return nextState;
     case RECEIVE_STONK_BIO:
+      nextState[action.symbol] ||= {}
       nextState[action.symbol].bio = action.bio;
       return nextState;
     default:

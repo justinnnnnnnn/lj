@@ -11,13 +11,14 @@ class StonkBioAbout extends React.Component {
 
   }
 
-  componentDidMount() {
-    StonkAPI.fetchStonkBio(this.props.stonk, window.finnhubAPIKey).then(
+  componentDidUpdate() {
+    if (this.props.stonk.symbol !== this.props.thisStonk) {
+      StonkAPI.fetchStonkBio(this.props.stonk, window.finnhubAPIKey).then(
       (response) => this.setState({stonkBio: response})).then(
         () => this.setState({loading: false})).then(
           () => this.setState({
       name: this.state.stonkBio.name
-    }))
+    }))}
   }
   render() {
     const companyProfile = { name: this.props.stonkBio.name }

@@ -14,10 +14,10 @@ export const fetchStonk = (symbol) =>
 //     url: "/api/stocks",
 //   });
 
-export const fetchAllStocks = () =>
-  $.ajax({
-    url: `https://finnhub.io/api/v1/stock/symbol?exchange=US&mic=XNAS&securityType=Common%20Stock&token=${apihash}`,
-  });
+// export const fetchAllStocks = () =>
+//   $.ajax({
+//     url: `https://finnhub.io/api/v1/stock/symbol?exchange=US&mic=XNAS&securityType=Common%20Stock&token=${apihash}`,
+//   });
 
 export const fetchStonkBio = (symbol) =>
   $.ajax({
