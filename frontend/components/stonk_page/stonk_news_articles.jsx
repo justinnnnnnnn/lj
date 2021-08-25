@@ -15,7 +15,7 @@ class StonkNewsArticles extends React.Component {
   }
 
   componentDidMount() {
-    StonkAPI.fetchStonkNews(this.props.stonk, window.finnhubAPIKey).then(
+    StonkAPI.fetchStonkNews(this.props.stonk, '2021-07-01', '2021-08-01', window.finnhubAPIKey).then(
       (response) => this.setState({stonkNews: response})).then(
         () => this.setState({loading: false})).then(
           () => this.setState({
@@ -25,6 +25,15 @@ class StonkNewsArticles extends React.Component {
       summary: this.state.stonkNews.summary,
     }))
   }
+
+  componentDidUpdate(prevProps) {
+    // debugger;
+  if (prevProps.stonk !== this.props.stonk) {
+    StonkAPI.fetchStonkNews(this.props.stonk, window.finnhubAPIKey)
+    .then((response) => this.setState({stonkNews: response}))
+    .then(() => this.setState({loading: false})) }
+  }
+
   render() {
     // console.log(this.props)
     const newsArticlesArray = [];

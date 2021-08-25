@@ -21,6 +21,15 @@ class Graph extends React.Component {
     .then(() => this.setState({loading: false}))
   }
 
+  componentDidUpdate(prevProps) {
+    // debugger;
+    if (prevProps.stonk !== this.props.stonk) {
+      StonkAPI.fetchStonkIntraday(this.props.stonk, this.marketOpen, this.marketClose, window.finnhubAPIKey)
+      .then((response) => this.setState({intradayData: response}))
+      .then(() => this.setState({loading: false}))
+    }
+  }
+
   componentWillUnmount() {
     this.setState({loading: true})
   }

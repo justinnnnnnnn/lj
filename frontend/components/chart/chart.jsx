@@ -66,6 +66,20 @@ class Chart extends React.Component {
     console.log("chart quote data", this.state.quoteData)
   }
 
+  componentDidUpdate(prevProps) {
+    // debugger;
+    if (prevProps.stonk !== this.props.stonk) {
+      StonkAPI.fetchStonkCurrentPrice(this.props.stonk, window.finnhubAPIKey).then(
+        (response) => this.setState({quoteData: response})).then(
+          () => this.setState({loading: false})).then(
+            () => this.setState({
+        bigPrice: this.state.quoteData.c, 
+        currentPrice: this.state.quoteData.c, 
+        previousClose: this.state.quoteData.pc
+      }));
+    }
+  }
+
   render() {    
     const realData = [];
     for (let i = 0; i < this.props.intradayData.t.length; i++)
