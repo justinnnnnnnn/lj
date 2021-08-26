@@ -12,7 +12,8 @@ class Stonk extends React.Component {
     super(props)
     this.state = {
       stonkName: {},
-      name: "STONK"
+      name: "STONK",
+      
     };
   }
   
@@ -77,7 +78,7 @@ class Stonk extends React.Component {
         <div className="stonk-div-logged-in">
           
           <div className="stonk-div-left">
-            <div><h1>{this.state.name}</h1></div> {/* WAKA FLAKA FLAME */}
+            <div><h1>{this.state.stonkName.name}</h1></div> {/* MAKE THIS ANOTHER CHILD COMPONENT ROFLMAO */}
             
             <Graph stonk={thisStonk}/>
             
@@ -122,22 +123,4 @@ class Stonk extends React.Component {
 
 };
 
-
 export default Stonk;
-
-
-
-
-
-   // if (Object.keys(this.props.currentStonk).length === 0 || Object.keys(this.props.currentStonk === "None")) {
-    //   this.props.fetchStonkInfo('GME')
-    //   .then(() => this.props.fetchStonkData(this.props.match.params.symbol, this.state.fromDate, this.state.now))
-    //   .then(() => this.props.fetchStonkNews('GME', '2021-05-01', '2021-06-01'))
-    //   .then(() => this.props.fetchCurrentStonk(this.props.match.params.symbol))
-    // }
-    // if (Object.keys(this.props.currentStonk).length === 0 || Object.keys(this.props.currentStonk === "None")) {
-    //   this.props.fetchStonkInfo(this.props.match.params.symbol)
-    //   .then(() => this.props.fetchStonkData(this.props.match.params.symbol, this.state.fromDate, this.state.now))
-    //   .then(() => this.props.fetchStonkNews(this.props.match.params.symbol, yesterday.toISOString().split('T')[0], new Date().toISOString().split('T')[0]))
-    //   .then(() => this.props.fetchCurrentStonk(this.props.match.params.symbol))
-    // }

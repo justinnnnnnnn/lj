@@ -13,4 +13,13 @@ class Api::SessionsController < ApplicationController
         logout
         render json: { message: 'logged out'}
     end 
+    # def destroy
+    #     @user = current_user
+    #     if current_user
+    #       logout
+    #       render '/api/users/show'
+    #     else
+    #       render json: ['Unable to log out']
+    #     end
+    # end
 end

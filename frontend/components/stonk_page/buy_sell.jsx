@@ -19,6 +19,15 @@ class BuySell extends React.Component {
       // this.setState({loading: false}))
     
     }
+
+    componentDidUpdate(prevProps) {
+      if (prevProps.stonk !== this.props.stonk) {
+        StonkAPI.fetchStonkCurrentPrice(this.props.stonk, window.finnhubAPIKey)
+        .then((response) => this.setState({stonkQuote: response}))
+        .then(() => this.setState({loading: false}))
+        // this.setState({loading: false}))
+      }
+    }
   
   componentWillUnmount() {
     this.setState({loading: true})

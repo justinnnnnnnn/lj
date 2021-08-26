@@ -3,6 +3,7 @@ import Stonk from './stonk_page';
 import {fetchStonk} from '../../actions/stonk_actions';
 import {fetchStonkNews} from '../../actions/stonk_actions';
 import {fetchStonkBio} from '../../actions/stonk_actions';
+import {updateBuyingPower} from '../../actions/user_actions';
 
 const mapStateToProps = (state, ownProps) => {
   const stonk = state.entities.stonks[ownProps.match.params.symbol]
@@ -30,7 +31,8 @@ const mapStateToProps = (state, ownProps) => {
 const mapDispatchToProps = (dispatch) => ({
   fetchStonk: (symbol) => dispatch(fetchStonk(symbol)),
   fetchStonkBio: (symbol) => dispatch(fetchStonkBio(symbol)),
-  fetchStonkNews: (symbol, fromDate, toDate ) => dispatch(fetchStonkNews(symbol, fromDate, toDate))
+  fetchStonkNews: (symbol, fromDate, toDate ) => dispatch(fetchStonkNews(symbol, fromDate, toDate)),
+  updateBuyingPower: (buyingPower, id) => dispatch(updateBuyingPower(buyingPower, id))
 });
 
 export default connect(

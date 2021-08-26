@@ -11,7 +11,8 @@ class BuySellPanel extends React.Component {
       input: 0,
       sharesOwned: 0,
       sharesValue: 0,
-      buyingPower: 50000
+      buyingPowerFake: 50000,
+      buyingPowerReal: this.props.currentUser.buyingPower,
     }
 
     // this.handleChange = this.handleChange.bind(this);
@@ -21,33 +22,44 @@ class BuySellPanel extends React.Component {
 
   }
 
-  // handleChange(e) {
-  //   this.setState({value: e.target.value});
+  // componentDidMount() {
+  //   () => this.setState({stonkQuote: response})
+  //     .then(() => this.setState({loading: false}))
+  //   }
+  // componentDidUpdate(prevProps) {
+  //   if (prevProps.stonk !== this.props.stonk) {    
+  //     () => this.setState({stonkQuote: response})
+  //       .then(() => this.setState({loading: false}))
+  //     console.log("updater", this.state.currentPrice)
+  //   }
   // }
 
+  
   setInput(e) {
     this.setState({input: e.target.value})
   }
   
   submitBuy(e) {
     e.preventDefault();
-    console.log("wtf is e?:", e.target.value)
     this.setState(
       {sharesOwned: (Number(this.state.sharesOwned) + Number(this.state.input))}
     );
+    // this.setState(
+    //   {buyingPowerFake: (Number(this.state.buyingPowerFake) - Number(this.state.input * this.state.currentPrice))}
+    // );
     this.setState(
-      {buyingPower: (Number(this.state.buyingPower) - Number(this.state.input * this.state.currentPrice))}
-    )
-    console.log("shares owned on submit:", this.state.sharesOwned)
+      {buyingPowerFake: (Number(this.state.buyingPowerFake) - Number(this.state.input * this.state.currentPrice))}
+    );
+    console.log("shares owned on submit:", Number(this.state.sharesOwned) + Number(this.state.input));
   }
-
+      
+  
   render() {
-    console.log(this.props);
-    const stockPrice = this.state.currentPrice;
+    console.log("second buysell component props", this.props);
+    const stockPrice = this.props.stonkQuote.c;
     console.log(stockPrice)
 
 
-    console.log('quotes:', this.state.price, this.state.currentPrice);
     let buy = () => {
       return (
         <div>
@@ -72,7 +84,8 @@ class BuySellPanel extends React.Component {
         <div>
           {buy()}
           Shares Owned: {this.state.sharesOwned} <br/><br />
-          Buying Power: ${this.state.buyingPower.toLocaleString('en-US',  {minimumFractionDigits: 2})}
+          Buying Power: ${this.state.buyingPowerFake.toLocaleString('en-US',  {minimumFractionDigits: 2})}
+          Real Backend Buying Power: {this.state.buyingPowerReal.toLocaleString('en-US',  {minimumFractionDigits: 2})}
         </div>
       </div>
     )
