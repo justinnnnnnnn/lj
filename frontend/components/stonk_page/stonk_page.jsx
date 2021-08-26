@@ -16,6 +16,19 @@ class Stonk extends React.Component {
     };
   }
   
+  // componentDidMount() {
+  //   StonkAPI.fetchStonkBio(window.location.href.split("stonks/")[1], window.finnhubAPIKey)
+  //   .then((response) => {
+  //     console.log("hello", response)
+  //     this.setState({stonkName: response})
+  //   }).then(
+  //       () => this.setState({loading: false})).then(
+  //         () => this.setState({
+  //     name: this.state.stonkName.name
+  //   }));
+  //   console.log("after mount", this.state)
+  // }
+
   componentDidMount() {
     StonkAPI.fetchStonkBio(window.location.href.split("stonks/")[1], window.finnhubAPIKey)
     .then((response) => {

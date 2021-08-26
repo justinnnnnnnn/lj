@@ -10,14 +10,10 @@ class Api::UsersController < ApplicationController
   end
 
   def update
-<<<<<<< HEAD
     @user = User.find_by(id: params[:id])
     @user.buying_power = params[:buyingPower].to_d
     @user.save!
     render :show
-=======
-    @user = User.find_by(params)
->>>>>>> parent of 5611150 (sdisplay backend buying power on stock page)
   end
 
   private 
