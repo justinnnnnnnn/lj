@@ -13,7 +13,7 @@ class Stonk extends React.Component {
     this.state = {
       stonkName: {},
       name: "STONK",
-      
+      // Real Backend Buying Power: {this.state.buyingPower}
     };
   }
   
@@ -109,7 +109,7 @@ class Stonk extends React.Component {
           
           <div className="stonk-div-right">
             <div className="stonk-div-right-inner">
-              <BuySell stonk={thisStonk}/>
+              <BuySell stonk={thisStonk} currentUser={this.props.currentUser}/>
             </div>
           </div>
         

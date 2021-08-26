@@ -7,10 +7,10 @@ export const updateBuyingPower = (buyingPower, id) => {
     })
   }
   
-  export const updatePortfolio = (stonk, shares, id) => {
-    return $.ajax({
-      method: 'PATCH',
-      url: `/api/users/${id}`,
-      data: { stonk }
-    })
-  }
+// export const updatePortfolio = (stonk, shares, id) => {
+//   return $.ajax({
+//     method: 'PATCH',
+//     url: `/api/users/${id}`,
+//     data: { stonk }
+//   })
+// }
