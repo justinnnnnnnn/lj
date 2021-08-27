@@ -13,11 +13,11 @@ export const getBuyingPower = (id) => {
     })
 }
 
-export const stockBuy = (ticker, shares, id) => {
+export const stockBuy = (ticker, shares, owner_id) => {
   return $.ajax({
     method: 'POST',
-    url: `/api/users/${id}/stock_buys`,
-    data: {ticker, shares}
+    url: `/api/users/${owner_id}/stock_buys`,
+    data: {ticker, shares, owner_id}
   })
 }
 

@@ -80,7 +80,7 @@ class Stonk extends React.Component {
           <div className="stonk-div-left">
             <div><h1>{this.state.stonkName.name}</h1></div> {/* MAKE THIS ANOTHER CHILD COMPONENT ROFLMAO */}
             
-            <Graph stonk={thisStonk}/>
+            {/* <Graph stonk={thisStonk}/> */}
             
             <div className="buying-power">
                 <div>
