@@ -19,6 +19,8 @@ class User < ApplicationRecord
   after_initialize :ensure_session_token
   attr_reader :password
   has_many :stonks
+  has_many :stock_buys,
+    foreign_key: :owner_id
 
   # def set_balance=(balance)
   #   balance = 0 if balance == nil

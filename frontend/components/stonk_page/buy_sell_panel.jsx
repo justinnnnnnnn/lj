@@ -16,7 +16,6 @@ class BuySellPanel extends React.Component {
       buyingPowerReal: this.props.currentUser.buyingPower,
     }
 
-    // this.handleChange = this.handleChange.bind(this);
     this.submitBuy = this.submitBuy.bind(this);
     this.setInput = this.setInput.bind(this);
 
@@ -31,7 +30,7 @@ class BuySellPanel extends React.Component {
     }).then(() => this.setState({loading: false})).then(
       () => this.setState({
       buyingPowerReal: this.state.userData.buyingPower
-    }))
+    }));
   }
   
   componentDidUpdate(prevProps, prevState) {
@@ -51,30 +50,7 @@ class BuySellPanel extends React.Component {
   setInput(e) {
     this.setState({input: e.target.value})
   }
-  
-  // submitBuy(e) {
-  //   e.preventDefault();
-  //   this.setState(
-  //     {sharesOwned: (Number(this.state.sharesOwned) + Number(this.state.input))}
-  //   );
-  //   // this.setState(
-  //   //   {buyingPowerFake: (Number(this.state.buyingPowerFake) - Number(this.state.input * this.state.currentPrice))}
-  //   // );
-  //   this.setState(
-  //     {buyingPowerReal: (Number(this.state.buyingPowerReal) - Number(this.state.input * this.state.currentPrice))}
-  //   );
-  //   UserAPI.updateBuyingPower(this.state.buyingPowerReal, this.props.currentUser.id);
-  //   console.log("what the back end should become", this.state.buyingPowerReal);
-  // }
 
-  // submitBuy(e) {
-  //   e.preventDefault();
-  //   this.setState(
-  //     {buyingPowerReal: (Number(this.state.buyingPowerReal) - Number(this.state.input * this.state.currentPrice))}
-  //   )
-  //   .then(() => UserAPI.updateBuyingPower(this.state.buyingPowerReal, this.props.currentUser.id))
-  //   .then(() => console.log("what the back end should become", this.state.buyingPowerReal))
-  // }
   submitBuy(e) {
     e.preventDefault();
     UserAPI.updateBuyingPower((Number(this.state.buyingPowerReal) - Number(this.state.input * this.state.currentPrice)), this.props.currentUser.id)

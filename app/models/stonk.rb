@@ -13,5 +13,5 @@ class Stonk < ApplicationRecord
 
   validates :name, :symbol, uniqueness: true, presence: true
   
-  belongs_to :user
+  has_many :stock_buys
 end
