@@ -16,7 +16,6 @@ class StonkNews extends React.Component {
       StonkAPI.fetchStonkNews(this.props.stonk, '2021-07-01', '2021-08-01', window.finnhubAPIKey)
       .then((response) => this.setState({stonkNews: response}))
       .then(() => this.setState({loading: false}))
-    
     }
 
   componentDidUpdate(prevProps) {

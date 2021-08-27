@@ -12,7 +12,7 @@ class BuySellPanel extends React.Component {
       input: 0,
       sharesOwned: 0,
       sharesValue: 0,
-      buyingPowerFake: 50000,
+      userData: {},
       buyingPowerReal: this.props.currentUser.buyingPower,
     }
 
@@ -23,41 +23,71 @@ class BuySellPanel extends React.Component {
 
   }
 
-  // componentDidMount() {
-  //   () => this.setState({stonkQuote: response})
-  //     .then(() => this.setState({loading: false}))
-  //   }
-  // componentDidUpdate(prevProps) {
-  //   if (prevProps.stonk !== this.props.stonk) {    
-  //     () => this.setState({stonkQuote: response})
-  //       .then(() => this.setState({loading: false}))
-  //     console.log("updater", this.state.currentPrice)
-  //   }
-  // }
+  componentDidMount() {
+    UserAPI.getBuyingPower(this.props.currentUser.id)
+    .then((response) => {
+      console.log("mount that compy buysell", response)
+      this.setState({userData: response})
+    }).then(() => this.setState({loading: false})).then(
+      () => this.setState({
+      buyingPowerReal: this.state.userData.buyingPower
+    }))
+  }
+  
+  componentDidUpdate(prevProps, prevState) {
+    if (prevState.buyingPowerReal !== this.state.buyingPowerReal) {    
+      UserAPI.getBuyingPower(this.props.currentUser.id)
+      .then((response) => {
+        console.log("mount that compy buysell", response)
+        this.setState({userData: response})
+      }).then(() => this.setState({loading: false})).then(
+        () => this.setState({
+        buyingPowerReal: this.state.userData.buyingPower
+      }))
+    }
+  }
 
   
   setInput(e) {
     this.setState({input: e.target.value})
   }
   
+  // submitBuy(e) {
+  //   e.preventDefault();
+  //   this.setState(
+  //     {sharesOwned: (Number(this.state.sharesOwned) + Number(this.state.input))}
+  //   );
+  //   // this.setState(
+  //   //   {buyingPowerFake: (Number(this.state.buyingPowerFake) - Number(this.state.input * this.state.currentPrice))}
+  //   // );
+  //   this.setState(
+  //     {buyingPowerReal: (Number(this.state.buyingPowerReal) - Number(this.state.input * this.state.currentPrice))}
+  //   );
+  //   UserAPI.updateBuyingPower(this.state.buyingPowerReal, this.props.currentUser.id);
+  //   console.log("what the back end should become", this.state.buyingPowerReal);
+  // }
+
+  // submitBuy(e) {
+  //   e.preventDefault();
+  //   this.setState(
+  //     {buyingPowerReal: (Number(this.state.buyingPowerReal) - Number(this.state.input * this.state.currentPrice))}
+  //   )
+  //   .then(() => UserAPI.updateBuyingPower(this.state.buyingPowerReal, this.props.currentUser.id))
+  //   .then(() => console.log("what the back end should become", this.state.buyingPowerReal))
+  // }
   submitBuy(e) {
     e.preventDefault();
-    this.setState(
-      {sharesOwned: (Number(this.state.sharesOwned) + Number(this.state.input))}
-    );
-    // this.setState(
-    //   {buyingPowerFake: (Number(this.state.buyingPowerFake) - Number(this.state.input * this.state.currentPrice))}
-    // );
-    this.setState(
-      {buyingPowerReal: (Number(this.state.buyingPowerReal) - Number(this.state.input * this.state.currentPrice))}
-    );
-    this.props.updateBuyingPower(this.state.buyingPowerReal, this.props.currentUser.id);
-    console.log("shares owned on submit:", Number(this.state.sharesOwned) + Number(this.state.input));
+    UserAPI.updateBuyingPower((Number(this.state.buyingPowerReal) - Number(this.state.input * this.state.currentPrice)), this.props.currentUser.id)
+    .then(() => {
+      this.setState({buyingPowerReal: (Number(this.state.buyingPowerReal) - Number(this.state.input * this.state.currentPrice))});
+      console.log("what the back end should become", this.state.buyingPowerReal);
+    })
   }
       
   
   render() {
     console.log("second buysell component props", this.props);
+    console.log("second buysell component state", this.state);
     const stockPrice = this.props.stonkQuote.c;
     console.log(stockPrice)
 
@@ -86,7 +116,7 @@ class BuySellPanel extends React.Component {
         <div>
           {buy()}
           Shares Owned: {this.state.sharesOwned} <br/><br />
-          Buying Power: ${this.state.buyingPowerFake.toLocaleString('en-US',  {minimumFractionDigits: 2})}<br></br>
+          {/* Buying Power: ${this.state.buyingPowerFake.toLocaleString('en-US',  {minimumFractionDigits: 2})}<br></br> */}
           Real Backend Buying Power: ${Number(this.state.buyingPowerReal).toLocaleString('en-US',  {minimumFractionDigits: 2})}
         </div>
       </div>

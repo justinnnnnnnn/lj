@@ -8,7 +8,7 @@
 #  session_token   :string           not null
 #  created_at      :datetime         not null
 #  updated_at      :datetime         not null
-#  account_balance :float
+#  account_balance :float is now buying_power
 #
 class User < ApplicationRecord
   validates :username, :session_token, presence: true, uniqueness: true
@@ -24,8 +24,8 @@ class User < ApplicationRecord
   #   balance = 0 if balance == nil
   # end
   def change_buying_power=(val)
-    self.account_balance ||= 10000
-    self.account_balance = self.account_balance - val
+    self.buying_power = val
+    # self.buying_power = self.account_balance - val
   end
 
   def self.find_by_credentials(user, password)
