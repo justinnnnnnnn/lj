@@ -6,8 +6,8 @@ class Api::StockBuysController < ApplicationController
   
   def create
     @stock_buy = StockBuy.new(stock_buy_params)
-    @poem.owner_id = current_user.id
-    @stock_buy.save
+    @stock_buy.owner_id = current_user.id
+    @stock_buy.save!
   end
   
   def update

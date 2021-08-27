@@ -4,7 +4,7 @@ class Api::UsersController < ApplicationController
   @user = User.find_by(id: params[:id])
  end
 
- def create 
+  def create 
     @user = User.new(user_params)
     if @user.save 
       login(@user)

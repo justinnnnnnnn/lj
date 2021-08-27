@@ -17,7 +17,7 @@ export const stockBuy = (ticker, shares, owner_id) => {
   return $.ajax({
     method: 'POST',
     url: `/api/users/${owner_id}/stock_buys`,
-    data: {ticker, shares, owner_id}
+    data: { stock_buy: {ticker, shares, owner_id}}
   })
 }
 
