@@ -1,5 +1,6 @@
 import React from 'react';
 import * as StonkAPI from '../../util/stonk_api_util'
+import * as UserAPI from '../../util/user_api_util'
 
 
 class BuySellPanel extends React.Component {
@@ -48,8 +49,9 @@ class BuySellPanel extends React.Component {
     //   {buyingPowerFake: (Number(this.state.buyingPowerFake) - Number(this.state.input * this.state.currentPrice))}
     // );
     this.setState(
-      {buyingPowerFake: (Number(this.state.buyingPowerFake) - Number(this.state.input * this.state.currentPrice))}
+      {buyingPowerReal: (Number(this.state.buyingPowerReal) - Number(this.state.input * this.state.currentPrice))}
     );
+    this.props.updateBuyingPower(this.state.buyingPowerReal, this.props.currentUser.id);
     console.log("shares owned on submit:", Number(this.state.sharesOwned) + Number(this.state.input));
   }
       
@@ -84,8 +86,8 @@ class BuySellPanel extends React.Component {
         <div>
           {buy()}
           Shares Owned: {this.state.sharesOwned} <br/><br />
-          Buying Power: ${this.state.buyingPowerFake.toLocaleString('en-US',  {minimumFractionDigits: 2})}
-          Real Backend Buying Power: {this.state.buyingPowerReal.toLocaleString('en-US',  {minimumFractionDigits: 2})}
+          Buying Power: ${this.state.buyingPowerFake.toLocaleString('en-US',  {minimumFractionDigits: 2})}<br></br>
+          Real Backend Buying Power: ${Number(this.state.buyingPowerReal).toLocaleString('en-US',  {minimumFractionDigits: 2})}
         </div>
       </div>
     )

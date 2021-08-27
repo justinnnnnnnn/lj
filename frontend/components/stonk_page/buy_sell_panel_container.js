@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import Stonk from './stonk_page';
+import BuySellPanel from './buy_sell_panel';
 import {fetchStonk} from '../../actions/stonk_actions';
 import {fetchStonkNews} from '../../actions/stonk_actions';
 import {fetchStonkBio} from '../../actions/stonk_actions';
@@ -32,4 +32,4 @@ const mapDispatchToProps = (dispatch) => ({
   updateBuyingPower: (buyingPower, id) => dispatch(updateBuyingPower(buyingPower, id))
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(Stonk);
+export default connect(mapStateToProps, mapDispatchToProps)(BuySellPanel);
