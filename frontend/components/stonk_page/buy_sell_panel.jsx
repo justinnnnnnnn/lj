@@ -24,28 +24,37 @@ class BuySellPanel extends React.Component {
 
   componentDidMount() {
     UserAPI.getBuyingPower(this.props.currentUser.id)
-    .then((response) => {
-      console.log("mount that compy buysell", response)
-      this.setState({userData: response})
-    }).then(() => this.setState({loading: false})).then(
-      () => this.setState({
-      buyingPowerReal: this.state.userData.buyingPower
-    }));
-    // UserAPI.getStockBuy(this.props.currentUser)
+    .then((response) => {this.setState({userData: response})})
+    .then(() => this.setState({loading: false}))
+    .then(() => this.setState({buyingPowerReal: this.state.userData.buyingPower}))
+    .then(() => {UserAPI.getStockBuy(this.props.stonk, this.props.currentUser.id)
+      .then((response) => {console.log("response to shares owned in mount:", response); this.setState({sharesOwned: response.shares})})
+    })
+    
   }
   
-  componentDidUpdate(prevProps, prevState) {
-    if (prevState.buyingPowerReal !== this.state.buyingPowerReal) {    
-      UserAPI.getBuyingPower(this.props.currentUser.id)
-      .then((response) => {
-        console.log("mount that compy buysell", response)
-        this.setState({userData: response})
-      }).then(() => this.setState({loading: false})).then(
-        () => this.setState({
-        buyingPowerReal: this.state.userData.buyingPower
-      }))
-    }
-  }
+  // componentDidUpdate(prevProps, prevState) {
+  //   if (prevState.buyingPowerReal !== this.state.buyingPowerReal) {    
+  //     UserAPI.getBuyingPower(this.props.currentUser.id)
+  //     .then((response) => {this.setState({userData: response})})
+  //     .then(() => this.setState({loading: false}))
+  //     .then(() => this.setState({buyingPowerReal: this.state.userData.buyingPower}))
+  //     .then(() => {UserAPI.getStockBuy(this.props.currentUser)})
+  //     .then((response) => {console.log("response to shares owned in update:", response); this.setState({sharesOwned: response})})
+  //   }
+  // }
+  // componentDidUpdate(prevProps, prevState) {
+  //   if (prevState.buyingPowerReal !== this.state.buyingPowerReal) {    
+  //     UserAPI.getBuyingPower(this.props.currentUser.id)
+  //     .then((response) => {
+  //       console.log("mount that compy buysell", response)
+  //       this.setState({userData: response})
+  //     }).then(() => this.setState({loading: false})).then(
+  //       () => this.setState({
+  //       buyingPowerReal: this.state.userData.buyingPower
+  //     }))
+  //   }
+  // }
 
   
   setInput(e) {
@@ -95,7 +104,7 @@ class BuySellPanel extends React.Component {
         console.log("account balance submission with old stock aka b", this.state.buyingPowerReal);
       })
       .then(() => {
-        UserAPI.updateStockBuy(this.props.stonk, this.state.input, this.props.currentUser.id)
+        UserAPI.updateStockBuy(this.props.stonk, (Number(Number(this.state.sharesOwned) + Number(this.state.input))), this.props.currentUser.id)
         .then(() => {
           this.setState({sharesOwned: this.state.input});
           console.log("does the portfolio submission happen path b??")
@@ -106,10 +115,10 @@ class BuySellPanel extends React.Component {
       
   
   render() {
-    console.log("second buysell component props", this.props);
-    console.log("second buysell component state", this.state);
+    console.log("BuySell this.props.stonk:", this.props.stonk);
+    // console.log("second buysell component state", this.state);
     const stockPrice = this.props.stonkQuote.c;
-    console.log(stockPrice)
+    // console.log(stockPrice)
 
 
     let buy = () => {

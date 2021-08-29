@@ -1,7 +1,7 @@
 class Api::StockBuysController < ApplicationController
 
   def show
-    @stock_buy = StockBuy.find_by(ticker: params[:ticker])
+    @stock_buy = StockBuy.where(:owner_id => current_user.id).find_by(ticker: params[:ticker])
   end
   
   def create
@@ -11,11 +11,15 @@ class Api::StockBuysController < ApplicationController
   end
   
   def update
-    # @stock_buy = stock_buy.find_by(id: params[:id])
-    @stock_buy = stock_buy.find_by(ticker: params[:ticker])
-    if @stock_buy && @stock_buy.owner_id == current_user.id
-      @stock_buy.shares = params[:shares].to_i
-      @stock_buy.save!
+    @stock_buy = StockBuy.where(:owner_id => current_user.id).find_by(ticker: params[:ticker])
+    @stock_buy.shares = params[:shares].to_i
+    destroy(@stock_buy)
+    @stock_buy.save!
+  end
+
+  def destroy(this_stock)
+    if this_stock[:shares] == 0
+      this_stock.delete
     end
   end
 

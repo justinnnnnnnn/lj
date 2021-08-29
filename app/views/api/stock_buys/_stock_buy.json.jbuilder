@@ -1,0 +1,1 @@
+json.extract! stock_buy, :ticker, :shares, :owner_id

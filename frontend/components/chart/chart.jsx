@@ -63,7 +63,7 @@ class Chart extends React.Component {
       currentPrice: this.state.quoteData.c, 
       previousClose: this.state.quoteData.pc
     }));
-    console.log("chart quote data", this.state.quoteData)
+    // console.log("chart quote data", this.state.quoteData)
   }
 
   componentDidUpdate(prevProps) {

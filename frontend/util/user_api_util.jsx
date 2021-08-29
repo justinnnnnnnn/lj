@@ -21,18 +21,17 @@ export const stockBuy = (ticker, shares, owner_id) => {
   })
 }
 
-export const updateStockBuy = (ticker, shares, id) => {
+export const updateStockBuy = (ticker, shares, owner_id) => {
   return $.ajax({
     method: 'PATCH',
-    url: `/api/users/${id}/stock_buys/${ticker}`,
+    url: `/api/users/${owner_id}/stock_buys/${ticker}`,
     data: { shares }
   })
 }
 
-export const getStockBuy = (ticker, id) => {
+export const getStockBuy = (ticker, owner_id) => {
   return $.ajax({
     method: 'GET',
-    url: `/api/users/${id}/stock_buys/${ticker}`,
-    data: { shares }
+    url: `/api/users/${owner_id}/stock_buys/${ticker}`
   })
 }
