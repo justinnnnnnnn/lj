@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   root to: 'static_pages#root'
   namespace :api, defaults: {format: :json} do 
     resources :users, only: [:create, :show, :update]  do
-      resources :stock_buys, param: :ticker, only: [:show, :create, :update, :destroy] 
+      resources :stock_buys, param: :ticker, only: [:index, :show, :create, :update, :destroy] 
     end
     resource :session, only: [:create, :destroy]
   end

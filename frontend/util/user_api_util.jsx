@@ -35,3 +35,10 @@ export const getStockBuy = (ticker, owner_id) => {
     url: `/api/users/${owner_id}/stock_buys/${ticker}`
   })
 }
+
+export const getAllStockBuys = (id) => {
+  return $.ajax({
+    method: 'GET',
+    url: `/api/users/${id}/stock_buys/`
+  })
+}

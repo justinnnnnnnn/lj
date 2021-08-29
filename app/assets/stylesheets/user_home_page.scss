@@ -112,3 +112,9 @@
   box-shadow: 24px rgba(0, 0, 0, 0);
   height: 85%;
 }
+
+.portfolio-item {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}

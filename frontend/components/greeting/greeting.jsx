@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import Graph from '../chart/graph' //do portfolio graph last
 import Dropdown from './dropdown'
+import OwnedStonks from './owned_stonks'
 
 class Greeting extends React.Component {
   constructor(props) {
@@ -133,12 +134,12 @@ class Greeting extends React.Component {
             {/* <SearchBar/> */}
           </div> 
           <div className="account-links">
-            <div><span>Free Stonks</span></div>
-            <div><span>Portfolio</span></div>
-            <div><span>Cash</span></div>
-            <div><span>Messages</span></div>
-            <div><span>Account</span></div>{/* The messages dot goes on the left side of this div */}
-            <div><span>dropdown <Dropdown/> </span></div>
+            {/* <div><span>Free Stonks</span></div> */}
+            {/* <div><span>Portfolio</span></div> */}
+            {/* <div><span>Cash</span></div> */}
+            {/* <div><span>Messages</span></div> */}
+            {/* <div><span>Account</span></div>The messages dot goes on the left side of this div */}
+            {/* <div><span>dropdown <Dropdown/> </span></div> */}
             <button className="header-button" onClick={logout}>Log Out</button> {/* temporary */}
           </div>
         </div>
@@ -157,15 +158,15 @@ class Greeting extends React.Component {
                 Buying Power
               </div>
               <div>
-                $Dynamic Money Amount
+                ${ Number(this.props.currentUser.buyingPower).toLocaleString('en-US',  {minimumFractionDigits: 2}) }
               </div>
           </div>
           <div className="trending-lists">
             <div>
-              <div>Trending Lists</div>
-              <div>Show More</div>
+              {/* <div>Trending Lists</div> */}
+              {/* <div>Show More</div> */}
             </div>
-            <ul><li>herpderp</li></ul>
+            {/* <ul><li>herpderp</li></ul> */}
           </div>
           
           <div className="news">
@@ -173,330 +174,41 @@ class Greeting extends React.Component {
               News
             </div>
             <div className="top-news">
-              Herp a derpa derp
+              {/* Top news article zero */}
             </div>
             <div className="daily-movers">
-              [][][][] aka Daily Movers Div
+              {/* [][][][] aka Daily Movers Div */}
             </div>
             <div className="more-news">
-              [][][][] aka More News Div
+              {/* [][][][] aka More News Div */}
             </div>
 
           </div>
 
-          
-
-
-
-          <div className="make it scroll for days">
-          STONK <br/>
-          STONK <br/>
-          STONK <br/>
-          STONK <br/>
-          STONK <br/>
-          STONK <br/>
-          STONK <br/>
-          STONK <br/>
-          STONK <br/>
-          STONK <br/>
-          STONK <br/>
-          STONK <br/>
-          STONK <br/>
-          STONK <br/>
-          STONK <br/>
-          STONK <br/>
-          STONK <br/>
-          STONK <br/>
-          STONK <br/>
-          STONK <br/>
-          STONK <br/>
-          STONK <br/>
-          STONK <br/>
-          STONK <br/>
-          STONK <br/>
-          STONK <br/>
-          STONK <br/>
-          STONK <br/>
-          STONK <br/>
-          STONK <br/>
-          STONK <br/>
-          STONK <br/>
-          STONK <br/>
-          STONK <br/>
-          STONK <br/>
-          STONK <br/>
-          STONK <br/>
-          STONK <br/>
-          STONK <br/>
-          STONK <br/>
-          STONK <br/>
-          STONK <br/>
-          STONK <br/>
-          STONK <br/>
-          STONK <br/>
-          STONK <br/>
-          STONK <br/>
-          STONK <br/>
-          STONK <br/>
-          STONK <br/>
-          STONK <br/>
-          STONK <br/>
-          STONK <br/>
-          STONK <br/>
-          STONK <br/>
-          STONK <br/>
-          STONK <br/>
-          STONK <br/>
-          STONK <br/>
-          STONK <br/>
-          STONK <br/>
-          STONK <br/>
-          STONK <br/>
-          STONK <br/>
-          STONK <br/>
-          STONK <br/>
-          STONK <br/>
-          STONK <br/>
-          STONK <br/>
-          STONK <br/>
-          STONK <br/>
-          STONK <br/>
-          STONK <br/>
-          STONK <br/>
-          STONK <br/>
-          STONK <br/>
-          STONK <br/>
-          STONK <br/>
-          STONK <br/>
-          STONK <br/>
-          STONK <br/>
-          STONK <br/>
-          STONK <br/>
-          STONK <br/>
-          STONK <br/>
-          STONK <br/>
-          STONK <br/>
-          STONK <br/>
-          STONK <br/>
-          STONK <br/>
-          STONK <br/>
-          STONK <br/>
-          STONK <br/>
-          STONK <br/>
-          STONK <br/>
-          STONK <br/>
-          STONK <br/>
-          STONK <br/>
-          STONK <br/>
-          STONK <br/>
-          STONK <br/>
-          STONK <br/>
-          STONK <br/>
-          STONK <br/>
-          STONK <br/>
-          STONK <br/>
-          STONK <br/>
-          STONK <br/>
-          STONK <br/>
-          STONK <br/>
-          STONK <br/>
-          STONK <br/>
-          STONK <br/>
-          STONK <br/>
-          STONK <br/>
-          STONK <br/>
-          STONK <br/>
-          STONK <br/>
-          STONK <br/>
-          STONK <br/>
-          STONK <br/>
-          STONK <br/>
-          STONK <br/>
-          STONK <br/>
-          STONK <br/>
-          STONK <br/>
-          STONK <br/>
-          STONK <br/>
-          STONK <br/>
-          STONK <br/>
-          STONK <br/>
-          STONK <br/>
-          STONK <br/>
-          STONK <br/>
-          STONK <br/>
-          STONK <br/>
-          STONK <br/>
-          STONK <br/>
-          STONK <br/>
-          STONK <br/>
-          STONK <br/>
-          STONK <br/>
-          STONK <br/>
-          STONK <br/>
-          STONK <br/>
-          STONK <br/>
-          STONK <br/>
-          STONK <br/>
-          STONK <br/>
-          STONK <br/>
-          STONK <br/>
-          STONK <br/>
-          STONK <br/>
-          STONK <br/>
-          STONK <br/>
-          STONK <br/>
-          STONK <br/>
-          STONK <br/>
-          STONK <br/>
-          STONK <br/>
-          STONK <br/>
-          STONK <br/>
-          STONK <br/>
-          STONK <br/>
-          STONK <br/>
-          STONK <br/>
-          STONK <br/>
-          STONK <br/>
-          STONK <br/>
-          STONK <br/>
-          STONK <br/>
-          STONK <br/>
-          STONK <br/>
-          STONK <br/>
-          STONK <br/>
-          STONK <br/>
-          STONK <br/>
-          STONK <br/>
-          STONK <br/>
-          STONK <br/>
-          STONK <br/>
-          STONK <br/>
-          STONK <br/>
-          STONK <br/>
-          STONK <br/>
-          STONK <br/>
-          STONK <br/>
-          STONK <br/>
-          STONK <br/>
-          STONK <br/>
-          STONK <br/>
-          STONK <br/>
-          STONK <br/>
-          STONK <br/>
-          STONK <br/>
-          STONK <br/>
-          STONK <br/>
-          STONK <br/>
-          STONK <br/>
-          STONK <br/>
-          STONK <br/>
-          STONK <br/>
-          STONK <br/>
-          STONK <br/>
-          STONK <br/>
-          STONK <br/>
-          STONK <br/>
-          STONK <br/>
-          STONK <br/>
-          STONK <br/>
-          STONK <br/>
-          STONK <br/>
-          STONK <br/>
-          STONK <br/>
-          STONK <br/>
-          STONK <br/>
-          STONK <br/>
-          STONK <br/>
-          STONK <br/>
-          STONK <br/>
-          STONK <br/>
-          STONK <br/>
-          STONK <br/>
-          STONK <br/>
-          STONK <br/>
-          STONK <br/>
-          STONK <br/>
-          STONK <br/>
-          STONK <br/>
-          STONK <br/>
-          STONK <br/>
-          STONK <br/>
-          STONK <br/>
-          STONK <br/>
-          STONK <br/>
-          STONK <br/>
-          STONK <br/>
-          STONK <br/>
-          STONK <br/>
-          STONK <br/>
-          STONK <br/>
-          STONK <br/>
-          STONK <br/>
-          STONK <br/>
-          STONK <br/>
-          STONK <br/>
-          STONK <br/>
-          STONK <br/>
-          STONK <br/>
-          STONK <br/>
-          STONK <br/>
-          STONK <br/>
-          STONK <br/>
-          STONK <br/>
-          STONK <br/>
-          STONK <br/>
-          STONK <br/>
-          STONK <br/>
-          STONK <br/>
-          STONK <br/>
-          STONK <br/>
-          STONK <br/>
-          STONK <br/>
-          STONK <br/>
-          STONK <br/>
-          STONK <br/>
-          STONK <br/>
-          STONK <br/>
-          STONK <br/>
-          STONK <br/>
-          STONK <br/>
-          STONK <br/>
-          STONK <br/>
-          STONK <br/>
-          STONK <br/>
-          STONK <br/>
-          STONK <br/>
-          STONK <br/>
-          </div>
-          <div>For more infortation, see our <a>Privacy Policy</a></div>
+      
+          <div>For more information, see our <a>Privacy Policy</a></div>
         </div>
         
         
         {/* main right */}
         <div className="main-div-right">
           <div className="main-div-right-inner">
-            <div>Stocks (Header) ...</div>
-            <div>Stockname/shares, graph, price/change</div>
+            <div>Stocks</div>
+            {/* <div>Stockname/shares, graph, price/change</div> */}
             <div className="lists">
-              <div>Lists + (creatable)</div>
+              {/* <div>Lists + (creatable)</div> */}
               <div>
                 <div>
                   <div>
-                    <div>Emoji</div> 
-                    <div>My First List</div> 
-                    <div>arrow</div>
                   </div>
                   <div>
-                    Stock list and divs
+                    {/* Stock list and divs */}
+                    <OwnedStonks currentUser={currentUser}/>
                   </div>
                 </div>
                 <div>
                   <div>
-                    <div>Emoji</div> 
-                    <div>Cryptos to watch</div> 
-                    <div>arrow</div>
                   </div>
-                  <div>Crypto list</div>
                 </div>
               </div>
             </div>

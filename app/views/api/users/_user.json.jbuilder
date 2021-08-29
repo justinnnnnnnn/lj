@@ -1,5 +1,5 @@
-``
 json.extract! user, :username, :id, :buying_power
+
 json.stock_buys user.stock_buys do |stock_buy|
   json.id stock_buy.id
   json.ticker stock_buy.ticker

@@ -1,5 +1,9 @@
 class Api::StockBuysController < ApplicationController
 
+  def index
+    @stock_buys = StockBuy.where(:owner_id => current_user.id).all
+  end
+
   def show
     @stock_buy = StockBuy.where(:owner_id => current_user.id).find_by(ticker: params[:ticker])
   end
@@ -22,6 +26,7 @@ class Api::StockBuysController < ApplicationController
       this_stock.delete
     end
   end
+
 
   private 
 
