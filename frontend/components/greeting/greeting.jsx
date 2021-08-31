@@ -4,17 +4,32 @@ import Graph from '../chart/graph' //do portfolio graph last
 import Dropdown from './dropdown'
 import OwnedStonks from './owned_stonks'
 import MarketNews from './market_news'
+import * as UserAPI from '../../util/user_api_util'
+import PortfolioGraph from './portfolio_graph';
 
 class Greeting extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
       username: '',
-      password: ''
+      password: '',
+      portfolio: [],
     };
     this.handleDemoSubmit = this.handleDemoSubmit.bind(this);
   }
-  
+  componentDidMount() {
+    currentUser ? UserAPI.getAllStockBuys(this.props.currentUser.id).then((response) => {response; this.setState({portfolio: response})}) 
+    : null;
+    console.log("main page did mount", this.state.portfolio)
+  }
+
+  // componentDidUpdate(prevProps, prevState) {
+  //   if (this.state.portfolio !== UserAPI.getAllStockBuys(this.props.currentUser.id)) {
+  //     UserAPI.getAllStockBuys(this.props.currentUser.id)
+  //       .then((response) => {response; this.setState({portfolio: response})})
+  //   };
+  //   console.log("someone set us up the mount", this.state.portfolio)
+  // }
   
   handleDemoSubmit(e) {
       e.preventDefault();
@@ -122,6 +137,7 @@ class Greeting extends React.Component {
   const loggedInHeader = () => (
     <>
     <div className="whole-page-logged-in">
+      {console.log("does it have the storks", this.props)}
 
 
 
@@ -150,9 +166,9 @@ class Greeting extends React.Component {
 
       <div className="main-div-logged-in">
         
-        {/* main left */}
         <div className="main-div-left">
-          {/* <Graph/> */}
+        {/* main left XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX GRAPH */}
+          <PortfolioGraph/> 
           <marquee>This will be a portfolio graph</marquee>          
           <div className="buying-power">
               <div>

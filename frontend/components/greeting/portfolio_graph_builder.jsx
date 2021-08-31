@@ -55,7 +55,7 @@ class Chart extends React.Component {
   }
   
   componentDidMount() {
-    StonkAPI.fetchStonkCurrentPrice(this.props.stonk, window.finnhubAPIKey)
+    StonkAPI.fetchStonkCurrentPrice(this.props.portfolio, window.finnhubAPIKey)
       .then((response) => this.setState({quoteData: response}))
       .then(() => this.setState({loading: false}))
       .then(() => this.setState({
@@ -66,8 +66,8 @@ class Chart extends React.Component {
   }
 
   componentDidUpdate(prevProps) {
-    if (prevProps.stonk !== this.props.stonk) {
-      StonkAPI.fetchStonkCurrentPrice(this.props.stonk, window.finnhubAPIKey)
+    if (prevProps.portfolio !== this.props.portfolio) {
+      StonkAPI.fetchStonkCurrentPrice(this.props.portfolio, window.finnhubAPIKey)
         .then((response) => this.setState({quoteData: response}))
         .then(() => this.setState({loading: false}))
         .then(() => this.setState({
@@ -80,10 +80,10 @@ class Chart extends React.Component {
 
   render() {    
     const realData = [];
-    for (let i = 0; i < this.props.intradayData.t.length; i++)
+    for (let i = 0; i < this.props.intradayPortfolio.t.length; i++)
     realData.push({
-      time: this.props.intradayData.t[i],
-      price: this.props.intradayData.o[i],
+      time: this.props.intradayPortfolio.t[i],
+      price: this.props.intradayPortfolio.o[i],
     })
     const dottedLine = this.state.previousClose;
 
