@@ -26,17 +26,11 @@ class OwnedStonks extends React.Component {
     if (this.state.loading) {
       return (<div/>)
     } else {
-      const portfolio = this.state.ownedStonks.map(stonk => <div className="portfolio-item"><div>{stonk.ticker}</div><div>{stonk.shares}</div></div>)
+      const portfolio = this.state.ownedStonks.map((stonk, i) => <div className="portfolio-item" key={i}><div>{stonk.ticker}</div><div>{stonk.shares}</div></div>)
       return (
-        <div>
-          {console.log("MAPPed", portfolio)}
-          {console.log("the state", this.state.ownedStonks)}
-        {portfolio}
-        </div>
+        <div> {portfolio} </div>
       )
     }
-    
-
   }
 
 }

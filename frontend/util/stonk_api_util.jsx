@@ -24,14 +24,14 @@ export const fetchStonkBio = (symbol) =>
     url: `https://finnhub.io/api/v1/stock/profile2?symbol=${symbol}&token=${apihash}`,
   });
 
-export const fetchStonkNews = (
-  symbol,
-  fromDate,
-  toDate
-  
-) =>
+export const fetchStonkNews = (symbol, fromDate, toDate) =>
   $.ajax({
     url: `https://finnhub.io/api/v1/company-news?symbol=${symbol}&from=${fromDate}&to=${toDate}&token=${apihash}`,
+  });
+
+export const fetchMarketNews = () =>
+  $.ajax({
+    url: `https://finnhub.io/api/v1/news?category=general&token=${apihash}`,
   });
 
 export const fetchStonkCurrentPrice = (symbol) =>

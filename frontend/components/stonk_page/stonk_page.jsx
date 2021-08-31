@@ -13,31 +13,22 @@ class Stonk extends React.Component {
     this.state = {
       stonkName: {},
       name: "STONK",
-      // Real Backend Buying Power: {this.state.buyingPower}
     };
   }
   
   componentDidMount() {
     StonkAPI.fetchStonkBio(window.location.href.split("stonks/")[1], window.finnhubAPIKey)
-    .then((response) => {
-      this.setState({stonkName: response})
-    }).then(
-        () => this.setState({loading: false})).then(
-          () => this.setState({
-      name: this.state.stonkName.name
-    }));
+      .then((response) => {this.setState({stonkName: response})})
+      .then(() => this.setState({loading: false}))
+      .then(() => this.setState({name: this.state.stonkName.name}));
   }
           
   componentDidUpdate(prevProps) {
     if (this.props.stonk !== prevProps.stonk) {
       StonkAPI.fetchStonkBio(window.location.href.split("stonks/")[1], window.finnhubAPIKey)
-      .then((response) => {
-        this.setState({stonkName: response})
-      }).then(
-        () => this.setState({loading: false})).then(
-          () => this.setState({
-      name: this.state.stonkName.name
-    }));
+      .then((response) => {this.setState({stonkName: response})})
+      .then(() => this.setState({loading: false}))
+      .then(() => this.setState({name: this.state.stonkName.name}));
     }
   };
 
@@ -77,7 +68,7 @@ class Stonk extends React.Component {
           <div className="stonk-div-left">
             <div><h1>{this.state.stonkName.name}</h1></div> {/* MAKE THIS ANOTHER CHILD COMPONENT ROFLMAO */}
             
-            {/* <Graph stonk={thisStonk}/> */}
+            <Graph stonk={thisStonk}/>
             
             <div className="buying-power">
                 <div>

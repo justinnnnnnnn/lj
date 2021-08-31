@@ -12,6 +12,7 @@ class Api::StockBuysController < ApplicationController
     @stock_buy = StockBuy.new(stock_buy_params)
     @stock_buy.owner_id = current_user.id
     @stock_buy.save!
+    destroy(@stock_buy)
   end
   
   def update

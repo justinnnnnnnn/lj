@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import Graph from '../chart/graph' //do portfolio graph last
 import Dropdown from './dropdown'
 import OwnedStonks from './owned_stonks'
+import MarketNews from './market_news'
 
 class Greeting extends React.Component {
   constructor(props) {
@@ -175,13 +176,14 @@ class Greeting extends React.Component {
             </div>
             <div className="top-news">
               {/* Top news article zero */}
+              <MarketNews/>
             </div>
-            <div className="daily-movers">
+            {/* <div className="daily-movers"> */}
               {/* [][][][] aka Daily Movers Div */}
-            </div>
-            <div className="more-news">
+            {/* </div> */}
+            {/* <div className="more-news"> */}
               {/* [][][][] aka More News Div */}
-            </div>
+            {/* </div> */}
 
           </div>
 

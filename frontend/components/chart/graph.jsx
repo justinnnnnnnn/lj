@@ -22,7 +22,6 @@ class Graph extends React.Component {
   }
 
   componentDidUpdate(prevProps) {
-    // debugger;
     if (prevProps.stonk !== this.props.stonk) {
       StonkAPI.fetchStonkIntraday(this.props.stonk, this.marketOpen, this.marketClose, window.finnhubAPIKey)
       .then((response) => this.setState({intradayData: response}))

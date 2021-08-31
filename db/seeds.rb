@@ -21,4 +21,4 @@ User.create([{ username: 'stonkmaster420', password: '69', buying_power: 12000.1
 #     symbol: stocks["symbol"],
 #     name: stocks["description"]
 #   )
-end
+# end
