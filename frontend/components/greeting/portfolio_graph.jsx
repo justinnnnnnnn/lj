@@ -10,8 +10,9 @@ class PortfolioGraph extends React.Component {
     this.state = {
       loading: true,
       intradayPortfolio: {},
+      intradayPortfolio2: {},
       buyingPower: this.props.buyingPower,
-      portfolio: "TSLA",
+      portfolio: ["TSLA", "GME"]
       // portfolio: this.props.portfolio,
     }
 
@@ -26,6 +27,8 @@ class PortfolioGraph extends React.Component {
 
     StonkAPI.fetchStonkIntraday("TSLA", this.marketOpen, this.marketClose, window.finnhubAPIKey)
     .then((response) => this.setState({intradayPortfolio: response}))
+    .then(()=> StonkAPI.fetchStonkIntraday("GME", this.marketOpen, this.marketClose, window.finnhubAPIKey))
+      .then((response) => this.setState({intradayPortfolio2: response}))
     .then(() => this.setState({loading: false}))
   }
 
@@ -40,7 +43,8 @@ class PortfolioGraph extends React.Component {
       {console.log("GRAPH PROPS", this.state.portfolio, this.state.intradayPortfolio)}       
       return (
         <div>
-          <PortfolioGraphBuilder portfolio={this.state.portfolio} intradayPortfolio={this.state.intradayPortfolio}/>
+          {/* <PortfolioGraphBuilder portfolio={this.state.portfolio} intradayPortfolio={this.state.intradayPortfolio}/> */}
+          <PortfolioGraphBuilder portfolio={this.state.portfolio} intradayPortfolio2={this.state.intradayPortfolio2} intradayPortfolio={this.state.intradayPortfolio}/>
         </div>
       )
     }

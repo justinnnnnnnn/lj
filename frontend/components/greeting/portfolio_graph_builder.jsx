@@ -17,6 +17,7 @@ class Chart extends React.Component {
     super(props);
     this.state = {
       quoteData: {},
+      quoteData2: {},
       previousClose: 0,
       bigPrice: 0,
       currentPrice: 0
@@ -54,37 +55,42 @@ class Chart extends React.Component {
     price = this.handleMouseOver;
   }
   
-  componentDidMount() {
-    StonkAPI.fetchStonkCurrentPrice(this.props.portfolio, window.finnhubAPIKey)
-      .then((response) => this.setState({quoteData: response}))
-      .then(() => this.setState({loading: false}))
-      .then(() => this.setState({
-        bigPrice: this.state.quoteData.c, 
-        currentPrice: this.state.quoteData.c, 
-        previousClose: this.state.quoteData.pc
-      }));
-  }
+  // componentDidMount() {
+  //   // StonkAPI.fetchStonkCurrentPrice(this.props.portfolio, window.finnhubAPIKey)
+  //   StonkAPI.fetchStonkCurrentPrice("TSLA", window.finnhubAPIKey)
+  //     .then((response) => this.setState({quoteData: response}))
+  //     .then(() => StonkAPI.fetchStonkCurrentPrice("GME", window.finnhubAPIKey)
+  //       .then((response) => this.setState({quoteData2: response})))
+  //     .then(() => this.setState({loading: false}))
+  //     .then(() => this.setState({
+  //       bigPrice: this.state.quoteData.c, 
+  //       currentPrice: this.state.quoteData.c, 
+  //       previousClose: this.state.quoteData.pc
+  //     }));
+  // }
 
-  componentDidUpdate(prevProps) {
-    if (prevProps.portfolio !== this.props.portfolio) {
-      StonkAPI.fetchStonkCurrentPrice(this.props.portfolio, window.finnhubAPIKey)
-        .then((response) => this.setState({quoteData: response}))
-        .then(() => this.setState({loading: false}))
-        .then(() => this.setState({
-          bigPrice: this.state.quoteData.c, 
-          currentPrice: this.state.quoteData.c, 
-          previousClose: this.state.quoteData.pc
-      }));
-    }
-  }
+  // componentDidUpdate(prevProps) {
+  //   if (prevProps.portfolio !== this.props.portfolio) {
+  //     StonkAPI.fetchStonkCurrentPrice(this.props.portfolio, window.finnhubAPIKey)
+  //       .then((response) => this.setState({quoteData: response}))
+  //       .then(() => this.setState({loading: false}))
+  //       .then(() => this.setState({
+  //         bigPrice: this.state.quoteData.c, 
+  //         currentPrice: this.state.quoteData.c, 
+  //         previousClose: this.state.quoteData.pc
+  //     }));
+  //   }
+  // }
 
   render() {    
     const realData = [];
     for (let i = 0; i < this.props.intradayPortfolio.t.length; i++)
-    realData.push({
-      time: this.props.intradayPortfolio.t[i],
-      price: this.props.intradayPortfolio.o[i],
+      realData.push({
+        time: this.props.intradayPortfolio.t[i],
+        price: (this.props.intradayPortfolio.o[i] * 1),
     })
+    for (let i = 0; i < realData.length; i++)
+      realData[i].price += (this.props.intradayPortfolio2.o[i] * 1)
     const dottedLine = this.state.previousClose;
 
     return (
