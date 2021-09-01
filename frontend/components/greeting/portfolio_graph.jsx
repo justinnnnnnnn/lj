@@ -9,6 +9,7 @@ class PortfolioGraph extends React.Component {
     super(props);
     this.state = {
       loading: true,
+      sharedPortfolio: [],
       intradayPortfolio: {},
       intradayPortfolio2: {},
       buyingPower: this.props.buyingPower,
@@ -29,6 +30,21 @@ class PortfolioGraph extends React.Component {
     .then((response) => this.setState({intradayPortfolio: response}))
     .then(()=> StonkAPI.fetchStonkIntraday("GME", this.marketOpen, this.marketClose, window.finnhubAPIKey))
       .then((response) => this.setState({intradayPortfolio2: response}))
+    .then(() => {
+      console.log("pooooooooop", this.state.intradayPortfolio.o)
+      //for loop
+      this.state.intradayPortfolio.o.forEach(element => {
+        this.state.sharedPortfolio.push(element);
+        console.log("WEATHER THE ELEMENT:", this.state.sharedPortfolio, element)
+      })}
+      )
+      .then(() => {
+        for (let i = 0; i < this.state.sharedPortfolio.length; i++) {
+          this.state.sharedPortfolio[i] += this.state.intradayPortfolio2.o[i]
+        }
+        console.log("peeeeeeeeee", this.state.sharedPortfolio);
+      }
+    )
     .then(() => this.setState({loading: false}))
   }
 
@@ -44,7 +60,8 @@ class PortfolioGraph extends React.Component {
       return (
         <div>
           {/* <PortfolioGraphBuilder portfolio={this.state.portfolio} intradayPortfolio={this.state.intradayPortfolio}/> */}
-          <PortfolioGraphBuilder portfolio={this.state.portfolio} intradayPortfolio2={this.state.intradayPortfolio2} intradayPortfolio={this.state.intradayPortfolio}/>
+          {/* <PortfolioGraphBuilder portfolio={this.state.portfolio} intradayPortfolio2={this.state.intradayPortfolio2} intradayPortfolio={this.state.intradayPortfolio}/> */}
+          <PortfolioGraphBuilder portfolio={this.state.portfolio} intradayPortfolio={this.state.intradayPortfolio} sharedPortfolio={this.state.sharedPortfolio}/>
         </div>
       )
     }

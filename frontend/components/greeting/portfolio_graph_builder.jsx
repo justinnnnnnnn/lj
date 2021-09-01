@@ -87,10 +87,10 @@ class Chart extends React.Component {
     for (let i = 0; i < this.props.intradayPortfolio.t.length; i++)
       realData.push({
         time: this.props.intradayPortfolio.t[i],
-        price: (this.props.intradayPortfolio.o[i] * 1),
+        price: (this.props.sharedPortfolio[i]),
     })
-    for (let i = 0; i < realData.length; i++)
-      realData[i].price += (this.props.intradayPortfolio2.o[i] * 1)
+    // for (let i = 0; i < realData.length; i++)
+    //   realData[i].price += (this.props.intradayPortfolio2.o[i] * 1)
     const dottedLine = this.state.previousClose;
 
     return (
