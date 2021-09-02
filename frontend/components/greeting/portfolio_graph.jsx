@@ -24,22 +24,19 @@ class PortfolioGraph extends React.Component {
 
   componentDidMount() {
     Promise.all(
-      this.props.portfolio.map((ele, i) => {
+      this.props.portfolio.map((ele) => {
       StonkAPI.fetchStonkIntraday((ele.ticker), this.marketOpen, this.marketClose, window.finnhubAPIKey)
         .then((response) => {
-          this.setState(prevState => ({portfolioPrices: [...prevState.portfolioPrices, response]}));
-          console.log("PORTFOOLIUS", this.state.portfolioPrices, this.state.portfolioPrices.length, "And the props?:", this.state.portfolio, this.state.portfolio.length);
-          // this.state.portfolioPrices.push(this.state.intradayPortfolio);
+          this.setState(prevState => (
+            {portfolioPrices: [...prevState.portfolioPrices, response]}));
         })
       }))
       .then(() => {
         this.setState({portfolioAPILength: this.state.portfolioPrices.length})
       }
-      );
-    console.log("getting desperate", this.state.portfolioAPILength)
-    // )
-      // .then(() => this.setState({loading: false}))
-    };
+    );
+  };
+
   componentDidUpdate() {
     if ((this.state.portfolioPrices.length === this.state.portfolio.length) && this.state.loading === true) {
       this.setState({loading: false})

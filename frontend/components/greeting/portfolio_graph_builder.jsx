@@ -21,7 +21,8 @@ class Chart extends React.Component {
       quoteData2: {},
       previousClose: 0,
       bigPrice: 0,
-      currentPrice: 0
+      currentPrice: 0,
+      yarg: [],
     }
     
 
@@ -30,17 +31,47 @@ class Chart extends React.Component {
     this.handleMouseLeave = this.handleMouseLeave(this)
   }
 
-  componentDidMount(){
-    {this.state.portfolioPrices.forEach((ele, i) => {
-      this.state.portfolioPrices.forEach((element, index) => {
-        this.state.portfolioPrices[i][index] = element * this.props.portfolio[i].shares
-    })});
-    console.log("portfolio prices.o", this.state.portfolioPrices);
-    for(let i = 1; i < this.state.portfolioPrices.length; i++)
-      for(let j = 0; j < this.state.portfolioPrices[0].o.length; j++)
-        this.state.portfolioPrices[0].o[j] += this.state.portfolioPrices[i][j];
-    console.log("portfolio prices[0]", this.state.portfolioPrices[0]);}
-  }
+  // componentDidMount() {
+  //     this.props.portfolioPrices.forEach((ele, i) => 
+  //     {
+  //       ele.o.forEach((pricePoint, index) => {
+  //         console.log("this.state.yarg", this.state.yarg, "this.props.portfolio[i].shares", this.props.portfolio[i].shares)
+  //         this.setState((prevState) => (console.log("prevState", prevState), {yarg: [...prevState.yarg, Number(Number(pricePoint) * Number(this.props.portfolio[i].shares))]}
+  //         ))
+  //       })
+  //     });
+  //   console.log(this.state.yarg)   
+  // }
+  // componentDidMount() {
+  //     this.props.portfolioPrices.forEach((ele, i) => {
+  //       ele.o.forEach((pricePoint, index) => {
+  //         this.setState((prevState) => // ({yarg: [...prevState.yarg, Number(Number(pricePoint) * Number(this.props.portfolio[i].shares))]})
+  //         // mutate the element at ele.o[index]
+  //           ({portfolioPrices[i].o[index] = Number(Number(pricePoint) * Number(this.props.portfolio[i].shares))})
+  //         )
+  //       })
+  //     });
+  //   console.log(this.state.portfolioPrices)   
+  // }
+      
+      
+
+
+
+  // componentDidMount(){
+     
+  //     {
+  //       this.state.portfolioPrices.forEach((ele, i) => {
+  //       this.state.portfolioPrices.forEach((element, index) => {
+  //         this.state.portfolioPrices[i][index] = element * this.props.portfolio[i].shares
+  //       })})
+  //       console.log("portfolio prices.o", this.state.portfolioPrices);
+  //       for(let i = 1; i < this.state.portfolioPrices.length; i++)
+  //       for(let j = 0; j < this.state.portfolioPrices[0].o.length; j++)
+  //       this.state.portfolioPrices[0].o[j] += this.state.portfolioPrices[i][j];
+  //       console.log("portfolio prices[0]", this.state.portfolioPrices[0]);
+  //     }
+  // }
 
   handleMouseOver(e) {
     if (e.activePayload) {
@@ -81,8 +112,46 @@ class Chart extends React.Component {
       })
     }
     // for (let i = 0; i < realData.length; i++)
-    //   realData[i].price += (this.props.intradayPortfolio2.o[i] * 1)
+    //   realData[i].price += (this.props.portfolioPrices[i].o)
     const dottedLine = this.state.previousClose;
+
+
+    let multipliedPrices = []
+
+    this.state.portfolioPrices.forEach((ele, i) => {
+      let arr = []
+      ele.o.forEach((element, index) => {
+      arr.push(element * this.props.portfolio[i].shares)
+        this.state.portfolioPrices[i][index] = element * this.props.portfolio[i].shares
+      })
+      multipliedPrices.push(arr);
+      console.log("multiplied prices", multipliedPrices)
+    })
+    let addedArrays = multipliedPrices[0]
+    for(let i = 1; i < multipliedPrices.length; i++)
+    for(let j = 0; j < multipliedPrices[0].length; j++)
+    addedArrays[j] += multipliedPrices[i][j];
+    console.log("added arrays", addedArrays)
+
+
+
+
+            // for(let i = 1; i < this.state.portfolioPrices.length; i++)
+            // for(let j = 0; j < this.state.portfolioPrices[0].o.length; j++)
+            // this.state.portfolioPrices[0].o[j] += this.state.portfolioPrices[i][j];
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     return (
       <div className="chart">
