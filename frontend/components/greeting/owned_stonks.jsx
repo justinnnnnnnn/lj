@@ -21,8 +21,7 @@ class OwnedStonks extends React.Component {
   // }
   
   render() {
-  
-    console.log("portfolio state", this.state)
+
     if (this.state.loading) {
       return (<div/>)
     } else {

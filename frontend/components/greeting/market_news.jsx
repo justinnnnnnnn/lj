@@ -15,7 +15,6 @@ class MarketNews extends React.Component {
     StonkAPI.fetchMarketNews()
       .then((response) => this.setState({marketNews: response}))
       .then(() => this.setState({loading: false}));
-      console.log("what is the state??", this.state)
   }
 
   componentWillUnmount() {

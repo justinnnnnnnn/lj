@@ -137,10 +137,7 @@ class Greeting extends React.Component {
   const loggedInHeader = () => (
     <>
     <div className="whole-page-logged-in">
-      {console.log("does it have the storks", this.props)}
-
-
-
+      {/* {console.log("does it have the storks", this.props)} */}
       <div className="header-logged-in">
         <div className="account-header">
           <div className="robinherd-logo">
@@ -168,7 +165,7 @@ class Greeting extends React.Component {
         
         <div className="main-div-left">
         {/* main left XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX GRAPH */}
-          <PortfolioGraph/> 
+          <PortfolioGraph buyingPower={this.props.currentUser.buyingPower} portfolio={this.props.currentUser.stockBuys}/> 
           <marquee>This will be a portfolio graph</marquee>          
           <div className="buying-power">
               <div>

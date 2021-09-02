@@ -16,6 +16,7 @@ class Chart extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      portfolioPrices: this.props.portfolioPrices,
       quoteData: {},
       quoteData2: {},
       previousClose: 0,
@@ -27,6 +28,18 @@ class Chart extends React.Component {
     this.handleMouseOver = this.handleMouseOver.bind(this)
     this.odometerValue = this.odometerValue.bind(this)
     this.handleMouseLeave = this.handleMouseLeave(this)
+  }
+
+  componentDidMount(){
+    {this.state.portfolioPrices.forEach((ele, i) => {
+      this.state.portfolioPrices.forEach((element, index) => {
+        this.state.portfolioPrices[i][index] = element * this.props.portfolio[i].shares
+    })});
+    console.log("portfolio prices.o", this.state.portfolioPrices);
+    for(let i = 1; i < this.state.portfolioPrices.length; i++)
+      for(let j = 0; j < this.state.portfolioPrices[0].o.length; j++)
+        this.state.portfolioPrices[0].o[j] += this.state.portfolioPrices[i][j];
+    console.log("portfolio prices[0]", this.state.portfolioPrices[0]);}
   }
 
   handleMouseOver(e) {
@@ -54,41 +67,19 @@ class Chart extends React.Component {
   odometerValue(price) {
     price = this.handleMouseOver;
   }
-  
-  // componentDidMount() {
-  //   // StonkAPI.fetchStonkCurrentPrice(this.props.portfolio, window.finnhubAPIKey)
-  //   StonkAPI.fetchStonkCurrentPrice("TSLA", window.finnhubAPIKey)
-  //     .then((response) => this.setState({quoteData: response}))
-  //     .then(() => StonkAPI.fetchStonkCurrentPrice("GME", window.finnhubAPIKey)
-  //       .then((response) => this.setState({quoteData2: response})))
-  //     .then(() => this.setState({loading: false}))
-  //     .then(() => this.setState({
-  //       bigPrice: this.state.quoteData.c, 
-  //       currentPrice: this.state.quoteData.c, 
-  //       previousClose: this.state.quoteData.pc
-  //     }));
-  // }
-
-  // componentDidUpdate(prevProps) {
-  //   if (prevProps.portfolio !== this.props.portfolio) {
-  //     StonkAPI.fetchStonkCurrentPrice(this.props.portfolio, window.finnhubAPIKey)
-  //       .then((response) => this.setState({quoteData: response}))
-  //       .then(() => this.setState({loading: false}))
-  //       .then(() => this.setState({
-  //         bigPrice: this.state.quoteData.c, 
-  //         currentPrice: this.state.quoteData.c, 
-  //         previousClose: this.state.quoteData.pc
-  //     }));
-  //   }
-  // }
 
   render() {    
+    console.log("props in the boonies", this.state.portfolioPrices, "its length is:", this.props.portfolioPrices.length)
+    
     const realData = [];
-    for (let i = 0; i < this.props.intradayPortfolio.t.length; i++)
+    if (this.props.portfolioPrices.length === this.props.portfolio.length) {
+
+      for (let i = 0; i < this.props.portfolioPrices[0].t.length; i++)
       realData.push({
-        time: this.props.intradayPortfolio.t[i],
-        price: (this.props.sharedPortfolio[i]),
-    })
+        time: this.props.portfolioPrices[0].t[i],
+        price: (this.props.portfolioPrices[0][i]),
+      })
+    }
     // for (let i = 0; i < realData.length; i++)
     //   realData[i].price += (this.props.intradayPortfolio2.o[i] * 1)
     const dottedLine = this.state.previousClose;
