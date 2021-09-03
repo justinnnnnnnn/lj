@@ -18,7 +18,7 @@ class Greeting extends React.Component {
     this.handleDemoSubmit = this.handleDemoSubmit.bind(this);
   }
   componentDidMount() {
-    currentUser ? UserAPI.getAllStockBuys(this.props.currentUser.id).then((response) => {response; this.setState({portfolio: response})}) 
+    this.props.currentUser ? UserAPI.getAllStockBuys(this.props.currentUser.id).then((response) => {response; this.setState({portfolio: response})}) 
     : null;
     console.log("main page did mount", this.state.portfolio)
   }

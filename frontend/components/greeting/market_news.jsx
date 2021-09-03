@@ -61,25 +61,3 @@ class MarketNews extends React.Component {
 }
 
 export default MarketNews;
-
-
-
-
-{/* <div class='news-article' key={i}>
-            <div className="news-left">
-              <div className="news-article-headline-and-time">
-                <div className="news-article-headline">{this.state.marketNews[i].source} </div>
-                <div className="news-article-time">{timeSince(this.state.marketNews[i].datetime)}</div>
-              </div>
-                                        <br></br>
-              <div>
-                {this.state.marketNews[i].headline} 
-              </div>
-                                        <br></br>
-            </div>
-
-            <div news-right>
-              <img src={this.state.marketNews[0].image} class="news-article-image"/>
-              <br></br><br></br>
-            </div>
-          </div> */}

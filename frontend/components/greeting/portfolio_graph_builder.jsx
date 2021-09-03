@@ -100,58 +100,34 @@ class Chart extends React.Component {
   }
 
   render() {    
-    console.log("props in the boonies", this.state.portfolioPrices, "its length is:", this.props.portfolioPrices.length)
-    
-    const realData = [];
-    if (this.props.portfolioPrices.length === this.props.portfolio.length) {
-
-      for (let i = 0; i < this.props.portfolioPrices[0].t.length; i++)
-      realData.push({
-        time: this.props.portfolioPrices[0].t[i],
-        price: (this.props.portfolioPrices[0][i]),
-      })
-    }
-    // for (let i = 0; i < realData.length; i++)
-    //   realData[i].price += (this.props.portfolioPrices[i].o)
-    const dottedLine = this.state.previousClose;
-
-
     let multipliedPrices = []
 
     this.state.portfolioPrices.forEach((ele, i) => {
       let arr = []
       ele.o.forEach((element, index) => {
-      arr.push(element * this.props.portfolio[i].shares)
-        this.state.portfolioPrices[i][index] = element * this.props.portfolio[i].shares
+      arr.push((Number(element) * this.props.portfolio[i].shares))
+
       })
       multipliedPrices.push(arr);
       console.log("multiplied prices", multipliedPrices)
     })
     let addedArrays = multipliedPrices[0]
     for(let i = 1; i < multipliedPrices.length; i++)
-    for(let j = 0; j < multipliedPrices[0].length; j++)
-    addedArrays[j] += multipliedPrices[i][j];
+      for(let j = 0; j < multipliedPrices[0].length; j++)
+      addedArrays[j] += multipliedPrices[i][j];
     console.log("added arrays", addedArrays)
 
+    const realData = [];
+    if (this.props.portfolioPrices.length === this.props.portfolio.length) {
 
+      for (let i = 0; i < addedArrays.length; i++)
+      realData.push({
+        time: this.props.portfolioPrices[0].t[i],
+        price: (addedArrays[i] + Number(this.props.buyingPower)),
+      })
+    }
 
-
-            // for(let i = 1; i < this.state.portfolioPrices.length; i++)
-            // for(let j = 0; j < this.state.portfolioPrices[0].o.length; j++)
-            // this.state.portfolioPrices[0].o[j] += this.state.portfolioPrices[i][j];
-
-
-
-
-
-
-
-
-
-
-
-
-
+    // const dottedLine = this.state.previousClose;
 
     return (
       <div className="chart">
@@ -208,12 +184,6 @@ class Chart extends React.Component {
               stroke="rgb(5, 200, 0)" 
               dot={false} 
               strokeWidth="2" />
-            <ReferenceLine 
-              y={dottedLine} 
-              strokeWidth="2" 
-              stroke="rgb(111, 120, 126)" 
-              strokeDasharray="1, 5.25925925925926" 
-              strokeDashoffset="6.259259259259248" />
           </LineChart>
         </ResponsiveContainer>
       </div>

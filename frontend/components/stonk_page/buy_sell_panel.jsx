@@ -12,13 +12,15 @@ class BuySellPanel extends React.Component {
       input: 0,
       sharesOwned: 0,
       userData: {},
-      buyingPowerReal: this.props.currentUser.buyingPower,
+      buyingPower: this.props.currentUser.buyingPower,
+      buy: true
       // sharesValue: Number(this.state.sharesOwned) * Number(this.state.price),
     }
 
     this.submitBuy = this.submitBuy.bind(this);
+    this.submitSell = this.submitSell.bind(this);
     this.setInput = this.setInput.bind(this);
-
+    this.toggleBuySell = this.toggleBuySell.bind(this);
 
   }
 
@@ -26,7 +28,7 @@ class BuySellPanel extends React.Component {
     UserAPI.getBuyingPower(this.props.currentUser.id)
     .then((response) => {this.setState({userData: response})})
     .then(() => this.setState({loading: false}))
-    .then(() => this.setState({buyingPowerReal: this.state.userData.buyingPower}))
+    .then(() => this.setState({buyingPower: this.state.userData.buyingPower}))
     .then(() => {UserAPI.getStockBuy(this.props.stonk, this.props.currentUser.id)
       .then((response) => {console.log("response to shares owned in mount:", response); this.setState({sharesOwned: response.shares})})
     })
@@ -34,11 +36,11 @@ class BuySellPanel extends React.Component {
   }
   
   componentDidUpdate(prevProps, prevState) {
-    if (prevState.buyingPowerReal !== this.state.buyingPowerReal) {    
+    if (prevState.buyingPower !== this.state.buyingPower) {    
       UserAPI.getBuyingPower(this.props.currentUser.id)
       .then((response) => {this.setState({userData: response})})
       .then(() => this.setState({loading: false}))
-      .then(() => this.setState({buyingPowerReal: this.state.userData.buyingPower}))
+      .then(() => this.setState({buyingPower: this.state.userData.buyingPower}))
       .then(() => {UserAPI.getStockBuy(this.props.stonk, this.props.currentUser.id)
         .then((response) => {console.log("response to shares owned in mount:", response); this.setState({sharesOwned: response.shares})})
       })
@@ -50,71 +52,119 @@ class BuySellPanel extends React.Component {
   }
 
   submitBuy(e) {
-    console.log("SUBMIT BUY: this.props.stonk, this.state.input, this.props.currentUser.id", this.props.stonk, this.state.input, this.props.currentUser.id)
+    console.log("BUYING HAS BEEN CLICKED")
     e.preventDefault();
     if (this.state.sharesOwned === 0 ) {
-      UserAPI.updateBuyingPower((Number(this.state.buyingPowerReal) - Number(this.state.input * this.state.currentPrice)), this.props.currentUser.id)
+      UserAPI.updateBuyingPower((Number(this.state.buyingPower) - Number(this.state.input * this.state.currentPrice)), this.props.currentUser.id)
       .then(() => {
-        this.setState({buyingPowerReal: (Number(this.state.buyingPowerReal) - Number(this.state.input * this.state.currentPrice))});
-        console.log("account balance submission with new stock aka a", this.state.buyingPowerReal);
+        this.setState({buyingPower: (Number(this.state.buyingPower) - Number(this.state.input * this.state.currentPrice))});
       })
       .then(() => {
         UserAPI.stockBuy(this.props.stonk, this.state.input, this.props.currentUser.id)
           .then(() => {
-          this.setState({sharesOwned: this.state.input})
-          console.log("does the portfolio submission happen path a??")
+            this.setState({sharesOwned: this.state.input})
         })
       })
     } else {
-      UserAPI.updateBuyingPower((Number(this.state.buyingPowerReal) - Number(this.state.input * this.state.currentPrice)), this.props.currentUser.id)
+      UserAPI.updateBuyingPower((Number(this.state.buyingPower) - Number(this.state.input * this.state.currentPrice)), this.props.currentUser.id)
       .then(() => {
-        this.setState({buyingPowerReal: (Number(this.state.buyingPowerReal) - Number(this.state.input * this.state.currentPrice))});
-        console.log("account balance submission with old stock aka b", this.state.buyingPowerReal);
+        this.setState({buyingPower: (Number(this.state.buyingPower) - Number(this.state.input * this.state.currentPrice))});
       })
       .then(() => {
         UserAPI.updateStockBuy(this.props.stonk, (Number(Number(this.state.sharesOwned) + Number(this.state.input))), this.props.currentUser.id)
+      })
+    }
+  }
+
+  submitSell(e) {
+    e.preventDefault();
+    if (this.state.sharesOwned === 0 ) {
+      return null 
+    } else {
+      UserAPI.updateBuyingPower((Number(this.state.buyingPower) + Number(this.state.input * this.state.currentPrice)), this.props.currentUser.id)
+      .then(() => {
+        this.setState({buyingPower: (Number(this.state.buyingPower) + Number(this.state.input * this.state.currentPrice))});
+      })
+      .then(() => {
+        UserAPI.updateStockBuy(this.props.stonk, (Number(Number(this.state.sharesOwned) - Number(this.state.input))), this.props.currentUser.id)
         .then(() => {
-          this.setState({sharesOwned: this.state.input});
-          console.log("does the portfolio submission happen path b??")
+          console.log("SOLD SHARES")
         })
       })
     }
   }
-      
-  
+
+  toggleBuySell() {
+    if (this.state.buy) {
+      this.setState({ buy: false})
+    } else {
+      this.setState({ buy: true})
+    }
+  }
+
+
   render() {
-    console.log("BuySell this.props.stonk:", this.props.stonk);
-    // console.log("second buysell component state", this.state);
+    // console.log("BuySell this.props.stonk:", this.props.stonk);
+
     const stockPrice = this.props.stonkQuote.c;
-    // console.log(stockPrice)
+
 
 
     let buy = () => {
-      return (
-        <div>
+      if (this.state.buy) { //buy
+        return (
+          
           <div>
-            <form onSubmit={this.submitBuy}>
-              Buy {this.props.stonk} <br/>
-              Shares: <input type="number" name="input" value={this.state.input} onChange={this.setInput} placeholder={0} /> <br/>
-              Market Price {`$${stockPrice.toLocaleString('en-US',  {minimumFractionDigits: 2}) }`}<br/>
-              Estimated Cost {`$${(stockPrice * this.state.input).toLocaleString('en-US',  {minimumFractionDigits: 2}) }`} <br/>
-              <button>Clickity</button>
-            </form>
+            <div>
+              <form onSubmit={this.submitBuy}>
+                <div><span>Buy {this.props.stonk} </span> <span onClick={this.toggleBuySell}>Sell {this.props.stonk} </span></div>
+                <br/>
+                <div> Shares: <input type="number" min="0" name="input" value={this.state.input} onChange={this.setInput} placeholder={0} /> </div>
+                <br/>
+                <div>Market Price {`$${stockPrice.toLocaleString('en-US',  {minimumFractionDigits: 2}) }`} </div>
+                <br/>
+                <div> Estimated Cost {`$${(stockPrice * this.state.input).toLocaleString('en-US',  {minimumFractionDigits: 2}) }`} </div>
+                <br/>
+                <button>Complete Order</button>
+              </form>
+            </div>
+            <div>
+              ${Number(this.state.buyingPower).toLocaleString('en-US',  {minimumFractionDigits: 2})} buying power available
+            </div>
           </div>
+
+        )
+      } else { //sell
+        return (
+          
           <div>
-            <br /><br />
+            <div>
+              <form onSubmit={this.submitSell}>
+                <div><span onClick={this.toggleBuySell}>Buy {this.props.stonk} </span> <span>Sell {this.props.stonk} </span></div>
+                <br/>
+                <div> Shares: <input type="number" min="0" max={this.state.sharesOwned} name="input" value={this.state.input} onChange={this.setInput} placeholder={0} /> </div>
+                <br/>
+                <div> Market Price {`$${stockPrice.toLocaleString('en-US',  {minimumFractionDigits: 2}) }`} </div>
+                <br/>
+                <div> Estimated Credit {`$${(stockPrice * this.state.input).toLocaleString('en-US',  {minimumFractionDigits: 2}) }`} </div>
+                <br/> 
+                <div> <button>Complete Order</button> </div>
+              </form>
+            </div>
+            <div>
+            {Number(this.state.sharesOwned)} shares available
+            </div>
           </div>
-        </div>
-      )
+
+        )
+      }
     }
+      
     
     return (
       <div>
         <div>
           {buy()}
-          Shares Owned: {Number(this.state.sharesOwned)} <br/><br/>
-          {/* Buying Power: ${this.state.buyingPowerFake.toLocaleString('en-US',  {minimumFractionDigits: 2})}<br></br> */}
-          Buying Power: ${Number(this.state.buyingPowerReal).toLocaleString('en-US',  {minimumFractionDigits: 2})}
         </div>
       </div>
     )

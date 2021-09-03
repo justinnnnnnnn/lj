@@ -79,7 +79,7 @@ class PortfolioGraph extends React.Component {
           return (
             <div>
           {sharesTimesPrices()}
-          <PortfolioGraphBuilder portfolioPrices={this.state.portfolioPrices} portfolio={this.state.portfolio}/>
+          <PortfolioGraphBuilder portfolioPrices={this.state.portfolioPrices} portfolio={this.state.portfolio} buyingPower={this.props.buyingPower}/>
         </div>
       )
     } 

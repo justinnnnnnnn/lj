@@ -38,7 +38,7 @@ class StonkNews extends React.Component {
 
     const newsItems = this.state.stonkNews.map((item, i) => 
         i < 3 &&
-        (<div class='news-article' key={i}>
+        (<div className='news-article' key={i}>
           <div className="news-left">
             <div className="news-article-headline-and-time">
               <div className="news-article-headline">{item.source} </div>
@@ -51,7 +51,7 @@ class StonkNews extends React.Component {
                                       <br></br>
           </div>
 
-          <div news-right>
+          <div className="news-right">
             <img src={item.image} className="news-article-image"/>
             <br></br><br></br>
           </div>
