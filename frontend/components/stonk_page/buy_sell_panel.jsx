@@ -128,6 +128,7 @@ class BuySellPanel extends React.Component {
                 <button>Complete Order</button>
               </form>
             </div>
+            <br/>
             <div>
               ${Number(this.state.buyingPower).toLocaleString('en-US',  {minimumFractionDigits: 2})} buying power available
             </div>
@@ -151,6 +152,7 @@ class BuySellPanel extends React.Component {
                 <div> <button>Complete Order</button> </div>
               </form>
             </div>
+            <br/>
             <div>
             {Number(this.state.sharesOwned)} shares available
             </div>

@@ -1,80 +1,146 @@
 import React from "react";
 import { Link, withRouter } from 'react-router-dom'
+import searchList from "./search_list";
 
 class SearchBar extends React.Component {
-  state = {
-    code: '' // initial value
-  }
   constructor(props) {
     super(props);
     this.state = {
-      input: ''
+      input: '',
+      searchList: searchList,
+      searchDisplay: [],
+      setEnter: {},
     };
     this.buttonPress = this.buttonPress.bind(this)
-    // this.goStonk = this.goStonk.bind(this)
-    // this.handleSubmit = this.handleSubmit.bind(this);
   }
 
-  // handleSubmit(e) {
-  //   e.preventDefault();
-  //   const user = Object.assign({}, this.state);
-  //   this.props.processInput(user);
-  // }
-  buttonPress = (e) => {
-    this.props.history.push(`/stonks/${this.state.input}`)
-  }
-  // save code in state on change
-  setInput = e => this.setState({input: e.target.value})
+
   
-  // change href to be this.state.code value
-  go = e => {
-    // console.log("navigate to stonkpage")
 
-    e.preventDefault();
-          // window.location.href = "/#/stonks/" + this.state.input
-          // <Link to={`/stocks/${this.state.stockSymbol}`} key={window.location.pathname} ></Link>;
-    // <Link to={`/stonks/${this.state.input}`} />
-          // window.location.href = "/#/stonks/" + this.state.input
+  setInput = (e) => { 
+    this.setState({input: e.target.value});
+  }
+
+  searchFilter = () => {
+    let inputUp = this.state.input.toUpperCase()
+    let searchResult = []
+    console.log("search list props", this.state.searchList)
+    let searchArr = Object.values(this.state.searchList)
+    console.log("by var name searchArr", Object.values(searchArr))
     
+    if (this.state.input.length > 0) { // add just the ticker first
+      searchArr.map((objectOfTickerAndName, i) => {
+        if (objectOfTickerAndName.ticker.startsWith(inputUp) || (objectOfTickerAndName.name.toUpperCase().startsWith(inputUp))) {
+          searchResult.push(
+            <div className="search-item" key={i}>
+              <Link to={`/stonks/${objectOfTickerAndName.ticker}`}>
+                {`${objectOfTickerAndName.name}, ${objectOfTickerAndName.ticker}`}
+              </Link>
+            </div>
+          )
+        };
+      });
+    }
+
+    // if (searchResult.length < 8) {
+    //   searchArr.map((objectOfTickerAndName, i) => {
+    //     if (objectOfTickerAndName.ticker.startsWith(inputUp) || (objectOfTickerAndName.name.toUpperCase().startsWith(inputUp))
+    //     && !(objectOfTickerAndName.ticker.startsWith(inputUp))
+    //     ){
+    //       searchResult.push(
+    //         <div className="search-item" key={i}>
+    //           <Link to={`/stonks/${objectOfTickerAndName.ticker}`}>
+    //             {`${objectOfTickerAndName.name}, ${objectOfTickerAndName.ticker}`}
+    //           </Link>
+    //         </div>
+    //       )
+    //     };
+    //   });
+    // }
+    
+    if (searchResult.length < 8) {
+      searchArr.map((objectOfTickerAndName, j) => {
+        if (
+          (objectOfTickerAndName.ticker.includes(inputUp) || (objectOfTickerAndName.name.toUpperCase().includes(inputUp)) )
+          && !(objectOfTickerAndName.ticker.startsWith(inputUp) || objectOfTickerAndName.name.toUpperCase().startsWith(inputUp))
+        ){
+          searchResult.push(
+            <div className="search-item" key={this.state.searchDisplay.length + j}>
+              <Link to={`/stonks/${this.state.input}`}>
+                {`${objectOfTickerAndName.name}, ${objectOfTickerAndName.ticker}`}
+              </Link>
+            </div>
+          )
+        }
+      });
+    }
+
+    return searchResult.slice(0, 8)
   }
+
+                  buttonPress = (e) => {
+                    // this.props.history.push(`${searchResult()[0].props.children.props.to}`)
+                    let inputUp = this.state.input.toUpperCase()
+                    let searchResult = []
+                    console.log("search list props", this.state.searchList)
+                    let searchArr = Object.values(this.state.searchList)
+                    console.log("by var name searchArr", Object.values(searchArr))
+                    
+                    if (this.state.input.length > 0) { // add just the ticker first
+                      searchArr.map((objectOfTickerAndName, i) => {
+                        if (objectOfTickerAndName.ticker.startsWith(inputUp) || (objectOfTickerAndName.name.toUpperCase().startsWith(inputUp))) {
+                          searchResult.push(
+                            <div className="search-item" key={i}>
+                              <Link to={`/stonks/${objectOfTickerAndName.ticker}`}>
+                                {`${objectOfTickerAndName.name}, ${objectOfTickerAndName.ticker}`}
+                              </Link>
+                            </div>
+                          )
+                        };
+                      });
+                    }
+                    
+                    if (searchResult.length < 8) {
+                      searchArr.map((objectOfTickerAndName, j) => {
+                        if (
+                          (objectOfTickerAndName.ticker.includes(inputUp) || (objectOfTickerAndName.name.toUpperCase().includes(inputUp)) )
+                          && !(objectOfTickerAndName.ticker.startsWith(inputUp) || objectOfTickerAndName.name.toUpperCase().startsWith(inputUp))
+                        ){
+                          searchResult.push(
+                            <div className="search-item" key={this.state.searchDisplay.length + j}>
+                              <Link to={`/stonks/${this.state.input}`}>
+                                {`${objectOfTickerAndName.name}, ${objectOfTickerAndName.ticker}`}
+                              </Link>
+                            </div>
+                          )
+                        }
+                      });
+                    }
+
+                    return this.props.history.push(`${searchResult[0].props.children.props.to}`)
+                  }
   
+  go = e => {
+    e.preventDefault();
+  }
+
   render(){
     return (
       <div className="search-bar">
+        {console.log("the search list", this.state.searchList)}
 
         <form onSubmit={this.go}>
-          {/* <div>duped input: {this.state.input}</div> */}
           <input type="text" name="input" value={this.state.input} onChange={this.setInput} placeholder="ticker name here" />
-          <Link to={`/stonks/${this.state.input}`}>The Link: {`${this.state.input}`}</Link>
-          <button onClick={this.buttonPress}>button</button>
-          {/* <Link to={`/stonks/${this.state.input}`} /> */}
-          {/* <input type="button" onClick={this.go} /> */}
+          <div className="hide-this-button"><button type="submit" onClick={this.buttonPress}></button></div>
+
+          <br />
+          {/* <div className="search-dropdown">{this.state.searchDisplay}</div> */}
+          <div className="search-dropdown">{this.searchFilter()}</div>
         </form>
       </div>
     )
   }
 }
 
-
-
-
-
-// const searchInput = (props) => {
-//   // this takes in somethin
-// }
-
-// const SearchBar = () => {
-//   return (
-//     <div className="search-bar">
-//       <input
-//         type="text"
-//         // value={"yo mama"}
-//         // onChange={searchInput}
-//         className="search-field"
-//       />
-//       {/* thing that inserts all the backend stonks */}
-//     </div>
-//   );
-// };
 
 export default withRouter(SearchBar);

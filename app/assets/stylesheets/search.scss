@@ -4,12 +4,9 @@
   height: 34px;
   border: 1px solid rgba(0,0,0,0.06);
   border-radius: 3px;
+  // overflow: visible;
 }
 
-.search-bar > input {
-  // padding: 1px 24px 1px 2px; //get this in a div not the input box
-
-}
 
 .search-bar:hover {
   box-shadow: 0px 12px 24px rgba(0,0,0,0.06), 0px -12px 24px rgba(0,0,0,0.06);
@@ -24,4 +21,27 @@
   border: none;
   outline: none;
   text-decoration: unset;
+}
+
+.search-dropdown {
+  display: flex;
+  flex-direction: column;
+  background-color: white;
+  z-index: 40;
+}
+.search-dropdown > div {
+  display: flex;
+  flex-direction: column;
+  background-color: white;
+  z-index: 40;
+}
+
+.search-item {
+  border-bottom: 1px solid silver;
+  font-weight: 200;
+  z-index: 40;
+}
+
+.hide-this-button > button {
+  display: none;
 }

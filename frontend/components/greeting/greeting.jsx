@@ -1,6 +1,5 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import Graph from '../chart/graph' //do portfolio graph last
 import Dropdown from './dropdown'
 import OwnedStonks from './owned_stonks'
 import MarketNews from './market_news'
@@ -165,7 +164,7 @@ class Greeting extends React.Component {
         
         <div className="main-div-left">
         {/* main left XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX GRAPH */}
-          <PortfolioGraph buyingPower={this.props.currentUser.buyingPower} portfolio={this.props.currentUser.stockBuys}/> 
+          {/* <PortfolioGraph buyingPower={this.props.currentUser.buyingPower} portfolio={this.props.currentUser.stockBuys}/>  */}
           <marquee>This will be a portfolio graph</marquee>          
           <div className="buying-power">
               <div>
