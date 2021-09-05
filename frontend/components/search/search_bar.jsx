@@ -30,7 +30,7 @@ class SearchBar extends React.Component {
     
     if (this.state.input.length > 0) { // add just the ticker first
       searchArr.map((objectOfTickerAndName, i) => {
-        if (objectOfTickerAndName.ticker.startsWith(inputUp) || (objectOfTickerAndName.name.toUpperCase().startsWith(inputUp))) {
+        if (objectOfTickerAndName.ticker.startsWith(inputUp)) {
           searchResult.push(
             <div className="search-item" key={i}>
               <Link to={`/stonks/${objectOfTickerAndName.ticker}`}>
@@ -42,21 +42,21 @@ class SearchBar extends React.Component {
       });
     }
 
-    // if (searchResult.length < 8) {
-    //   searchArr.map((objectOfTickerAndName, i) => {
-    //     if (objectOfTickerAndName.ticker.startsWith(inputUp) || (objectOfTickerAndName.name.toUpperCase().startsWith(inputUp))
-    //     && !(objectOfTickerAndName.ticker.startsWith(inputUp))
-    //     ){
-    //       searchResult.push(
-    //         <div className="search-item" key={i}>
-    //           <Link to={`/stonks/${objectOfTickerAndName.ticker}`}>
-    //             {`${objectOfTickerAndName.name}, ${objectOfTickerAndName.ticker}`}
-    //           </Link>
-    //         </div>
-    //       )
-    //     };
-    //   });
-    // }
+    if (searchResult.length < 8) {
+      searchArr.map((objectOfTickerAndName, i) => {
+        if (objectOfTickerAndName.name.toUpperCase().startsWith(inputUp)
+        && !(objectOfTickerAndName.ticker.startsWith(inputUp))
+        ){
+          searchResult.push(
+            <div className="search-item" key={i}>
+              <Link to={`/stonks/${objectOfTickerAndName.ticker}`}>
+                {`${objectOfTickerAndName.name}, ${objectOfTickerAndName.ticker}`}
+              </Link>
+            </div>
+          )
+        };
+      });
+    }
     
     if (searchResult.length < 8) {
       searchArr.map((objectOfTickerAndName, j) => {
