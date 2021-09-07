@@ -21,38 +21,45 @@ class MarketNews extends React.Component {
     this.setState({loading: true})
   }
 
+  addDefaultSrc(e) {
+    e.target.src = 'https://i.redd.it/oab62rqye5731.jpg'
+  }
 
   render() {
+    console.log("find sources and time market news", this.state.marketNews)
     const timeSince = (date) => {
       return ` ${Math.floor(date / 86400 / 3600) + "h"}`
     }
 
     const newsItems = this.state.marketNews.map((item, i) => 
-        i < 10 &&
-        (<div className='news-article' key={i}>
-          <div className="news-left">
-            <div className="news-article-headline-and-time">
-              <div className="news-article-headline">{item.source} </div>
-              <div className="news-article-time">{timeSince(item.datetime)}</div>
+      !(item.source === 'Bloomberg') &&
+        (<a className="news-url" href={item.url}  target="_blank">
+          <div className='news-article' key={i}>
+            <div className="news-left">
+              <div className="news-article-headline-and-time">
+                <div className="news-article-headline">{item.source} </div>
+                <div className="news-article-time">{timeSince(item.datetime)}</div>
+              </div>
+                                        <br></br>
+              <div>
+                {item.headline} 
+              </div>
+                                        <br></br>
             </div>
-                                      <br></br>
-            <div>
-              {item.headline} 
-            </div>
-                                      <br></br>
-          </div>
 
-          <div className="news-right">
-            <img src={item.image} className="news-article-image"/>
-            <br></br><br></br>
+            <div className="news-right">
+              <img src={item.image} onError={this.addDefaultSrc} className="news-article-image"/>
+              <br></br><br></br>
+            </div>
           </div>
-        </div>)
+        </a>
+        )
       )
     
 
     return (
       <div>
-      {newsItems}
+      {newsItems.slice(0, 10)}
 
         
       </div>

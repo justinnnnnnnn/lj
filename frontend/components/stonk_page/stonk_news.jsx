@@ -13,7 +13,7 @@ class StonkNews extends React.Component {
   }
 
   componentDidMount() {
-      StonkAPI.fetchStonkNews(this.props.stonk, '2021-08-01', '2021-08-30', window.finnhubAPIKey)
+      StonkAPI.fetchStonkNews(this.props.stonk, '2021-09-01', '2021-09-07', window.finnhubAPIKey)
       .then((response) => this.setState({stonkNews: response}))
       .then(() => this.setState({loading: false}))
     }
@@ -21,7 +21,7 @@ class StonkNews extends React.Component {
   componentDidUpdate(prevProps) {
       // debugger;
     if (prevProps.stonk !== this.props.stonk) {
-      StonkAPI.fetchStonkNews(this.props.stonk, '2021-08-01', '2021-08-30', window.finnhubAPIKey)
+      StonkAPI.fetchStonkNews(this.props.stonk, '2021-09-01', '2021-09-07', window.finnhubAPIKey)
       .then((response) => this.setState({stonkNews: response}))
       .then(() => this.setState({loading: false})) }
   }
@@ -30,6 +30,10 @@ class StonkNews extends React.Component {
     this.setState({loading: true})
   }
   
+  addDefaultSrc(e) {
+    e.target.src = 'https://i.redd.it/oab62rqye5731.jpg'
+  }
+
   render() {
     // console.log("WHY IS THE SYMBOL UNDEFINED", this.props.stonk)
     const timeSince = (date) => {
@@ -37,8 +41,10 @@ class StonkNews extends React.Component {
     }
 
     const newsItems = this.state.stonkNews.map((item, i) => 
-        i < 3 &&
-        (<div className='news-article' key={i}>
+        i < 4 &&
+        (
+          <a className="news-url" href={item.url}  target="_blank">
+        <div className='news-article' key={i}>
           <div className="news-left">
             <div className="news-article-headline-and-time">
               <div className="news-article-headline">{item.source} </div>
@@ -52,10 +58,11 @@ class StonkNews extends React.Component {
           </div>
 
           <div className="news-right">
-            <img src={item.image} className="news-article-image"/>
+            <img src={item.image} onError={this.addDefaultSrc} className="news-article-image"/> 
             <br></br><br></br>
           </div>
-        </div>)
+        </div>
+        </a>)
       )
     
 
