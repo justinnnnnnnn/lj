@@ -71,7 +71,6 @@ class BuySellPanel extends React.Component {
 
     console.log("BUYING HAS BEEN CLICKED")
     e.preventDefault();
-    if (this.state.shares)
     if (this.state.sharesOwned === 0 ) {
       UserAPI.updateBuyingPower((Number(this.state.buyingPower) - Number(this.state.input * this.state.currentPrice)), this.props.currentUser.id)
       .then(() => {
