@@ -152,7 +152,7 @@ class Chart extends React.Component {
           </LineChart>
         </ResponsiveContainer>
       </div>
-      <footer>🥴</footer>
+      <footer></footer>
     </div>
     )
   } 
