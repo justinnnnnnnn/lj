@@ -38,78 +38,83 @@ class Stonk extends React.Component {
     const thisStonk = window.location.href.split("stonks/")[1].toUpperCase()
     // console.log("thisStonk var", thisStonk)
     const { currentUser, logout } = this.props
-    return(
+    if (currentUser === undefined) {
+      return null;
+    } else {
 
-      <>
-      <div className="whole-stonk-page">
-
-        <div className="header-logged-in-stonk-page">
-          <div className="account-header-stonk-page">
-            
-            <div className="robinherd-logo">
-              🦧
-            </div>
-            
-            <div className="search-bar">
-              <div><SearchBar/></div>
-            </div> 
-
-            <div className="account-links-stonk-page">
-              {/* <div><span></span></div>
-              <div><span></span></div> */}
-              <button className="header-button" onClick={logout}>Log Out</button>
-            </div>
-
-          </div>
-        </div>
-  
+      return(
         
+        <>
+        <div className="whole-stonk-page">
   
-        <div className="stonk-div-logged-in">
-          
-          <div className="stonk-div-left">
-            {/* <div><h1>{this.state.stonkName.name}</h1></div> MAKE THIS ANOTHER CHILD COMPONENT ROFLMAO */}
-            <div><h1><StonkName stonk={thisStonk}/></h1></div>
-            
-            {/* <Graph stonk={thisStonk}/> */}
-            
-            <div className="buying-power">
-                <div>
-                  Box of Your Market Value (of this stock)
-                </div>
-                <div>
-                  Box of Your Average Cost (of this stock)
-                </div>
-            </div>
-            <div>
-              <h1>About</h1>
-            </div>
-            <div>
-              <StonkBio stonk={thisStonk}/>
-            </div>
-
-            <div className="news">
-              <h1>News</h1>
-            </div>
-            <div>
-              <StonkNews stonk={thisStonk}/>
-            </div>
-            <div>For more information, see our <a>Privacy Policy</a></div>
-          </div>
-          
-          
-          <div className="stonk-div-right">
-            <div className="stonk-div-right-inner">
-              <BuySell stonk={thisStonk} currentUser={this.props.currentUser}/>
+          <div className="header-logged-in-stonk-page">
+            <div className="account-header-stonk-page">
+              
+              <div className="robinherd-logo">
+                🦧
+              </div>
+              
+              <div className="search-bar">
+                <div><SearchBar/></div>
+              </div> 
+  
+              <div className="account-links-stonk-page">
+                {/* <div><span></span></div>
+                <div><span></span></div> */}
+                <button className="header-button" onClick={logout}>Log Out</button>
+              </div>
+  
             </div>
           </div>
-        
+    
+          
+    
+          <div className="stonk-div-logged-in">
+            
+            <div className="stonk-div-left">
+              {/* <div><h1>{this.state.stonkName.name}</h1></div> MAKE THIS ANOTHER CHILD COMPONENT ROFLMAO */}
+              <div><h1><StonkName stonk={thisStonk}/></h1></div>
+              
+              {/* <Graph stonk={thisStonk}/> */}
+              
+              <div className="buying-power">
+                  <div>
+                    Box of Your Market Value (of this stock)
+                  </div>
+                  <div>
+                    Box of Your Average Cost (of this stock)
+                  </div>
+              </div>
+              <div>
+                <h1>About</h1>
+              </div>
+              <div>
+                <StonkBio stonk={thisStonk}/>
+              </div>
+  
+              <div className="news">
+                <h1>News</h1>
+              </div>
+              <div>
+                <StonkNews stonk={thisStonk}/>
+              </div>
+              <div>For more information, see our <a>Privacy Policy</a></div>
+            </div>
+            
+            
+            <div className="stonk-div-right">
+              <div className="stonk-div-right-inner">
+                <BuySell stonk={thisStonk} currentUser={this.props.currentUser}/>
+              </div>
+            </div>
+          
+          </div>
+    
         </div>
-  
-      </div>
-      </>
-    );
-  };
+        </>
+      );
+    };
+    }
     
 
 };

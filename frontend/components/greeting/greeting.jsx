@@ -23,13 +23,6 @@ class Greeting extends React.Component {
     console.log("main page did mount", this.state.portfolio)
   }
 
-  // componentDidUpdate(prevProps, prevState) {
-  //   if (this.state.portfolio !== UserAPI.getAllStockBuys(this.props.currentUser.id)) {
-  //     UserAPI.getAllStockBuys(this.props.currentUser.id)
-  //       .then((response) => {response; this.setState({portfolio: response})})
-  //   };
-  //   console.log("someone set us up the mount", this.state.portfolio)
-  // }
   
   handleDemoSubmit(e) {
       e.preventDefault();
@@ -141,19 +134,13 @@ class Greeting extends React.Component {
       <div className="header-logged-in">
         <div className="account-header">
           <div className="robinherd-logo">
-            <h2 className="header-name">{currentUser.username}</h2> {/* temporary */}
+            {/* <h2 className="header-name">{currentUser.username}</h2> */}
           </div>
           <div className="search-bar">
             <SearchBar/>
           </div> 
           <div className="account-links">
-            {/* <div><span>Free Stonks</span></div> */}
-            {/* <div><span>Portfolio</span></div> */}
-            {/* <div><span>Cash</span></div> */}
-            {/* <div><span>Messages</span></div> */}
-            {/* <div><span>Account</span></div>The messages dot goes on the left side of this div */}
-            {/* <div><span>dropdown <Dropdown/> </span></div> */}
-            <button className="header-button" onClick={logout}>Log Out</button> {/* temporary */}
+            <button className="header-button" onClick={logout}>Log Out</button>
           </div>
         </div>
       </div>
@@ -190,12 +177,6 @@ class Greeting extends React.Component {
               {/* Top news article zero */}
               <MarketNews/>
             </div>
-            {/* <div className="daily-movers"> */}
-              {/* [][][][] aka Daily Movers Div */}
-            {/* </div> */}
-            {/* <div className="more-news"> */}
-              {/* [][][][] aka More News Div */}
-            {/* </div> */}
 
           </div>
 
