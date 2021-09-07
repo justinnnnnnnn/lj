@@ -78,6 +78,16 @@ class Chart extends React.Component {
     }
   }
 
+  customTooltip(e){
+    if (e.active && e.payload!=null && e.payload[0]!=null) {
+      return (<div className="custom-tooltip">
+        <p>{e.payload[0].payload["Column Name"]}</p>
+        </div>);
+    } else {
+      return "";
+    }
+  }
+
   render() {    
     const realData = [];
     for (let i = 0; i < this.props.intradayData.t.length; i++)
@@ -91,8 +101,8 @@ class Chart extends React.Component {
       <div className="chart">
         
         <div className="chartHeader"> 
-          <div className="currentPrice">
-            <h1>$<Odometer value={this.state.bigPrice} formatter={number => `$${number.toFixed(2)}`} /></h1>
+          <div>
+            <h1 className="currentPrice">$<Odometer value={this.state.bigPrice} formatter={number => `$${number.toFixed(2)}`} /></h1>
           </div>
           <div className="priceChanges">
             <div className="priceToday">
@@ -102,13 +112,13 @@ class Chart extends React.Component {
                 <span className="grayTag">Today</span>
               </div>
             </div>
-            <div className="priceAfterHours">
+            {/* <div className="priceAfterHours">
               <div className="priceAfterHoursNumbers">
-                <span className="spanNumbers">{`+`}{`$0.08`}</span>               {/* make these variables */}
-                <span className="spanNumbers">{`(`}{`+`}{`2.16%`}{`)`}</span>      {/* make these variables */}
+                <span className="spanNumbers">{`+`}{`$0.08`}</span>              
+                <span className="spanNumbers">{`(`}{`+`}{`2.16%`}{`)`}</span>   
                 <span className="grayTag">After Hours</span>                   
               </div>
-            </div>
+            </div> */}
           </div>
         </div>
     
@@ -134,7 +144,8 @@ class Chart extends React.Component {
               hide={true} 
             />
             <Tooltip 
-              formatter={number => `$${number.toFixed(2)}`} 
+              // formatter={number => `$${number.toFixed(2)}`} 
+              content={this.customTooltip}
               />
             <Line 
               classname="linear" 

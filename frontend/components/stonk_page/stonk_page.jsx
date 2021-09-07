@@ -71,7 +71,7 @@ class Stonk extends React.Component {
               {/* <div><h1>{this.state.stonkName.name}</h1></div> MAKE THIS ANOTHER CHILD COMPONENT ROFLMAO */}
               <div><h1><StonkName stonk={thisStonk}/></h1></div>
               
-              {/* <Graph stonk={thisStonk}/> */}
+              <Graph stonk={thisStonk}/>
               
               <div className="buying-power">
                   <div>

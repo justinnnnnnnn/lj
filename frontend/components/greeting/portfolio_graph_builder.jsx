@@ -31,48 +31,6 @@ class Chart extends React.Component {
     this.handleMouseLeave = this.handleMouseLeave(this)
   }
 
-  // componentDidMount() {
-  //     this.props.portfolioPrices.forEach((ele, i) => 
-  //     {
-  //       ele.o.forEach((pricePoint, index) => {
-  //         console.log("this.state.yarg", this.state.yarg, "this.props.portfolio[i].shares", this.props.portfolio[i].shares)
-  //         this.setState((prevState) => (console.log("prevState", prevState), {yarg: [...prevState.yarg, Number(Number(pricePoint) * Number(this.props.portfolio[i].shares))]}
-  //         ))
-  //       })
-  //     });
-  //   console.log(this.state.yarg)   
-  // }
-  // componentDidMount() {
-  //     this.props.portfolioPrices.forEach((ele, i) => {
-  //       ele.o.forEach((pricePoint, index) => {
-  //         this.setState((prevState) => // ({yarg: [...prevState.yarg, Number(Number(pricePoint) * Number(this.props.portfolio[i].shares))]})
-  //         // mutate the element at ele.o[index]
-  //           ({portfolioPrices[i].o[index] = Number(Number(pricePoint) * Number(this.props.portfolio[i].shares))})
-  //         )
-  //       })
-  //     });
-  //   console.log(this.state.portfolioPrices)   
-  // }
-      
-      
-
-
-
-  // componentDidMount(){
-     
-  //     {
-  //       this.state.portfolioPrices.forEach((ele, i) => {
-  //       this.state.portfolioPrices.forEach((element, index) => {
-  //         this.state.portfolioPrices[i][index] = element * this.props.portfolio[i].shares
-  //       })})
-  //       console.log("portfolio prices.o", this.state.portfolioPrices);
-  //       for(let i = 1; i < this.state.portfolioPrices.length; i++)
-  //       for(let j = 0; j < this.state.portfolioPrices[0].o.length; j++)
-  //       this.state.portfolioPrices[0].o[j] += this.state.portfolioPrices[i][j];
-  //       console.log("portfolio prices[0]", this.state.portfolioPrices[0]);
-  //     }
-  // }
-
   handleMouseOver(e) {
     if (e.activePayload) {
       let price = e.activePayload[0].value;
@@ -97,6 +55,18 @@ class Chart extends React.Component {
   
   odometerValue(price) {
     price = this.handleMouseOver;
+  }
+
+
+
+  customTooltip(e){
+    if (e.active && e.payload!=null && e.payload[0]!=null) {
+      return (<div className="custom-tooltip">
+        <p>{e.payload[0].payload["Column Name"]}</p>
+        </div>);
+    } else {
+      return "";
+    }
   }
 
   render() {    
@@ -127,14 +97,16 @@ class Chart extends React.Component {
       })
     }
 
-    // const dottedLine = this.state.previousClose;
+
 
     return (
       <div className="chart">
         
         <div className="chartHeader"> 
-          <div className="currentPrice">
-            <h1>$<Odometer value={this.state.bigPrice} formatter={number => `$${number.toFixed(2)}`} /></h1>
+          {/* <div className="currentPrice"> */} <div>
+            {/* <h1 className="currentPrice">$<Odometer value={this.state.bigPrice} formatter={number => `$${number.toFixed(2)}`} /></h1> */}
+            <h1 className="currentPrice">$<Odometer value={this.state.bigPrice} formatter={number => `$${number.toLocaleString('en-US',  {minimumFractionDigits: 2})}`} /></h1>
+            
           </div>
           <div className="priceChanges">
             <div className="priceToday">
@@ -142,13 +114,6 @@ class Chart extends React.Component {
                 <span className="spanNumbers">{`-`}{`$0.00`}</span> {/* make these variables */}
                 <span className="spanNumbers">{`(`}{`+`}{`1.16%`}{`)`}</span>  {/* make these variables */}
                 <span className="grayTag">Today</span>
-              </div>
-            </div>
-            <div className="priceAfterHours">
-              <div className="priceAfterHoursNumbers">
-                <span className="spanNumbers">{`+`}{`$0.08`}</span>               {/* make these variables */}
-                <span className="spanNumbers">{`(`}{`+`}{`2.16%`}{`)`}</span>      {/* make these variables */}
-                <span className="grayTag">After Hours</span>                   
               </div>
             </div>
           </div>
@@ -176,8 +141,8 @@ class Chart extends React.Component {
               hide={true} 
             />
             <Tooltip 
-              formatter={number => `$${number.toFixed(2)}`} 
-              />
+              content={this.customTooltip}
+            />
             <Line 
               classname="linear" 
               dataKey="price" 
