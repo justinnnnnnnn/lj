@@ -43,9 +43,9 @@ class Greeting extends React.Component {
     <div>
       <div className="green-part">
         <div className="header">
-          <Link to="/" className="header-link">
-            <h3>🦍 Robinherd 🦍</h3>
-          </Link>
+          {/* <Link to="/" className="header-link"> */}
+            <h1>🦍 Robinherd 🦍</h1>
+          {/* </Link> */}
           <nav className="login-signup">
             <ul>
               <li className="login-signup-button"><Link to="/login">Log In</Link></li>
@@ -121,7 +121,13 @@ class Greeting extends React.Component {
       </div>
 
       <div className="wendy">
-        <h1>Sir, this is a Wendy's</h1>
+      <marquee behavior="" direction="">
+        <br />
+        <div><img src="https://robinhood.com/us/en/_next/static/images/balloon__ef7d8a9bb1c7845fcb7a6799c35d513e.svg"/></div>
+        <div><h1>Sir, this is a Wendy's</h1></div>
+        {/* <div><img src="https://robinhood.com/us/en/_next/static/images/2x__50ed5a2a8854d545e03d193192de26de.png"/></div> */}
+        </marquee>
+        
       </div>
 
     </div>
@@ -130,17 +136,15 @@ class Greeting extends React.Component {
   const loggedInHeader = () => (
     <>
     <div className="whole-page-logged-in">
-      {/* {console.log("does it have the storks", this.props)} */}
       <div className="header-logged-in">
         <div className="account-header">
-          <div className="robinherd-logo">
-            {/* <h2 className="header-name">{currentUser.username}</h2> */}
+          <div className="header-link-not-link">
+            <h3>🦍 Robinherd 🦍</h3>
           </div>
-          <div className="search-bar">
-            <SearchBar/>
-          </div> 
+          <SearchBar/>
+          <div className="search-bar-adjunction"></div>
           <div className="account-links">
-            <button className="header-button" onClick={logout}>Log Out</button>
+            <Link className="logout-button" onClick={logout}>Log Out</Link>
           </div>
         </div>
       </div>

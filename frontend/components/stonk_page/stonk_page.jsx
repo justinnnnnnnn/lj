@@ -51,17 +51,13 @@ class Stonk extends React.Component {
             <div className="account-header-stonk-page">
               
               <div className="robinherd-logo">
-                🦧
+                <h3><Link to="/" className="header-link">🦧 Robinherd 🦧</Link></h3>
               </div>
-              
-              <div className="search-bar">
-                <div><SearchBar/></div>
-              </div> 
-  
+              <SearchBar/>
+              <div className="search-bar-adjunction"></div>
+
               <div className="account-links-stonk-page">
-                {/* <div><span></span></div>
-                <div><span></span></div> */}
-                <button className="header-button" onClick={logout}>Log Out</button>
+              <Link className="logout-button" onClick={logout}>Log Out</Link>
               </div>
   
             </div>
@@ -91,7 +87,7 @@ class Stonk extends React.Component {
               <div>
                 <StonkBio stonk={thisStonk}/>
               </div>
-  
+                <br /><br /> <br />
               <div className="news">
                 <h1>News</h1>
               </div>

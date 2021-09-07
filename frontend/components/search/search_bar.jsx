@@ -67,12 +67,11 @@ class SearchBar extends React.Component {
         }
       });
     }
-
+    console.log("search array", searchResult.slice(0, 8))
     return searchResult.slice(0, 8)
   }
 
                   buttonPress = (e) => {
-                    // this.props.history.push(`${searchResult()[0].props.children.props.to}`)
                     let inputUp = this.state.input.toUpperCase()
                     let searchResult = []
                     console.log("search list props", this.state.searchList)
@@ -81,7 +80,23 @@ class SearchBar extends React.Component {
                     
                     if (this.state.input.length > 0) { // add just the ticker first
                       searchArr.map((objectOfTickerAndName, i) => {
-                        if (objectOfTickerAndName.ticker.startsWith(inputUp) || (objectOfTickerAndName.name.toUpperCase().startsWith(inputUp))) {
+                        if (objectOfTickerAndName.ticker.startsWith(inputUp)) {
+                          searchResult.push(
+                            <div className="search-item" key={i}>
+                              <Link onClick={this.closeModal} to={`/stonks/${objectOfTickerAndName.ticker}`}>
+                                {`${objectOfTickerAndName.name}, ${objectOfTickerAndName.ticker}`}
+                              </Link>
+                            </div>
+                          )
+                        };
+                      });
+                    }
+                
+                    if (searchResult.length < 8) {
+                      searchArr.map((objectOfTickerAndName, i) => {
+                        if (objectOfTickerAndName.name.toUpperCase().startsWith(inputUp)
+                        && !(objectOfTickerAndName.ticker.startsWith(inputUp))
+                        ){
                           searchResult.push(
                             <div className="search-item" key={i}>
                               <Link to={`/stonks/${objectOfTickerAndName.ticker}`}>
@@ -109,6 +124,8 @@ class SearchBar extends React.Component {
                         }
                       });
                     }
+                   
+                  
                     this.closeModal();
                     return this.props.history.push(`${searchResult[0].props.children.props.to}`)
                   }
@@ -128,8 +145,8 @@ class SearchBar extends React.Component {
   render(){
     return (
       <div className="search-bar">
-        <form className="search-form" onSubmit={this.go}>
-          <input className="search-field" type="text" name="input" value={this.state.input} onChange={this.setInput} placeholder="ticker name here" />
+        <form autocomplete="off" className="search-form" onSubmit={this.go}>
+          <input className="search-field" type="text" name="input" value={this.state.input} onChange={this.setInput} placeholder="Search" />
           <div className="hide-this-button"><button type="submit" onClick={this.buttonPress}></button></div>
           <br />
           <div className="search-dropdown">{this.searchFilter()}</div>
