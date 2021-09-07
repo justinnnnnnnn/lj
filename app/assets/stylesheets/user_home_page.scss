@@ -134,8 +134,15 @@
   height: 100vh;
 }
 
+.stonks-shares {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
 .main-div-right-inner {
   padding: 24px; //pick one, hay tres
+  width: 276px;
   position: fixed;
   display: flex;
   flex-direction: column;
@@ -150,4 +157,13 @@
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  width: 100%;
+  font-weight: bold;
+  height: 24px;
+  border-bottom: silver;
+  text-decoration: none;
+  color: black;
+}
+.portfolio-item:hover{
+  color:rgb(0, 200, 5)
 }

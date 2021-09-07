@@ -115,21 +115,51 @@ class BuySellPanel extends React.Component {
         return (
           
           <div>
-            <div>
+            <div className="buy-sell-div">
               <form onSubmit={this.submitBuy}>
-                <div><span>Buy {this.props.stonk} </span> <span onClick={this.toggleBuySell}>Sell {this.props.stonk} </span></div>
+                
+                <span className="buy-sell-header">
+                  <div className="h4-on-buy">
+                    Buy {this.props.stonk}
+                  </div>
+                  <div className="h4-off" onClick={this.toggleBuySell}>
+                    Sell {this.props.stonk}
+                  </div>
+                </span>
+                
                 <br/>
-                <div> Shares: <input type="number" min="0" name="input" value={this.state.input} onChange={this.setInput} placeholder={0} /> </div>
+                <div className="buy-sell-item">
+                  <div> 
+                    Shares 
+                  </div>
+                  <div>
+                    <input className="shares-input" type="number" min="0" name="input" value={this.state.input} onChange={this.setInput} placeholder={0} /> 
+                  </div>
+                </div>
+
+                <div className="buy-sell-item">
+                  <div>
+                    Market Price 
+                  </div>
+                  <div>
+                    {`$${stockPrice.toLocaleString('en-US',  {minimumFractionDigits: 2}) }`} 
+                  </div>
+                </div>
+
+                <div className="buy-sell-item-cost">
+                  <div> 
+                    Estimated Cost 
+                  </div>
+                  <div>
+                    {`$${(stockPrice * this.state.input).toLocaleString('en-US',  {minimumFractionDigits: 2}) }`}
+                  </div>
+                </div>
                 <br/>
-                <div>Market Price {`$${stockPrice.toLocaleString('en-US',  {minimumFractionDigits: 2}) }`} </div>
-                <br/>
-                <div> Estimated Cost {`$${(stockPrice * this.state.input).toLocaleString('en-US',  {minimumFractionDigits: 2}) }`} </div>
-                <br/>
-                <button>Complete Order</button>
+                <button className="order-button">Complete Order</button>
               </form>
             </div>
             <br/>
-            <div>
+            <div className="buy-buying-power">
               ${Number(this.state.buyingPower).toLocaleString('en-US',  {minimumFractionDigits: 2})} buying power available
             </div>
           </div>
@@ -137,26 +167,76 @@ class BuySellPanel extends React.Component {
         )
       } else { //sell
         return (
-          
+
           <div>
-            <div>
+            <div className="buy-sell-div">
               <form onSubmit={this.submitSell}>
-                <div><span onClick={this.toggleBuySell}>Buy {this.props.stonk} </span> <span>Sell {this.props.stonk} </span></div>
+                
+                <span className="buy-sell-header">
+                  <div className="h4-off" onClick={this.toggleBuySell}>
+                    Buy {this.props.stonk}
+                  </div>
+                  <div className="h4-on-sell" >
+                    Sell {this.props.stonk}
+                  </div>
+                </span>
+                
                 <br/>
-                <div> Shares: <input type="number" min="0" max={this.state.sharesOwned} name="input" value={this.state.input} onChange={this.setInput} placeholder={0} /> </div>
+                <div className="buy-sell-item">
+                  <div> 
+                    Shares 
+                  </div>
+                  <div>
+                    <input className="shares-input" type="number" min="0" name="input" value={this.state.input} onChange={this.setInput} placeholder={0} /> 
+                  </div>
+                </div>
+
+                <div className="buy-sell-item">
+                  <div>
+                    Market Price 
+                  </div>
+                  <div>
+                    {`$${stockPrice.toLocaleString('en-US',  {minimumFractionDigits: 2}) }`} 
+                  </div>
+                </div>
+
+                <div className="buy-sell-item-cost">
+                  <div> 
+                    Estimated Credit 
+                  </div>
+                  <div>
+                    {`$${(stockPrice * this.state.input).toLocaleString('en-US',  {minimumFractionDigits: 2}) }`}
+                  </div>
+                </div>
                 <br/>
-                <div> Market Price {`$${stockPrice.toLocaleString('en-US',  {minimumFractionDigits: 2}) }`} </div>
-                <br/>
-                <div> Estimated Credit {`$${(stockPrice * this.state.input).toLocaleString('en-US',  {minimumFractionDigits: 2}) }`} </div>
-                <br/> 
-                <div> <button>Complete Order</button> </div>
+                <button className="order-button">Complete Order</button>
               </form>
             </div>
             <br/>
-            <div>
+            <div className="buy-buying-power">
             {Number(this.state.sharesOwned)} shares available
             </div>
           </div>
+          
+          // <div>
+          //   <div>
+          //     <form onSubmit={this.submitSell}>
+          //       <div><span onClick={this.toggleBuySell}>Buy {this.props.stonk} </span> <span>Sell {this.props.stonk} </span></div>
+          //       <br/>
+          //       <div> Shares <input type="number" min="0" max={this.state.sharesOwned} name="input" value={this.state.input} onChange={this.setInput} placeholder={0} /> </div>
+          //       <br/>
+          //       <div> Market Price {`$${stockPrice.toLocaleString('en-US',  {minimumFractionDigits: 2}) }`} </div>
+          //       <br/>
+          //       <div> Estimated Credit {`$${(stockPrice * this.state.input).toLocaleString('en-US',  {minimumFractionDigits: 2}) }`} </div>
+          //       <br/> 
+          //       <div> <button>Complete Order</button> </div>
+          //     </form>
+          //   </div>
+          //   <br/>
+          //   <div>
+          //   {Number(this.state.sharesOwned)} shares available
+          //   </div>
+          // </div>
 
         )
       }

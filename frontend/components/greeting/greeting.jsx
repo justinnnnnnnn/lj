@@ -192,7 +192,7 @@ class Greeting extends React.Component {
         {/* main right */}
         <div className="main-div-right">
           <div className="main-div-right-inner">
-            <div>Stocks</div>
+            <div className="stonks-shares"><div><h3>Stonks</h3></div><div><h4>Shares</h4></div></div>
             {/* <div>Stockname/shares, graph, price/change</div> */}
             <div className="lists">
               {/* <div>Lists + (creatable)</div> */}

@@ -17,19 +17,18 @@ class SearchBar extends React.Component {
   searchFilter = () => {
     let inputUp = this.state.input.toUpperCase()
     let searchResult = []
-    console.log("search list props", this.state.searchList)
     let searchArr = Object.values(this.state.searchList)
-    console.log("by var name searchArr", Object.values(searchArr))
     
     if (this.state.input.length > 0) { // add just the ticker first
       searchArr.map((objectOfTickerAndName, i) => {
         if (objectOfTickerAndName.ticker.startsWith(inputUp)) {
           searchResult.push(
-            <div className="search-item" key={i}>
-              <Link onClick={this.closeModal} to={`/stonks/${objectOfTickerAndName.ticker}`}>
-                {`${objectOfTickerAndName.name}, ${objectOfTickerAndName.ticker}`}
+            <span className="search-item" key={i}>
+              <Link to={`/stonks/${objectOfTickerAndName.ticker}`} onClick={this.closeModal}  className="link-search">
+                {/* {`${objectOfTickerAndName.name}, ${objectOfTickerAndName.ticker}`} */}
+                <div className="search-item-div">{`${objectOfTickerAndName.ticker}`}</div> <div className="search-item-div">{`${objectOfTickerAndName.name}`}</div>
               </Link>
-            </div>
+            </span>
           )
         };
       });
@@ -41,11 +40,13 @@ class SearchBar extends React.Component {
         && !(objectOfTickerAndName.ticker.startsWith(inputUp))
         ){
           searchResult.push(
-            <div className="search-item" key={i}>
-              <Link to={`/stonks/${objectOfTickerAndName.ticker}`}>
-                {`${objectOfTickerAndName.name}, ${objectOfTickerAndName.ticker}`}
+            <span className="search-item" key={i}>
+              <Link to={`/stonks/${objectOfTickerAndName.ticker}`} className="link-search">
+                {/* {`${objectOfTickerAndName.name}, ${objectOfTickerAndName.ticker}`} */}
+                {/* <div className="">{`${objectOfTickerAndName.ticker}`}</div> <div className="">{`${objectOfTickerAndName.name}`}</div> */}
+                <div className="search-item-div">{`${objectOfTickerAndName.ticker}`}</div> <div className="search-item-div">{`${objectOfTickerAndName.name}`}</div>
               </Link>
-            </div>
+            </span>
           )
         };
       });
@@ -58,17 +59,18 @@ class SearchBar extends React.Component {
           && !(objectOfTickerAndName.ticker.startsWith(inputUp) || objectOfTickerAndName.name.toUpperCase().startsWith(inputUp))
         ){
           searchResult.push(
-            <div className="search-item" key={this.state.searchDisplay.length + j}>
-              <Link to={`/stonks/${this.state.input}`}>
-                {`${objectOfTickerAndName.name}, ${objectOfTickerAndName.ticker}`}
+            <span className="search-item" key={this.state.searchDisplay.length + j}>
+              <Link to={`/stonks/${this.state.input}`} className="link-search">
+                {/* {`${objectOfTickerAndName.name}, ${objectOfTickerAndName.ticker}`} */}
+                <div className="search-item-div">{`${objectOfTickerAndName.ticker}`}</div> <div className="search-item-div">{`${objectOfTickerAndName.name}`}</div>
               </Link>
-            </div>
+            </span>
           )
         }
       });
     }
     console.log("search array", searchResult.slice(0, 8))
-    return searchResult.slice(0, 8)
+    return searchResult.slice(0, 8) 
   }
 
                   buttonPress = (e) => {
@@ -77,12 +79,11 @@ class SearchBar extends React.Component {
                     console.log("search list props", this.state.searchList)
                     let searchArr = Object.values(this.state.searchList)
                     console.log("by var name searchArr", Object.values(searchArr))
-                    
                     if (this.state.input.length > 0) { // add just the ticker first
                       searchArr.map((objectOfTickerAndName, i) => {
                         if (objectOfTickerAndName.ticker.startsWith(inputUp)) {
                           searchResult.push(
-                            <div className="search-item" key={i}>
+                            <div key={i}>
                               <Link onClick={this.closeModal} to={`/stonks/${objectOfTickerAndName.ticker}`}>
                                 {`${objectOfTickerAndName.name}, ${objectOfTickerAndName.ticker}`}
                               </Link>
@@ -98,7 +99,7 @@ class SearchBar extends React.Component {
                         && !(objectOfTickerAndName.ticker.startsWith(inputUp))
                         ){
                           searchResult.push(
-                            <div className="search-item" key={i}>
+                            <div key={i}>
                               <Link to={`/stonks/${objectOfTickerAndName.ticker}`}>
                                 {`${objectOfTickerAndName.name}, ${objectOfTickerAndName.ticker}`}
                               </Link>
@@ -115,7 +116,7 @@ class SearchBar extends React.Component {
                           && !(objectOfTickerAndName.ticker.startsWith(inputUp) || objectOfTickerAndName.name.toUpperCase().startsWith(inputUp))
                         ){
                           searchResult.push(
-                            <div className="search-item" key={this.state.searchDisplay.length + j}>
+                            <div key={this.state.searchDisplay.length + j}>
                               <Link to={`/stonks/${this.state.input}`}>
                                 {`${objectOfTickerAndName.name}, ${objectOfTickerAndName.ticker}`}
                               </Link>
@@ -145,11 +146,13 @@ class SearchBar extends React.Component {
   render(){
     return (
       <div className="search-bar">
-        <form autocomplete="off" className="search-form" onSubmit={this.go}>
-          <input className="search-field" type="text" name="input" value={this.state.input} onChange={this.setInput} placeholder="Search" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
+        <form autoComplete="off" className="search-form" onSubmit={this.go}>
+          <i className="fa fa-search"/>
+          <input className="search-field" type="search" name="input" value={this.state.input} onChange={this.setInput} placeholder="Search" />
           <div className="hide-this-button"><button type="submit" onClick={this.buttonPress}></button></div>
           <br />
-          <div className="search-dropdown">{this.searchFilter()}</div>
+          <div className="search-dropdown"> {this.searchFilter()}</div>
         </form>
       </div>
     )
