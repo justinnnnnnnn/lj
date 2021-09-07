@@ -6,6 +6,7 @@ import StonkNews from './stonk_news'
 import StonkBio from './stonk_bio'
 import SearchBar from '../search/search_bar'
 import BuySell from './buy_sell'
+import StonkName from './stonk_name'
 
 class Stonk extends React.Component {
   constructor(props) {
@@ -44,20 +45,21 @@ class Stonk extends React.Component {
 
         <div className="header-logged-in-stonk-page">
           <div className="account-header-stonk-page">
-            <div className="robinherd-logo">
-              
-              🦧<br/>
             
+            <div className="robinherd-logo">
+              🦧
             </div>
             
             <div className="search-bar">
               <div><SearchBar/></div>
             </div> 
-            <div className="account-links">
-              <div><span>Portfolio</span></div>
-              <div><span>... Account</span></div>
+
+            <div className="account-links-stonk-page">
+              {/* <div><span></span></div>
+              <div><span></span></div> */}
               <button className="header-button" onClick={logout}>Log Out</button>
             </div>
+
           </div>
         </div>
   
@@ -66,7 +68,8 @@ class Stonk extends React.Component {
         <div className="stonk-div-logged-in">
           
           <div className="stonk-div-left">
-            <div><h1>{this.state.stonkName.name}</h1></div> {/* MAKE THIS ANOTHER CHILD COMPONENT ROFLMAO */}
+            {/* <div><h1>{this.state.stonkName.name}</h1></div> MAKE THIS ANOTHER CHILD COMPONENT ROFLMAO */}
+            <div><h1><StonkName stonk={thisStonk}/></h1></div>
             
             {/* <Graph stonk={thisStonk}/> */}
             

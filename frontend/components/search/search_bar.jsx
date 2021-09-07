@@ -14,13 +14,6 @@ class SearchBar extends React.Component {
     this.buttonPress = this.buttonPress.bind(this)
   }
 
-
-  
-
-  setInput = (e) => { 
-    this.setState({input: e.target.value});
-  }
-
   searchFilter = () => {
     let inputUp = this.state.input.toUpperCase()
     let searchResult = []
@@ -33,7 +26,7 @@ class SearchBar extends React.Component {
         if (objectOfTickerAndName.ticker.startsWith(inputUp)) {
           searchResult.push(
             <div className="search-item" key={i}>
-              <Link to={`/stonks/${objectOfTickerAndName.ticker}`}>
+              <Link onClick={this.closeModal} to={`/stonks/${objectOfTickerAndName.ticker}`}>
                 {`${objectOfTickerAndName.name}, ${objectOfTickerAndName.ticker}`}
               </Link>
             </div>
@@ -116,7 +109,7 @@ class SearchBar extends React.Component {
                         }
                       });
                     }
-
+                    this.closeModal();
                     return this.props.history.push(`${searchResult[0].props.children.props.to}`)
                   }
   
@@ -124,17 +117,21 @@ class SearchBar extends React.Component {
     e.preventDefault();
   }
 
+  setInput = (e) => { 
+    this.setState({input: e.target.value});
+  }
+
+  closeModal = () => {
+    this.setState({input: ""})
+  }
+
   render(){
     return (
       <div className="search-bar">
-        {console.log("the search list", this.state.searchList)}
-
-        <form onSubmit={this.go}>
-          <input type="text" name="input" value={this.state.input} onChange={this.setInput} placeholder="ticker name here" />
+        <form className="search-form" onSubmit={this.go}>
+          <input className="search-field" type="text" name="input" value={this.state.input} onChange={this.setInput} placeholder="ticker name here" />
           <div className="hide-this-button"><button type="submit" onClick={this.buttonPress}></button></div>
-
           <br />
-          {/* <div className="search-dropdown">{this.state.searchDisplay}</div> */}
           <div className="search-dropdown">{this.searchFilter()}</div>
         </form>
       </div>

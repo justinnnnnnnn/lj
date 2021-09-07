@@ -5,6 +5,7 @@ import OwnedStonks from './owned_stonks'
 import MarketNews from './market_news'
 import * as UserAPI from '../../util/user_api_util'
 import PortfolioGraph from './portfolio_graph';
+import SearchBar from '../search/search_bar'
 
 class Greeting extends React.Component {
   constructor(props) {
@@ -143,8 +144,7 @@ class Greeting extends React.Component {
             <h2 className="header-name">{currentUser.username}</h2> {/* temporary */}
           </div>
           <div className="search-bar">
-            {/* search bar */}
-            {/* <SearchBar/> */}
+            <SearchBar/>
           </div> 
           <div className="account-links">
             {/* <div><span>Free Stonks</span></div> */}

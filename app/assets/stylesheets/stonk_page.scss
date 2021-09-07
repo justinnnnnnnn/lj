@@ -8,14 +8,14 @@ input[type=number] {
   -moz-appearance: textfield;
 }
 
-.whole-stonk-page {
-  display: flexbox;
-  flex-direction: block;
-}
+// .whole-stonk-page {
+//   display: flexbox;
+//   flex-direction: block;
+// }
 
 
 .account-header-stonk-page {
-  position: fixed;
+  // position: fixed;
   font-weight: bold;
   display: flex;
   flex-direction: row;
@@ -29,12 +29,12 @@ input[type=number] {
   z-index: 1;
 }
 
-.account-links-stonk-page {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-around;
-  width: 100%;
-}
+// .account-links-stonk-page {
+  // display: flex;
+  // flex-direction: row;
+  // justify-content: space-around;
+  // width: 100%;
+// }
 
 .stonk-div-logged-in {
   display: flex;
@@ -157,8 +157,6 @@ input[type=number] {
   font-weight: 400;
 }
 
-.news > div {
-}
 .news-header {
   display: flex;
   justify-content: space-between;

@@ -4,6 +4,7 @@ import {fetchStonk} from '../../actions/stonk_actions';
 import {fetchStonkNews} from '../../actions/stonk_actions';
 import {fetchStonkBio} from '../../actions/stonk_actions';
 import {updateBuyingPower} from '../../actions/user_actions';
+import { logout } from '../../actions/session_actions'
 
 const mapStateToProps = (state, ownProps) => {
   const stonk = state.entities.stonks[ownProps.match.params.symbol]
@@ -12,6 +13,7 @@ const mapStateToProps = (state, ownProps) => {
   const news = stonk ? stonk.news : undefined
   const bio = stonk ? stonk.bio : undefined
   return {
+    formType: "login",
     stonks: stonks,
     stonk: stonk,
     data: data,
@@ -29,7 +31,8 @@ const mapDispatchToProps = (dispatch) => ({
   fetchStonk: (symbol) => dispatch(fetchStonk(symbol)),
   fetchStonkBio: (symbol) => dispatch(fetchStonkBio(symbol)),
   fetchStonkNews: (symbol, fromDate, toDate ) => dispatch(fetchStonkNews(symbol, fromDate, toDate)),
-  updateBuyingPower: (buyingPower, id) => dispatch(updateBuyingPower(buyingPower, id))
+  updateBuyingPower: (buyingPower, id) => dispatch(updateBuyingPower(buyingPower, id)),
+  logout: () => dispatch(logout())
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Stonk);
