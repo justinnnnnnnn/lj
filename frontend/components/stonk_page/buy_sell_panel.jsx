@@ -13,7 +13,8 @@ class BuySellPanel extends React.Component {
       sharesOwned: 0,
       userData: {},
       buyingPower: this.props.currentUser.buyingPower,
-      buy: true
+      buy: true,
+      // buyError: false,
       // sharesValue: Number(this.state.sharesOwned) * Number(this.state.price),
     }
 
@@ -21,6 +22,7 @@ class BuySellPanel extends React.Component {
     this.submitSell = this.submitSell.bind(this);
     this.setInput = this.setInput.bind(this);
     this.toggleBuySell = this.toggleBuySell.bind(this);
+    // this.buyOrCannot = this.bindOrCannot.bind(this)
 
   }
 
@@ -51,9 +53,25 @@ class BuySellPanel extends React.Component {
     this.setState({input: e.target.value})
   }
 
+  // buyError() {
+  //   if (this.state.buyError) return null;
+  //   return (
+  //     )
+  //   }
+  buyOrCannot() {
+    if ((Number(this.props.stonkQuote.c) * Number(this.state.input)) > Number(this.state.buyingPower)) {
+      return (
+      <div className="buy-error">Insufficient buying power</div>
+    )
+    } else {
+      return (<button className="order-button">Complete Order</button>)
+    }
+  }
   submitBuy(e) {
+
     console.log("BUYING HAS BEEN CLICKED")
     e.preventDefault();
+    if (this.state.shares)
     if (this.state.sharesOwned === 0 ) {
       UserAPI.updateBuyingPower((Number(this.state.buyingPower) - Number(this.state.input * this.state.currentPrice)), this.props.currentUser.id)
       .then(() => {
@@ -101,6 +119,8 @@ class BuySellPanel extends React.Component {
       this.setState({ buy: true})
     }
   }
+
+ 
 
 
   render() {
@@ -155,7 +175,8 @@ class BuySellPanel extends React.Component {
                   </div>
                 </div>
                 <br/>
-                <button className="order-button">Complete Order</button>
+                {this.buyOrCannot()}
+                {/* <button className="order-button">Complete Order</button> */}
               </form>
             </div>
             <br/>
@@ -215,29 +236,10 @@ class BuySellPanel extends React.Component {
             <br/>
             <div className="buy-buying-power">
             {Number(this.state.sharesOwned)} shares available
+            {/* {this.buyError()} */}
             </div>
           </div>
           
-          // <div>
-          //   <div>
-          //     <form onSubmit={this.submitSell}>
-          //       <div><span onClick={this.toggleBuySell}>Buy {this.props.stonk} </span> <span>Sell {this.props.stonk} </span></div>
-          //       <br/>
-          //       <div> Shares <input type="number" min="0" max={this.state.sharesOwned} name="input" value={this.state.input} onChange={this.setInput} placeholder={0} /> </div>
-          //       <br/>
-          //       <div> Market Price {`$${stockPrice.toLocaleString('en-US',  {minimumFractionDigits: 2}) }`} </div>
-          //       <br/>
-          //       <div> Estimated Credit {`$${(stockPrice * this.state.input).toLocaleString('en-US',  {minimumFractionDigits: 2}) }`} </div>
-          //       <br/> 
-          //       <div> <button>Complete Order</button> </div>
-          //     </form>
-          //   </div>
-          //   <br/>
-          //   <div>
-          //   {Number(this.state.sharesOwned)} shares available
-          //   </div>
-          // </div>
-
         )
       }
     }

@@ -75,10 +75,10 @@ class Stonk extends React.Component {
               
               <div className="buying-power">
                   <div>
-                    Box of Your Market Value (of this stock)
+                    {/* Box of Your Market Value (of this stock) */}
                   </div>
                   <div>
-                    Box of Your Average Cost (of this stock)
+                    {/* Box of Your Average Cost (of this stock) */}
                   </div>
               </div>
               <div>
