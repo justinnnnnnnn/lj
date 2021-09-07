@@ -96,20 +96,34 @@ class Chart extends React.Component {
       price: this.props.intradayData.o[i],
     })
     const dottedLine = this.state.previousClose;
-
+    
+    const dollarChange = () => {
+      if ((this.state.currentPrice - this.state.previousClose) > 0) {
+        return (<span className="spanNumbers">+${(this.state.currentPrice - this.state.previousClose).toFixed(2)}</span>)
+      } else {
+        return (<span className="spanNumbers">-${(this.state.previousClose - this.state.currentPrice).toFixed(2)}</span>)
+      }
+    }
+    
+    const percentChange = () => {
+      if ((this.state.currentPrice / this.state.previousClose).toFixed(2) > 1) {
+        return (<span className="spanNumbers">(+{(this.state.currentPrice / this.state.previousClose).toFixed(2)}%)</span>)
+      } else {
+        return (<span className="spanNumbers">(-{(this.state.previousClose / this.state.currentPrice).toFixed(2)}%)</span>)
+      }
+    }
     return (
       <div className="chart">
         
         <div className="chartHeader"> 
           <div>
-            <h1 className="currentPrice">$<Odometer value={this.state.bigPrice} formatter={number => `$${number.toFixed(2)}`} /></h1>
+            <h1 className="currentPrice">$<Odometer value={this.state.bigPrice}/></h1>
+            {/* <h1 className="currentPrice">$<Odometer value={this.state.bigPrice} formatter={number => `$${number.toLocaleString('en-US',  {minimumFractionDigits: 2})}`} /></h1> */}
           </div>
           <div className="priceChanges">
             <div className="priceToday">
               <div className="priceTodayNumbers">
-                <span className="spanNumbers">{`-`}{`$0.00`}</span> {/* make these variables */}
-                <span className="spanNumbers">{`(`}{`+`}{`1.16%`}{`)`}</span>  {/* make these variables */}
-                <span className="grayTag">Today</span>
+                {dollarChange()} {percentChange()} <span className="grayTag">Today</span>
               </div>
             </div>
             {/* <div className="priceAfterHours">
