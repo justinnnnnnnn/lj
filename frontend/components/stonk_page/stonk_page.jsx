@@ -56,7 +56,7 @@ class Stonk extends React.Component {
               <div className="search-bar-adjunction"></div>
 
               <div className="account-links-stonk-page">
-              <Link className="logout-button" onClick={logout}>Log Out</Link>
+              <Link to="" className="logout-button" onClick={logout}>Log Out</Link>
               </div>
   
             </div>

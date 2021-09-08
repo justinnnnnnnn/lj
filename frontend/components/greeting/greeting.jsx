@@ -6,27 +6,29 @@ import MarketNews from './market_news'
 import * as UserAPI from '../../util/user_api_util'
 import PortfolioGraph from './portfolio_graph';
 import SearchBar from '../search/search_bar'
+import BuyingPower from './buying_power';
 
 class Greeting extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
+      currentUser: this.props.currentUser,
       username: '',
       password: '',
       portfolio: [],
     };
     this.handleDemoSubmit = this.handleDemoSubmit.bind(this);
   }
-  componentDidMount() {
-    this.props.currentUser ? UserAPI.getAllStockBuys(this.props.currentUser.id).then((response) => {response; this.setState({portfolio: response})}) 
-    : null;
-    console.log("MAIN SCREEN TURN ON")
-  }
-  componentDidUpdate(prevProps, prevState) {
-    this.props.currentUser ? UserAPI.getAllStockBuys(this.props.currentUser.id).then((response) => {response; this.setState({portfolio: response})}) 
-    : null;
-    console.log("MAIN SCREEN TURN ON")
-  }
+  // componentDidMount() {
+  //   this.props.currentUser ? UserAPI.getAllStockBuys(this.props.currentUser.id).then((response) => {response; this.setState({portfolio: response})}) 
+  //   : null;
+  //   console.log("MAIN SCREEN MOUNT")
+  // }
+  // componentDidUpdate(prevProps, prevState) {
+  //   this.props.currentUser ? UserAPI.getAllStockBuys(this.props.currentUser.id).then((response) => {response; this.setState({portfolio: response})}) 
+  //   : null;
+  //   console.log("MAIN SCREEN UPDATE")
+  // }
 
   
   handleDemoSubmit(e) {
@@ -157,34 +159,30 @@ class Greeting extends React.Component {
           <SearchBar/>
           <div className="search-bar-adjunction"></div>
           <div className="account-links">
-            <Link className="logout-button" onClick={logout}>Log Out</Link>
+            <Link to="" className="logout-button" onClick={logout}>Log Out</Link>
           </div>
         </div>
       </div>
-      {/* {console.log("props stock buys", this.props.currentUser.stockBuys)} */}
+
       
 
       <div className="main-div-logged-in">
         
         <div className="main-div-left">
-        {/* main left XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX GRAPH */}
           {/* <PortfolioGraph buyingPower={this.props.currentUser.buyingPower} portfolio={this.props.currentUser.stockBuys}/>  */}
-          {/* <marquee>This will be a portfolio graph</marquee>           */}
           {/* {this.graphOrNot()} */}
-          <div className="buying-power">
+          <BuyingPower currentUser={this.props.currentUser}/>
+          {/* <div className="buying-power">
               <div>
                 Buying Power
               </div>
               <div>
                 ${ Number(this.props.currentUser.buyingPower).toLocaleString('en-US',  {minimumFractionDigits: 2}) }
               </div>
-          </div>
+          </div> */}
           <div className="trending-lists">
             <div>
-              {/* <div>Trending Lists</div> */}
-              {/* <div>Show More</div> */}
             </div>
-            {/* <ul><li>herpderp</li></ul> */}
           </div>
           
           <div className="news">
@@ -192,7 +190,7 @@ class Greeting extends React.Component {
               News
             </div>
             <div className="top-news">
-              {/* Top news article zero */}
+
               <MarketNews/>
             </div>
 
@@ -207,15 +205,13 @@ class Greeting extends React.Component {
         <div className="main-div-right">
           <div className="main-div-right-inner">
             <div className="stonks-shares"><div><h3>Stonks</h3></div><div><h4>Shares</h4></div></div>
-            {/* <div>Stockname/shares, graph, price/change</div> */}
+
             <div className="lists">
-              {/* <div>Lists + (creatable)</div> */}
               <div>
                 <div>
                   <div>
                   </div>
                   <div>
-                    {/* Stock list and divs */}
                     <OwnedStonks currentUser={currentUser}/>
                   </div>
                 </div>
