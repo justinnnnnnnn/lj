@@ -73,21 +73,16 @@ class Stonk extends React.Component {
               
               <Graph stonk={thisStonk}/>
               
-              <div className="buying-power">
-                  <div>
-                    {/* Box of Your Market Value (of this stock) */}
-                  </div>
-                  <div>
-                    {/* Box of Your Average Cost (of this stock) */}
-                  </div>
-              </div>
-              <div>
+              
+              <br/>
+              <div className="stonk-about">
                 <h1>About</h1>
-              </div>
               <div>
                 <StonkBio stonk={thisStonk}/>
               </div>
                 <br /><br /> <br />
+              </div>
+              <br/>
               <div className="news">
                 <h1>News</h1>
               </div>

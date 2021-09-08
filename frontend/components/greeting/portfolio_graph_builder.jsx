@@ -31,6 +31,40 @@ class Chart extends React.Component {
     this.handleMouseLeave = this.handleMouseLeave(this)
   }
 
+  portNow() {
+    let multipliedPrices = []
+
+    this.state.portfolioPrices.forEach((ele, i) => {
+      let arr = []
+      ele.o.forEach((element, index) => {
+      arr.push((Number(element) * this.props.portfolio[i].shares))
+
+      })
+      multipliedPrices.push(arr);
+      console.log("multiplied prices", multipliedPrices)
+    })
+    let addedArrays = multipliedPrices[0]
+    for(let i = 1; i < multipliedPrices.length; i++)
+      for(let j = 0; j < multipliedPrices[0].length; j++)
+      addedArrays[j] += multipliedPrices[i][j];
+    console.log("added arrays", addedArrays)
+
+    const realData = [];
+    if (this.props.portfolioPrices.length === this.props.portfolio.length) {
+
+      for (let i = 0; i < addedArrays.length; i++)
+      realData.push({
+        time: this.props.portfolioPrices[0].t[i],
+        price: (addedArrays[i] + Number(this.props.buyingPower)),
+      })
+    }
+    return Number(realData[realData.length - 1].price).toFixed(2)
+  }
+
+  componentDidMount() {
+    this.setState({currentPrice: this.portNow()})
+  }
+
   handleMouseOver(e) {
     if (e.activePayload) {
       let price = e.activePayload[0].value;
@@ -97,8 +131,28 @@ class Chart extends React.Component {
       })
     }
 
+    const valueStart = Number(realData[0].price).toFixed(2)
+    const valueNow = Number(realData[realData.length - 1].price).toFixed(2)
+
+    const dollarChange = () => {
+      if ((valueNow - valueStart) > 0) {
+        return (<span className="spanNumbers">+${(valueNow - valueStart).toFixed(2)}</span>)
+      } else {
+        return (<span className="spanNumbers">-${(valueStart - valueNow).toFixed(2)}</span>)
+      }
+    }
+    
+    const percentChange = () => {
+      if ((valueNow / valueStart) > 1) {
+        return (<span className="spanNumbers">(+{(valueNow / valueStart).toFixed(2)}%)</span>)
+      } else {
+        return (<span className="spanNumbers">(-{(valueStart / valueNow).toFixed(2)}%)</span>)
+      }
+    }
 
 
+
+    console.log("values start and now", valueStart, valueNow)
     return (
       <div className="chart">
         
@@ -111,9 +165,7 @@ class Chart extends React.Component {
           <div className="priceChanges">
             <div className="priceToday">
               <div className="priceTodayNumbers">
-                <span className="spanNumbers">{`-`}{`$0.00`}</span> {/* make these variables */}
-                <span className="spanNumbers">{`(`}{`+`}{`1.16%`}{`)`}</span>  {/* make these variables */}
-                <span className="grayTag">Today</span>
+                {dollarChange()} {percentChange()} <span className="grayTag">Today</span>
               </div>
             </div>
           </div>
@@ -149,6 +201,12 @@ class Chart extends React.Component {
               stroke="rgb(5, 200, 0)" 
               dot={false} 
               strokeWidth="2" />
+              <ReferenceLine 
+              y={valueStart} 
+              strokeWidth="2" 
+              stroke="rgb(111, 120, 126)" 
+              strokeDasharray="1, 5.25925925925926" 
+              strokeDashoffset="6.259259259259248" />
           </LineChart>
         </ResponsiveContainer>
       </div>
