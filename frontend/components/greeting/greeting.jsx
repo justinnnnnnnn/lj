@@ -20,6 +20,12 @@ class Greeting extends React.Component {
   componentDidMount() {
     this.props.currentUser ? UserAPI.getAllStockBuys(this.props.currentUser.id).then((response) => {response; this.setState({portfolio: response})}) 
     : null;
+    console.log("MAIN SCREEN TURN ON")
+  }
+  componentDidUpdate(prevProps, prevState) {
+    this.props.currentUser ? UserAPI.getAllStockBuys(this.props.currentUser.id).then((response) => {response; this.setState({portfolio: response})}) 
+    : null;
+    console.log("MAIN SCREEN TURN ON")
   }
 
   

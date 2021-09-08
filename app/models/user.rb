@@ -30,6 +30,10 @@ class User < ApplicationRecord
     # self.buying_power = self.account_balance - val
   end
 
+  # def gain_stonks
+  #   self.stock_buys ||= 
+  # end
+
   def self.find_by_credentials(user, password)
     user = User.find_by(username: user)
       if user && user.is_password?(password)

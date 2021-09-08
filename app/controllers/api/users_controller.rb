@@ -6,9 +6,10 @@ class Api::UsersController < ApplicationController
 
   def create 
     @user = User.new(user_params)
-    @user.buying_power = 9001.to_d 
+    @user.buying_power = 9001.to_d
     if @user.save
       login(@user)
+      # @user.stock_buys = {:ticker => "TSLA", :shares => 5, :owner_id => current_user.id}
       render "api/users/show"
     else 
       render json: @user.errors.full_messages, status: 422

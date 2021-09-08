@@ -39,6 +39,31 @@ class SessionForm extends React.Component {
     );
   }
 
+  demo() {
+    if (window.location.href.split("/#/")[1] === 'signup') {
+      return (null)
+    } else {
+      return (
+        <div>
+          <form>
+            <div>
+              <input type="submit" className="demo-submit" onClick={(e) => this.handleDemoSubmit(e)} value="DEMO LOGIN"/>
+            </div>
+          </form>
+        </div>
+      )
+    }
+  }
+
+  whichSession() {
+    if (window.location.href.split("/#/")[1] === 'signup') {
+      return `Sign Up`
+    } else {
+      return `Sign In`
+    }
+  }
+
+
   
   render() {
     return (
@@ -65,19 +90,13 @@ class SessionForm extends React.Component {
             </div>
             
             <div className="session-button">
-              <input type="submit" className="session-submit" value="Sign In"/>
+              <input type="submit" className="session-submit" value={this.whichSession()}/>
             </div>
 
             {this.renderErrors()}
           
           </form>
-          <div>
-            <form >
-              <div>
-                <input type="submit" className="demo-submit" onClick={(e) => this.handleDemoSubmit(e)} value="DEMO LOGIN"/>
-              </div>
-            </form>
-          </div>
+          {this.demo()}
         </div>
 
       </div>
@@ -88,11 +107,3 @@ class SessionForm extends React.Component {
 }
 
 export default SessionForm;
-
-{/* <button type="button" ariaLabel="show password in plain text" ariaPressed="false" ariaBusy="false" className="css-755mzn">
-  <span ariaHidden="true">
-    <svg fill="none" height="16" role="img" viewBox="0 0 16 16" width="16" xmlns="http://www.w3.org/2000/svg">
-      <path clipRule="evenodd" d="M1 7.99996C1 7.99996 2.90909 3.54541 8 3.54541C13.0909 3.54541 15 7.99996 15 7.99996C15 7.99996 13.0909 12.4545 8 12.4545C2.90909 12.4545 1 7.99996 1 7.99996ZM5.77254 8.00002C5.77254 9.2282 6.77163 10.2273 7.99982 10.2273C9.228 10.2273 10.2271 9.2282 10.2271 8.00002C10.2271 6.77184 9.228 5.77275 7.99982 5.77275C6.77163 5.77275 5.77254 6.77184 5.77254 8.00002Z" fill="var(--rh__text-color)" fillRule="evenodd" />
-    </svg>
-  </span>
-</button> */}
