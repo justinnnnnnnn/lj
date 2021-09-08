@@ -27,7 +27,7 @@ class OwnedStonks extends React.Component {
       return (<div/>)
     } else {
       const portfolio = this.state.ownedStonks.map((stonk, i) => 
-        <div>
+        <div key={i}>
           <Link to={`/stonks/${stonk.ticker}`}>
             <div className="portfolio-item" key={i}>
               <div>{stonk.ticker}</div>

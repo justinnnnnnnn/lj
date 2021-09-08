@@ -36,7 +36,6 @@ class Stonk extends React.Component {
   
   render() {
     const thisStonk = window.location.href.split("stonks/")[1].toUpperCase()
-    // console.log("thisStonk var", thisStonk)
     const { currentUser, logout } = this.props
     if (currentUser === undefined) {
       return null;

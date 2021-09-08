@@ -26,14 +26,13 @@ class MarketNews extends React.Component {
   }
 
   render() {
-    console.log("find sources and time market news", this.state.marketNews)
     const timeSince = (date) => {
       return ` ${Math.floor(date / 86400 / 3600) + "h"}`
     }
 
     const newsItems = this.state.marketNews.map((item, i) => 
       !(item.source === 'Bloomberg') &&
-        (<a className="news-url" href={item.url}  target="_blank">
+        (<a className="news-url" href={item.url} key={i} target="_blank">
           <div className='news-article' key={i}>
             <div className="news-left">
               <div className="news-article-headline-and-time">

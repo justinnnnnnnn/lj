@@ -31,7 +31,6 @@ class StonkBioAbout extends React.Component {
     }))}
   }
   render() {
-    console.log("bio state", this.state.stonkBio)
     const companyProfile = { name: this.props.stonkBio.name }
 
     let bio = () => {

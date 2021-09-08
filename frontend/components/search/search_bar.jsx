@@ -69,16 +69,13 @@ class SearchBar extends React.Component {
         }
       });
     }
-    console.log("search array", searchResult.slice(0, 8))
     return searchResult.slice(0, 8) 
   }
 
                   buttonPress = (e) => {
                     let inputUp = this.state.input.toUpperCase()
                     let searchResult = []
-                    console.log("search list props", this.state.searchList)
                     let searchArr = Object.values(this.state.searchList)
-                    console.log("by var name searchArr", Object.values(searchArr))
                     if (this.state.input.length > 0) { // add just the ticker first
                       searchArr.map((objectOfTickerAndName, i) => {
                         if (objectOfTickerAndName.ticker.startsWith(inputUp)) {

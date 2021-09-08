@@ -14,15 +14,12 @@ class BuySellPanel extends React.Component {
       userData: {},
       buyingPower: this.props.currentUser.buyingPower,
       buy: true,
-      // buyError: false,
-      // sharesValue: Number(this.state.sharesOwned) * Number(this.state.price),
     }
 
     this.submitBuy = this.submitBuy.bind(this);
     this.submitSell = this.submitSell.bind(this);
     this.setInput = this.setInput.bind(this);
     this.toggleBuySell = this.toggleBuySell.bind(this);
-    // this.buyOrCannot = this.bindOrCannot.bind(this)
 
   }
 
@@ -32,19 +29,25 @@ class BuySellPanel extends React.Component {
     .then(() => this.setState({loading: false}))
     .then(() => this.setState({buyingPower: this.state.userData.buyingPower}))
     .then(() => {UserAPI.getStockBuy(this.props.stonk, this.props.currentUser.id)
-      .then((response) => {console.log("response to shares owned in mount:", response); this.setState({sharesOwned: response.shares})})
+      .then((response) => {
+        console.log("response to shares owned in mount:", response); 
+        typeof response.shares === 'number' ?  this.setState({sharesOwned: response.shares}) : this.setState({sharesOwned: 0}) 
+      })
     })
     
   }
   
   componentDidUpdate(prevProps, prevState) {
-    if (prevState.buyingPower !== this.state.buyingPower) {    
+    if ((prevState.buyingPower !== this.state.buyingPower) || (prevState.sharesOwned !== this.state.sharesOwned)) {    
       UserAPI.getBuyingPower(this.props.currentUser.id)
       .then((response) => {this.setState({userData: response})})
       .then(() => this.setState({loading: false}))
       .then(() => this.setState({buyingPower: this.state.userData.buyingPower}))
       .then(() => {UserAPI.getStockBuy(this.props.stonk, this.props.currentUser.id)
-        .then((response) => {console.log("response to shares owned in mount:", response); this.setState({sharesOwned: response.shares})})
+        .then((response) => {console.log("response to shares owned in mount:", response); 
+        typeof response.shares === 'number' ?  this.setState({sharesOwned: response.shares}) : this.setState({sharesOwned: 0}) 
+        // this.setState({sharesOwned: response.shares})
+        })
       })
     }
   }
@@ -53,15 +56,20 @@ class BuySellPanel extends React.Component {
     this.setState({input: e.target.value})
   }
 
-  // buyError() {
-  //   if (this.state.buyError) return null;
-  //   return (
-  //     )
-  //   }
+
   buyOrCannot() {
     if ((Number(this.props.stonkQuote.c) * Number(this.state.input)) > Number(this.state.buyingPower)) {
       return (
       <div className="buy-error">Insufficient buying power</div>
+    )
+    } else {
+      return (<button className="order-button">Complete Order</button>)
+    }
+  }
+  sellOrCannot() {
+    if (Number(this.state.input) > Number(this.state.sharesOwned)) {
+      return (
+      <div className="buy-error">Insufficient shares</div>
     )
     } else {
       return (<button className="order-button">Complete Order</button>)
@@ -105,7 +113,8 @@ class BuySellPanel extends React.Component {
       .then(() => {
         UserAPI.updateStockBuy(this.props.stonk, (Number(Number(this.state.sharesOwned) - Number(this.state.input))), this.props.currentUser.id)
         .then(() => {
-          console.log("SOLD SHARES")
+          console.log("SOLD SHARES");
+          this.setState({sharesOwned: (Number(Number(this.state.sharesOwned) - Number(this.state.input)))})
         })
       })
     }
@@ -123,7 +132,7 @@ class BuySellPanel extends React.Component {
 
 
   render() {
-    // console.log("BuySell this.props.stonk:", this.props.stonk);
+
 
     const stockPrice = this.props.stonkQuote.c;
 
@@ -229,7 +238,8 @@ class BuySellPanel extends React.Component {
                   </div>
                 </div>
                 <br/>
-                <button className="order-button">Complete Order</button>
+                {this.sellOrCannot()}
+                {/* <button className="order-button">Complete Order</button> */}
               </form>
             </div>
             <br/>

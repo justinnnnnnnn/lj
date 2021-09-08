@@ -35,7 +35,6 @@ class StonkNews extends React.Component {
   }
 
   render() {
-    // console.log("WHY IS THE SYMBOL UNDEFINED", this.props.stonk)
     const timeSince = (date) => {
       return ` ${Math.floor(date / 86400 / 3600) + "h"}`
     }

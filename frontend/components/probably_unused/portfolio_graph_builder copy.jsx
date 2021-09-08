@@ -23,7 +23,6 @@ class Chart extends React.Component {
       bigPrice: 0,
       currentPrice: 0,
       yarg: [],
-      realData: [],
     }
     
 
@@ -48,6 +47,7 @@ class Chart extends React.Component {
     for(let i = 1; i < multipliedPrices.length; i++)
       for(let j = 0; j < multipliedPrices[0].length; j++)
       addedArrays[j] += multipliedPrices[i][j];
+ 
 
     const realData = [];
     if (this.props.portfolioPrices.length === this.props.portfolio.length) {
@@ -61,48 +61,9 @@ class Chart extends React.Component {
     return Number(realData[realData.length - 1].price).toFixed(2)
   }
 
-  fullPortfolio() {
-    let multipliedPrices = []
-
-    this.props.portfolioPrices.forEach((ele, i) => {
-      let arr = []
-      ele.o.forEach((element, index) => {
-      arr.push((Number(element) * this.props.portfolio[i].shares))
-
-      })
-      multipliedPrices.push(arr);
-
-    })
-    let addedArrays = multipliedPrices[0]
-    for(let i = 1; i < multipliedPrices.length; i++)
-      for(let j = 0; j < multipliedPrices[0].length; j++)
-      addedArrays[j] += multipliedPrices[i][j];
-
-    const realData = [];
-    if (this.props.portfolioPrices.length === this.props.portfolio.length) {
-
-      for (let i = 0; i < addedArrays.length; i++)
-      realData.push({
-        time: this.props.portfolioPrices[0].t[i],
-        price: (addedArrays[i] + Number(this.props.buyingPower)),
-      })
-    }
-    return realData
-  }
-
   componentDidMount() {
-    Promise.all(
-      this.setState({realData: this.fullPortfolio()})
-    )
-    .then(() => 
-    this.setState({currentPrice: this.state.realData[this.state.realData.length - 1][price]})
-    );
-    
+    this.setState({currentPrice: this.portNow()})
   }
-
-  componentDidUpdate(prev) {
-    
-  };
 
   handleMouseOver(e) {
     if (e.activePayload) {
@@ -144,6 +105,7 @@ class Chart extends React.Component {
 
   render() {    
     let multipliedPrices = []
+
     this.props.portfolioPrices.forEach((ele, i) => {
       let arr = []
       ele.o.forEach((element, index) => {
@@ -218,7 +180,7 @@ class Chart extends React.Component {
        
         <ResponsiveContainer className="chartPrice">
           <LineChart 
-            data={this.state.realData} 
+            data={realData} 
             onMouseMove={this.handleMouseOver}
             onMouseLeave={this.handleMouseLeave}>
             <XAxis

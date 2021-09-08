@@ -20,7 +20,6 @@ class Greeting extends React.Component {
   componentDidMount() {
     this.props.currentUser ? UserAPI.getAllStockBuys(this.props.currentUser.id).then((response) => {response; this.setState({portfolio: response})}) 
     : null;
-    console.log("main page did mount", this.state.portfolio)
   }
 
   
@@ -33,6 +32,14 @@ class Greeting extends React.Component {
     let i = 0;
     for (i = 0; i < 200; i++) {
       <span> "stonk" i </span>;
+    }
+  }
+
+  graphOrNot() {
+    if (this.props.currentUser.stockBuys.length > 0) {
+      return <PortfolioGraph buyingPower={this.props.currentUser.buyingPower} portfolio={this.props.currentUser.stockBuys}/>
+    } else {
+      return null
     }
   }
 
@@ -148,15 +155,16 @@ class Greeting extends React.Component {
           </div>
         </div>
       </div>
-
+      {/* {console.log("props stock buys", this.props.currentUser.stockBuys)} */}
       
 
       <div className="main-div-logged-in">
         
         <div className="main-div-left">
         {/* main left XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX GRAPH */}
-          <PortfolioGraph buyingPower={this.props.currentUser.buyingPower} portfolio={this.props.currentUser.stockBuys}/> 
+          {/* <PortfolioGraph buyingPower={this.props.currentUser.buyingPower} portfolio={this.props.currentUser.stockBuys}/>  */}
           {/* <marquee>This will be a portfolio graph</marquee>           */}
+          {/* {this.graphOrNot()} */}
           <div className="buying-power">
               <div>
                 Buying Power
