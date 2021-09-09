@@ -160,7 +160,7 @@ class Greeting extends React.Component {
         
         <div className="main-div-left">
           {/* <PortfolioGraph buyingPower={this.props.currentUser.buyingPower} portfolio={this.props.currentUser.stockBuys}/>  */}
-          {/* {this.graphOrNot()} */}
+          {this.graphOrNot()}
           <BuyingPower currentUser={this.props.currentUser}/>
           {/* <div className="buying-power">
               <div>
