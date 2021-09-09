@@ -30,7 +30,6 @@ class BuySellPanel extends React.Component {
     .then(() => this.setState({buyingPower: this.state.userData.buyingPower}))
     .then(() => {UserAPI.getStockBuy(this.props.stonk, this.props.currentUser.id)
       .then((response) => {
-        console.log("response to shares owned in mount:", response); 
         typeof response.shares === 'number' ?  this.setState({sharesOwned: response.shares}) : this.setState({sharesOwned: 0}) 
       })
     })
@@ -44,7 +43,7 @@ class BuySellPanel extends React.Component {
       .then(() => this.setState({loading: false}))
       .then(() => this.setState({buyingPower: this.state.userData.buyingPower}))
       .then(() => {UserAPI.getStockBuy(this.props.stonk, this.props.currentUser.id)
-        .then((response) => {console.log("response to shares owned in mount:", response); 
+        .then((response) => {
         typeof response.shares === 'number' ?  this.setState({sharesOwned: response.shares}) : this.setState({sharesOwned: 0}) 
         // this.setState({sharesOwned: response.shares})
         })
@@ -77,7 +76,6 @@ class BuySellPanel extends React.Component {
   }
   submitBuy(e) {
 
-    console.log("BUYING HAS BEEN CLICKED")
     e.preventDefault();
     if (this.state.sharesOwned === 0 ) {
       UserAPI.updateBuyingPower((Number(this.state.buyingPower) - Number(this.state.input * this.state.currentPrice)), this.props.currentUser.id)
@@ -113,7 +111,6 @@ class BuySellPanel extends React.Component {
       .then(() => {
         UserAPI.updateStockBuy(this.props.stonk, (Number(Number(this.state.sharesOwned) - Number(this.state.input))), this.props.currentUser.id)
         .then(() => {
-          console.log("SOLD SHARES");
           this.setState({sharesOwned: (Number(Number(this.state.sharesOwned) - Number(this.state.input)))})
         })
       })

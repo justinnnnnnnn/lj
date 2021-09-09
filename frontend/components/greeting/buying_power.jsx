@@ -18,7 +18,6 @@ class BuyingPower extends React.Component {
   }
   
   render() {
-    {console.log("the buying power", this.state)}
     if (this.state.loading) {
       return (<div/>)
     } else {

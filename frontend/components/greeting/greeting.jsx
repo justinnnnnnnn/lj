@@ -19,16 +19,6 @@ class Greeting extends React.Component {
     };
     this.handleDemoSubmit = this.handleDemoSubmit.bind(this);
   }
-  // componentDidMount() {
-  //   this.props.currentUser ? UserAPI.getAllStockBuys(this.props.currentUser.id).then((response) => {response; this.setState({portfolio: response})}) 
-  //   : null;
-  //   console.log("MAIN SCREEN MOUNT")
-  // }
-  // componentDidUpdate(prevProps, prevState) {
-  //   this.props.currentUser ? UserAPI.getAllStockBuys(this.props.currentUser.id).then((response) => {response; this.setState({portfolio: response})}) 
-  //   : null;
-  //   console.log("MAIN SCREEN UPDATE")
-  // }
 
   
   handleDemoSubmit(e) {
