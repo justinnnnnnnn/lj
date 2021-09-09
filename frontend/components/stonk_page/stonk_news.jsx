@@ -19,7 +19,6 @@ class StonkNews extends React.Component {
     }
 
   componentDidUpdate(prevProps) {
-      // debugger;
     if (prevProps.stonk !== this.props.stonk) {
       StonkAPI.fetchStonkNews(this.props.stonk, '2021-09-01', '2021-09-07', window.finnhubAPIKey)
       .then((response) => this.setState({stonkNews: response}))
