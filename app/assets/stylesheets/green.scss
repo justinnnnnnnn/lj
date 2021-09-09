@@ -1,7 +1,6 @@
   .green-part {
       background-color:rgb(195,245,60);
       border-bottom: 1px solid black;
-      // height: 700px;
   }
 
   .header {
@@ -13,8 +12,6 @@
     justify-content: space-between;
     align-items: center;
     box-shadow: 0px 1px 4px 0px rgba(0, 0, 0, .2);
-    // position: fixed;
-    // width: 100vh;
       
   }
      
@@ -40,7 +37,6 @@
          box-sizing: border-box;
          display: inline-flex;
          padding: 0px 16px;
-        //  width: 178px;
          height: 48px;
          border-radius: 24px;
         }
@@ -99,15 +95,12 @@
     justify-content: space-evenly;
     flex-grow: 1;
     height: inherit;
-    // width: 100%;
-    
-    
+
   }
     
 
     .green-left-col {
       height: 620px;
-      // width: 692px;
       display: flex;
       align-items: left;
       flex-direction: column;
@@ -168,18 +161,14 @@
     align-items: center;
     justify-content: center;
     height: 620px;
-    // position: absolute;
   }
 
       .phone-vid {
         height: 600px;
         width: 692px;
-        // position: relative;
       }
       
       .phone-img {
-        // height: 600px;
-        // width: 692px;
         position: absolute;
       }
         

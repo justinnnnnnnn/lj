@@ -124,12 +124,9 @@
   border-bottom: 1px solid rgb(227,233,237);
 }
 
-
-// right side
-
 .main-div-right {
   
-  width: 276px; // probably dynamic
+  width: 276px; 
   padding: 24px;
   height: 100vh;
 }
@@ -141,7 +138,7 @@
 }
 
 .main-div-right-inner {
-  padding: 24px; //pick one, hay tres
+  padding: 24px;
   width: 276px;
   position: fixed;
   display: flex;

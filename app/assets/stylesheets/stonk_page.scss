@@ -33,14 +33,12 @@ input[type=number] {
   flex-direction: row;
   justify-content: center;
   padding: 64px;
-  // padding: 24px; //wrong but for now
 }
 
 .stonk-div-left {
   display: flex;
   flex-direction: column;
-  width: 676px; //this goes elsewhere
-  // width: 80vh;
+  width: 676px; 
 }
 
 .buying-power {
@@ -129,13 +127,11 @@ input[type=number] {
   flex-direction: row;
   justify-content: center;
   padding: 64px;
-  // padding: 24px; //wrong but for now
 }
 
 .main-div-left {
   display: flex;
   flex-direction: column;
-  // width: 676px; //this goes elsewhere
   width: 80vh;
 }
 
@@ -188,10 +184,8 @@ input[type=number] {
 
 
 .stonk-div-right {
-  
-  width: 276px; // probably dynamic
+  width: 276px;
   padding: 24px;
-  // height: 100%;
   border-radius: 4px;
   height: 334px;
 }
@@ -199,7 +193,7 @@ input[type=number] {
 .stonk-div-right-inner {
   height: 388px;
   border: 1px solid rgb(212, 212, 212);
-  padding: 24px; //pick one, hay tres
+  padding: 24px;
   position: fixed;
   display: flex;
   flex-direction: column;
@@ -207,6 +201,5 @@ input[type=number] {
   box-sizing: border-box;
   box-shadow: 0px 12px 24px rgba(0,0,0,0.06), 0px -12px 24px rgba(0,0,0,0.06);
   box-shadow: 24px rgba(0, 0, 0, 0);
-  // height: 85%;
   width: 276px;
 }
