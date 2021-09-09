@@ -17,7 +17,7 @@ class SearchBar extends React.Component {
   searchFilter = () => {
     let inputUp = this.state.input.toUpperCase()
     let searchResult = []
-    let searchArr = Object.values(this.state.searchList)
+    let searchArr = this.state.searchList
     
     if (this.state.input.length > 0) { // add just the ticker first
       searchArr.map((objectOfTickerAndName, i) => {
