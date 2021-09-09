@@ -33,30 +33,15 @@ export const fetchStonkBio = (symbol) => (dispatch) =>
   StonkAPI.fetchStonkBio(symbol).then((stonk) =>
     dispatch(receiveStonkBio(stonk, symbol))
   );
-  
-export const fetchStonkInfo = (symbol) => (dispatch) =>
-  StonkAPI.fetchStonkInfo(symbol).then((stonk) =>
-  dispatch(receiveStonk(stonk, symbol))
-);
-  
-export const fetchStonkData = (symbol, fromDate, toDate) => (dispatch) =>
-  StonkAPI.fetchStonkData(symbol, fromDate, toDate).then((stonk) => 
-  dispatch(receiveStonkData(stonk, symbol))
-);
+
 
 export const fetchStonkNews = (symbol, fromDate, toDate) => (dispatch) =>
   StonkAPI.fetchStonkNews(symbol, fromDate, toDate).then((stonk) =>
   dispatch(receiveStonkNews(stonk, symbol))
 );
   
-  // export const fetchStonkData = (symbol, fromDate, toDate) => (dispatch) =>
-  //   StonkAPI.fetchStonkData(symbol, fromDate, toDate).then((stonk) => {
-    //     dispatch(receiveStonkData(stonk, symbol))
-    //     return stonk
-    //   });
     
-    
-    export const fetchStonk = (symbol) => (dispatch) =>
-      StonkAPI.fetchStonk(symbol).then((stonk) =>
-        dispatch(receiveStonk(stonk, symbol))
-    );
+export const fetchStonk = (symbol) => (dispatch) =>
+  StonkAPI.fetchStonk(symbol).then((stonk) =>
+    dispatch(receiveStonk(stonk, symbol))
+);
