@@ -142,7 +142,8 @@ class Chart extends React.Component {
     }
   }
 
-  render() {    
+  render() {
+    console.log("props", this.props)    
     let multipliedPrices = []
     this.props.portfolioPrices.forEach((ele, i) => {
       let arr = []
