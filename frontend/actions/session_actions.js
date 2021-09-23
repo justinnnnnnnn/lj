@@ -19,7 +19,7 @@ export const receiveErrors = (errors) => ({
   errors
 });
 
-export const clearSessionErrors = () => ({
+export const clearErrors = () => ({
   type: CLEAR_ERRORS
 });
 

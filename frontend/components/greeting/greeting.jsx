@@ -34,12 +34,21 @@ class Greeting extends React.Component {
   }
 
   graphOrNot() {
+    if (!(this.props.currentUser.stockBuys) && !(this.state.portfolio.length > 0) ) return null;
     if (this.props.currentUser.stockBuys.length > 0) {
       return <PortfolioGraph buyingPower={this.props.currentUser.buyingPower} portfolio={this.props.currentUser.stockBuys}/>
     } else {
       return null
     }
   }
+
+  // componentDidMount() {
+  //   if (!this.props.currentUser.stockBuys) {
+  //     UserAPI.getAllStockBuys(currentUser.id)
+  //       .then(() => this.setState({portfolio: response}))
+  //   };
+  //   console.log("portfolio", this.state.portfolio)
+  // }
 
   render() {
     const { currentUser, logout } = this.props

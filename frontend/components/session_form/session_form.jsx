@@ -10,6 +10,10 @@ class SessionForm extends React.Component {
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
+  componentDidMount() {
+    this.props.clearErrors();
+  }
+
   update(field) {
     return e => this.setState({
       [field]: e.currentTarget.value
@@ -24,10 +28,11 @@ class SessionForm extends React.Component {
 
   handleDemoSubmit(e) {
     e.preventDefault();
-    this.props.processForm({username: 'stonkmaster420', password: '69'});
+    this.props.processForm({username: 'stonkmaster421', password: '69'});
   }
 
   renderErrors() {
+    if (!this.props.errors) return null;
     return(
       <ul>
         {this.props.errors.map((error, i) => (

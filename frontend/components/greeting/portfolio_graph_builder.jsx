@@ -100,8 +100,16 @@ class Chart extends React.Component {
     
   }
 
-  componentDidUpdate(prev) {
-    
+  componentDidUpdate(prevProps, prevState) {
+     if (!(prevState.realData.length > 0) && (prevState.realData.length !== this.state.realData.length)) {
+      Promise.all(
+        this.setState({realData: this.fullPortfolio()})
+      )
+      .then(() => 
+      this.setState({currentPrice: this.state.realData[this.state.realData.length - 1][price]})
+      );
+     }
+
   };
 
   handleMouseOver(e) {
@@ -142,8 +150,7 @@ class Chart extends React.Component {
     }
   }
 
-  render() {
-    console.log("props", this.props)    
+  render() {  
     let multipliedPrices = []
     this.props.portfolioPrices.forEach((ele, i) => {
       let arr = []
@@ -174,8 +181,15 @@ class Chart extends React.Component {
     //   realData.push(this.props.buyingPower);
     // }
 
-    const valueStart = () => realData ? Number(realData[0].price).toFixed(2) : null
-    const valueNow = () => realData ? Number(realData[realData.length - 1].price).toFixed(2) : null
+    const valueStart = () => {
+      if (!realData.length > 0) return Number("0.01").toFixed(2);
+      return realData ? Number(realData[0].price).toFixed(2) : null
+    }
+    
+    const valueNow = () => {
+      if (!realData.length > 0) return Number("0.01").toFixed(2);
+      return realData ? Number(realData[realData.length - 1].price).toFixed(2) : null
+    }
 
     const dollarChange = () => {
       if ((valueNow() - valueStart()) > 0) {
@@ -186,10 +200,10 @@ class Chart extends React.Component {
     }
     
     const percentChange = () => {
-      if ((valueNow / valueStart) > 1) {
-        return (<span className="spanNumbers">(+{(valueNow() / valueStart()).toFixed(2)}%)</span>)
+      if ((valueNow() / valueStart()) > 0) {
+        return (<span className="spanNumbers">(+{Number(Number(valueNow()) / Number(valueStart())).toFixed(2)}%)</span>)
       } else {
-        return (<span className="spanNumbers">(-{(valueStart() / valueNow()).toFixed(2)}%)</span>)
+        return (<span className="spanNumbers">(-{Number(Number(valueStart()) / Number(valueNow())).toFixed(2)}%)</span>)
       }
     }
 
