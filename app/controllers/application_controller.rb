@@ -1,7 +1,7 @@
 class ApplicationController < ActionController::Base
   skip_before_action :verify_authenticity_token
     before_action :require_logged_in, only: [:logout]
-    helper_method :logged_in?, :current_user
+    helper_method :logged_in?, :current_user, :market_hours_range
   
   def current_user 
     return nil unless session[:session_token]
@@ -27,6 +27,11 @@ class ApplicationController < ActionController::Base
   def logged_in? 
     !!current_user
   end 
+
+  def market_hours_range
+    go_ninja_go = MarketHour.new
+    go_ninja_go.return_market_open_and_close
+  end
 
 
 end

@@ -116,7 +116,7 @@ class Chart extends React.Component {
       <div className="chart">
         
         <div className="chartHeader"> 
-          <div>
+          <div className="odoline">
             <h1 className="currentPrice">$<Odometer value={this.state.bigPrice}/></h1>
             {/* <h1 className="currentPrice">$<Odometer value={this.state.bigPrice} formatter={number => `$${number.toLocaleString('en-US',  {minimumFractionDigits: 2})}`} /></h1> */}
           </div>

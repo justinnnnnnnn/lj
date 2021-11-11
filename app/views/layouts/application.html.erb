@@ -9,7 +9,9 @@
     
     <%= javascript_include_tag 'application' %>
     <script type="text/javascript">
-      window.finnhubAPIKey = "<%= Rails.application.credentials.finnhub[:api_key] %>"
+      window.finnhubAPIKey = "<%= Rails.application.credentials.finnhub[:api_key] %>";
+      window.marketOpen = "<%= market_hours_range[0] %>";
+      window.marketClose = "<%= market_hours_range[1] %>";
     </script>
   </head>
 

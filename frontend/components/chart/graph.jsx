@@ -16,14 +16,16 @@ class Graph extends React.Component {
   }
 
   componentDidMount() {
-    StonkAPI.fetchStonkIntraday(this.props.stonk, this.marketOpen, this.marketClose, window.finnhubAPIKey)
+    // StonkAPI.fetchStonkIntraday(this.props.stonk, this.marketOpen, this.marketClose, window.finnhubAPIKey)
+    StonkAPI.fetchStonkIntraday(this.props.stonk, window.marketOpen, window.marketClose, window.finnhubAPIKey)
     .then((response) => this.setState({intradayData: response}))
     .then(() => this.setState({loading: false}))
   }
 
   componentDidUpdate(prevProps) {
     if (prevProps.stonk !== this.props.stonk) {
-      StonkAPI.fetchStonkIntraday(this.props.stonk, this.marketOpen, this.marketClose, window.finnhubAPIKey)
+      // StonkAPI.fetchStonkIntraday(this.props.stonk, this.marketOpen, this.marketClose, window.finnhubAPIKey)
+      StonkAPI.fetchStonkIntraday(this.props.stonk, window.marketOpen, window.marketClose, window.finnhubAPIKey)
       .then((response) => this.setState({intradayData: response}))
       .then(() => this.setState({loading: false}))
     }

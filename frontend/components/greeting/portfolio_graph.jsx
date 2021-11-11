@@ -24,7 +24,7 @@ class PortfolioGraph extends React.Component {
   componentDidMount() {
     Promise.all(
       this.props.portfolio.map((ele) => {
-      StonkAPI.fetchStonkIntraday((ele.ticker), this.marketOpen, this.marketClose, window.finnhubAPIKey)
+      StonkAPI.fetchStonkIntraday((ele.ticker), window.marketOpen, window.marketClose, window.finnhubAPIKey)
         .then((response) => {
           this.setState(prevState => (
             {portfolioPrices: [...prevState.portfolioPrices, response]}));
