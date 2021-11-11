@@ -216,7 +216,7 @@ class Chart extends React.Component {
         <div className="chartHeader"> 
           {/* <div className="currentPrice"> */} <div>
             {/* <h1 className="currentPrice">$<Odometer value={this.state.bigPrice} formatter={number => `$${number.toFixed(2)}`} /></h1> */}
-            <h1 className="currentPrice">$<Odometer value={this.state.bigPrice} formatter={number => `$${number.toLocaleString('en-US',  {minimumFractionDigits: 2})}`} /></h1>
+            <h1 className="odoline">$<Odometer value={this.state.bigPrice} formatter={number => `$${number.toLocaleString('en-US',  {minimumFractionDigits: 2})}`} /></h1>
             
           </div>
           <div className="priceChanges">
